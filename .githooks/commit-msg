@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# commit-msg: bắt buộc Conventional Commits
+msg="$(head -1 "$1")"
+re='^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)(\([a-z0-9._/-]+\))?!?: .{1,100}$'
+if [[ "$msg" =~ ^Merge ]] || [[ "$msg" =~ ^Revert ]] || [[ "$msg" =~ $re ]]; then exit 0; fi
+echo "✖ Commit message sai format. Dùng: type(scope): mô tả   vd: feat(auth): add refresh token rotation" >&2
+echo "  type: feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert" >&2
+exit 1

@@ -1,0 +1,21 @@
+name: release
+
+# Tự động tạo "Release PR" (bump version + CHANGELOG) từ Conventional Commits trên main; merge PR đó ⇒ tạo tag + GitHub Release.
+# Lưu ý: PR do GITHUB_TOKEN tạo sẽ KHÔNG kích hoạt CI. Muốn CI chạy trên Release PR: tạo secret RELEASE_PLEASE_TOKEN (PAT hoặc GitHub App token).
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: googleapis/release-please-action@v4
+        with:
+          token: ${{ secrets.RELEASE_PLEASE_TOKEN || secrets.GITHUB_TOKEN }}
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json

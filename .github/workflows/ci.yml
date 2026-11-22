@@ -1,0 +1,52 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  # Tên job "verify" và "secrets" là các required status check của branch protection (scripts/setup-github).
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+
+      # TODO(init): bật bước setup runtime phù hợp stack của bạn, ví dụ:
+      # - uses: pnpm/action-setup@v4
+      # - uses: actions/setup-node@v4
+      #   with: { node-version: 22, cache: pnpm }
+      # - uses: astral-sh/setup-uv@v5
+
+      - name: Install
+        run: |
+          cmd="$(grep -E '^INSTALL_CMD=' .sdd/project.conf | cut -d= -f2-)"
+          if [ -n "$cmd" ]; then bash -c "$cmd"; else echo "INSTALL_CMD trống — bỏ qua"; fi
+
+      # Gồm: spec-check, lint, ui-check, test, build, audit, unused, seo-check, a11y, visual, secret-scan (fallback)
+      - name: Verify (strict)
+        run: bash scripts/verify.sh --strict
+
+      # Điểm Lighthouse (SEO/a11y/perf) — bật bằng repo variable LHCI_ENABLED=true; sửa staticDistDir trong lighthouserc.json cho khớp SEO_BUILD_DIR
+      - name: Lighthouse CI
+        if: ${{ vars.LHCI_ENABLED == 'true' }}
+        run: npx --yes @lhci/cli autorun --config=lighthouserc.json
+
+  secrets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

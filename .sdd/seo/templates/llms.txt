@@ -1,0 +1,11 @@
+# Tên thương hiệu
+
+> Mô tả 1–2 câu: bạn là ai, làm gì, cho ai. (llms.txt là TÙY CHỌN — chưa có bằng chứng ảnh hưởng xếp hạng/trích dẫn; xem constraints/seo.md SE-12.)
+
+## Trang chính
+- [Trang chủ](https://example.com/): giới thiệu ngắn
+- [Sản phẩm/Dịch vụ](https://example.com/products): ...
+- [Câu hỏi thường gặp](https://example.com/faq): ...
+
+## Tài liệu
+- [Hướng dẫn bắt đầu](https://example.com/docs/start): ...

@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# pre-push: chặn push vào nhánh chính/prod/release và chặn force-push (non-fast-forward).
+# Người (không phải Agent) có thể push lần đầu lên main bằng: ALLOW_MAIN_PUSH=1 git push
+main="$(grep -E '^MAIN_BRANCH=' .sdd/project.conf 2>/dev/null | head -1 | cut -d= -f2- | tr -d '\r')"; main="${main:-main}"
+zero="0000000000000000000000000000000000000000"
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [[ -n "${remote_ref:-}" ]] || continue
+  branch="${remote_ref#refs/heads/}"
+  if [[ "$branch" == "$main" || "$branch" == master || "$branch" == prod || "$branch" == release/* ]]; then
+    if [[ "${ALLOW_MAIN_PUSH:-0}" != "1" ]]; then
+      echo "✖ Cấm push trực tiếp lên '$branch'. Dùng nhánh feat/* + PR (scripts/ship)." >&2
+      exit 1
+    fi
+  fi
+  if [[ "$local_sha" != "$zero" && "$remote_sha" != "$zero" ]] && git cat-file -e "${remote_sha}^{commit}" 2>/dev/null; then
+    if ! git merge-base --is-ancestor "$remote_sha" "$local_sha"; then
+      echo "✖ Cấm force-push (non-fast-forward) lên '$branch'. Hãy pull/rebase rồi push lại." >&2
+      exit 1
+    fi
+  fi
+done
+exit 0

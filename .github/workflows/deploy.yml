@@ -1,0 +1,62 @@
+name: deploy
+
+# CD: chỉ chạy SAU KHI workflow "ci" trên nhánh main xanh (hoặc chạy tay để deploy/rollback một commit cụ thể).
+# Agent KHÔNG deploy trực tiếp (safety.md): deploy chỉ do workflow này, có environment "production" (đặt Required reviewers nếu muốn duyệt tay).
+on:
+  workflow_run:
+    workflows: [ci]
+    types: [completed]
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: "Commit SHA / tag để deploy hoặc rollback (mặc định: main)"
+        required: false
+
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref || github.event.workflow_run.head_sha || 'main' }}
+
+      # TODO(init): setup runtime như trong ci.yml (node/pnpm/uv...)
+
+      - name: Install & build
+        run: |
+          i="$(grep -E '^INSTALL_CMD=' .sdd/project.conf | cut -d= -f2-)"; b="$(grep -E '^BUILD_CMD=' .sdd/project.conf | cut -d= -f2-)"
+          if [ -n "$i" ]; then bash -c "$i"; fi
+          if [ -n "$b" ]; then bash -c "$b"; fi
+
+      - name: Deploy
+        env:
+          # Khai báo secrets cần cho nền tảng deploy (Settings → Environments → production → Secrets), ví dụ:
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        run: |
+          cmd="$(grep -E '^DEPLOY_CMD=' .sdd/project.conf | cut -d= -f2-)"
+          if [ -z "$cmd" ]; then echo "::warning::DEPLOY_CMD trống trong .sdd/project.conf — bỏ qua deploy"; exit 0; fi
+          bash -c "$cmd"
+
+      - name: Smoke test sau deploy
+        run: |
+          url="$(grep -E '^SITE_URL=' .sdd/project.conf | cut -d= -f2-)"
+          if [ -z "$url" ]; then echo "SITE_URL trống — bỏ qua smoke test"; exit 0; fi
+          for i in 1 2 3 4 5; do
+            code="$(curl -s -o /dev/null -w '%{http_code}' -L "$url" || echo 000)"
+            echo "Lần $i: HTTP $code"
+            if [ "$code" = "200" ]; then exit 0; fi
+            sleep 15
+          done
+          echo "::error::Smoke test thất bại — rollback: chạy lại workflow này với ref = commit trước, hoặc revert PR."
+          exit 1

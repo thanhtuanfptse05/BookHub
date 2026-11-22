@@ -1,0 +1,94 @@
+/* tokens.css — Nguồn giá trị duy nhất của design system (CSS custom properties, trung lập stack web).
+   Tên token khớp .sdd/design/DESIGN.md. Đổi giá trị ở ĐÂY, không hardcode trong component.
+   Stack khác (Tailwind, SCSS, native...) ánh xạ về các tên này. Mặc định: trung tính, đạt tương phản AA. */
+:root {
+  /* Màu — vai trò */
+  --color-bg: #ffffff;
+  --color-surface: #f9fafb;
+  --color-surface-raised: #ffffff;
+  --color-border: #e5e7eb;
+  --color-border-strong: #9ca3af;
+  --color-text: #111827;
+  --color-text-muted: #4b5563;
+  --color-primary: #4f46e5;          /* TODO: thay màu thương hiệu */
+  --color-primary-hover: #4338ca;
+  --color-primary-contrast: #ffffff;
+  --color-success: #15803d;
+  --color-warning: #b45309;
+  --color-danger: #b91c1c;
+  --color-info: #1d4ed8;
+  --color-focus-ring: #2563eb;
+
+  /* Chữ */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --leading-body: 1.5;
+  --leading-heading: 1.2;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-bold: 700;
+
+  /* Khoảng cách (thang 4px) */
+  --space-0: 0;
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --container-max: 75rem;
+  --touch-target-min: 2.75rem;
+
+  /* Hình khối */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.06);
+  --shadow-md: 0 4px 8px rgb(0 0 0 / 0.10);
+  --shadow-lg: 0 12px 24px rgb(0 0 0 / 0.14);
+  --z-dropdown: 1000;
+  --z-sticky: 1100;
+  --z-modal: 1300;
+  --z-toast: 1400;
+
+  /* Chuyển động */
+  --motion-fast: 120ms;
+  --motion-base: 200ms;
+  --motion-slow: 320ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+}
+
+[data-theme="dark"] {
+  --color-bg: #0b1220;
+  --color-surface: #111827;
+  --color-surface-raised: #1f2937;
+  --color-border: #374151;
+  --color-border-strong: #6b7280;
+  --color-text: #f3f4f6;
+  --color-text-muted: #9ca3af;
+  --color-primary: #818cf8;
+  --color-primary-hover: #a5b4fc;
+  --color-primary-contrast: #0b1220;
+  --color-success: #4ade80;
+  --color-warning: #fbbf24;
+  --color-danger: #f87171;
+  --color-info: #60a5fa;
+  --color-focus-ring: #93c5fd;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --motion-fast: 0ms; --motion-base: 0ms; --motion-slow: 0ms; }
+}

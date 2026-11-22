@@ -1,0 +1,8 @@
+---
+description: Luật dự án — trỏ về AGENTS.md
+alwaysApply: true
+---
+
+Đọc và tuân thủ `AGENTS.md` (nguồn luật duy nhất), sau đó `CLAUDE.md` và `plan.md`.
+Phân loại tier (Quick/Standard/Full) trước khi làm. Không code feature mới khi SPEC chưa LOCKED.
+Chạy `scripts/verify` trước khi báo xong. Prompt theo pha: `.sdd/prompts/`. Bản đồ: `.sdd/INDEX.md`.

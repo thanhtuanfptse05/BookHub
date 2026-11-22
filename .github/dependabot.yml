@@ -1,0 +1,18 @@
+version: 2
+updates:
+  # Giữ GitHub Actions luôn cập nhật bản vá bảo mật
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule: { interval: "weekly" }
+    commit-message: { prefix: "ci" }
+
+  # Bỏ comment hệ sinh thái bạn dùng (Dependabot lỗi nếu thư mục không có manifest):
+  # - package-ecosystem: "npm"
+  #   directory: "/"
+  #   schedule: { interval: "weekly" }
+  #   commit-message: { prefix: "chore" }
+  #   open-pull-requests-limit: 5
+  # - package-ecosystem: "pip"
+  #   directory: "/"
+  #   schedule: { interval: "weekly" }
+  #   commit-message: { prefix: "chore" }

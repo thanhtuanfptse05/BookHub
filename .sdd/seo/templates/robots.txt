@@ -1,0 +1,32 @@
+# robots.txt — mẫu (chọn 1 khối AI theo AI_CRAWLERS, xóa khối còn lại). Đặt ở gốc site (public/robots.txt).
+# Nhớ thay SITE_URL. Bot "user-triggered" (ChatGPT-User, Claude-User, Perplexity-User) có thể bỏ qua robots.txt; chặn thật cần WAF.
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+# ── AI_CRAWLERS=allow: không cần thêm gì ──
+
+# ── AI_CRAWLERS=block-training (vẫn cho AI search trích dẫn) ──
+# User-agent: GPTBot
+# Disallow: /
+# User-agent: ClaudeBot
+# Disallow: /
+# User-agent: Google-Extended
+# Disallow: /
+# User-agent: Applebot-Extended
+# Disallow: /
+# User-agent: CCBot
+# Disallow: /
+# (KHÔNG chặn OAI-SearchBot, Claude-SearchBot, PerplexityBot nếu muốn được trích dẫn)
+
+# ── AI_CRAWLERS=block-all: thêm cả nhóm search ──
+# User-agent: OAI-SearchBot
+# Disallow: /
+# User-agent: Claude-SearchBot
+# Disallow: /
+# User-agent: PerplexityBot
+# Disallow: /
+
+Sitemap: https://example.com/sitemap.xml

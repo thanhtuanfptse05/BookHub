@@ -1,0 +1,122 @@
+# .agentignore — Agent KHÔNG được đọc/index/in nội dung các đường dẫn này
+# Cú pháp giống .gitignore. Mục đích: bảo mật + tiết kiệm token.
+
+# ── Secrets & credentials (BẮT BUỘC) ──
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+id_rsa*
+id_ed25519*
+secrets/
+credentials*.json
+service-account*.json
+*.tfvars
+*.tfstate*
+.aws/
+.ssh/
+.npmrc
+.pypirc
+
+# ── Dependencies & build output ──
+node_modules/
+vendor/
+.venv/
+venv/
+__pycache__/
+*.pyc
+target/
+dist/
+build/
+out/
+.next/
+.nuxt/
+.svelte-kit/
+.turbo/
+.gradle/
+bin/
+obj/
+coverage/
+.nyc_output/
+.cache/
+.parcel-cache/
+
+# ── Logs, tạm, dump ──
+*.log
+logs/
+tmp/
+.tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+.DS_Store
+Thumbs.db
+*.dump
+*.sql.gz
+*.sqlite
+*.sqlite3
+*.db
+
+# ── Lockfiles (nặng, ít giá trị khi đọc) ──
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+poetry.lock
+Cargo.lock
+composer.lock
+go.sum
+
+# ── Nhị phân / media ──
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.ico
+*.pdf
+*.zip
+*.tar
+*.gz
+*.7z
+*.exe
+*.dll
+*.so
+*.dylib
+*.wasm
+*.mp4
+*.mov
+*.mp3
+*.woff
+*.woff2
+*.ttf
+*.min.js
+*.min.css
+*.map
+
+# ── Dữ liệu thật / PII ──
+data/raw/
+data/prod/
+fixtures/real/
+*.csv.prod
+
+# ── IDE ──
+.idea/
+.vscode/
+
+# ── Ngoại lệ: tham chiếu thiết kế (ảnh) PHẢI đọc được để xác minh UI ──
+!.sdd/design/references/
+!.sdd/design/references/**
+
+# ── CodeGraph DB (nhị phân SQLite) & output nặng của Graphify / UI skill cache ──
+.codegraph/
+graphify-out/graph.html
+graphify-out/obsidian/
+graphify-out/.graphify_*
+.hallmark/
+.taste-skill/

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# pre-commit: chặn commit lên nhánh chính (trừ commit đầu tiên) + chạy verify nhanh (spec-check, lint, secret).
+branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo '')"
+main="$(grep -E '^MAIN_BRANCH=' .sdd/project.conf 2>/dev/null | cut -d= -f2- | tr -d '\r')"; main="${main:-main}"
+if git rev-parse --verify HEAD >/dev/null 2>&1; then
+  if [[ "$branch" == "$main" || "$branch" == "master" ]]; then
+    echo "✖ Cấm commit trực tiếp lên '$branch'. Tạo nhánh: git switch -c feat/<slug>" >&2
+    exit 1
+  fi
+fi
+exec bash scripts/verify.sh --fast
