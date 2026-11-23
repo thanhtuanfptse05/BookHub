@@ -49,6 +49,7 @@
 | Servlet Route | `kebab-case`, danh từ số nhiều cho tài nguyên | `/books/detail`, `/admin/orders` |
 | Config key local | `dot.case` (`bookhub-local.properties`) | `db.url`, `db.username`, `db.password` |
 | Test Java | `<ClassName>Test.java`, method mô tả hành vi | `CheckoutServiceTest` |
+| Thư mục Spec | `<NN>-feat-<slug>` (tiền tố số 2 chữ số `01`, `02`, …) | `01-feat-foundation-jpa` |
 | Nhánh Git | `type/slug` | `feat/checkout-cod`, `fix/stock-race` |
 
 ## 4. Cấu trúc thư mục & Quy tắc đặt file (Cấm xả rác ở root)
@@ -60,7 +61,7 @@ Xem `CLAUDE.md §3` cho cấu trúc `src/` và `web/`. **Mọi file mới phải
 | Tài nguyên tĩnh của app | `web/assets/{css,js,images,vendor}/` | Bootstrap, CSS brand, fallback cover |
 | SQL Schema, Seed & Demo queries | `database/` | `01_schema.sql`, `02_seed.sql`, `03_demo_queries.sql` |
 | Test tự động | `tests/{unit,integration,e2e}/` | Gắn thẻ `// @spec <slug>/AC-xx` |
-| Đặc tả feature (SPEC/PLAN/TASKS/DESIGN…) | `.sdd/specs/feat-<slug>/` | Xong/hủy → `.sdd/specs/_archive/` |
+| Đặc tả feature (SPEC/PLAN/TASKS/DESIGN…) | `.sdd/specs/<NN>-feat-<slug>/` | Bắt buộc số thứ tự `01`, `02`, …; xong/hủy → `.sdd/specs/_archive/` |
 | Tài liệu người đọc | `docs/` | Không rải `.md` ở root (ngoại trừ file gốc chuẩn) |
 | Ảnh tham chiếu thiết kế | `.sdd/design/references/` | Gói `.zip` đặt ở `references/incoming/` (gitignore), đọc xong xóa |
 | File nháp / thử nghiệm tạm | `.tmp/` (đã gitignore) | **Xóa trước khi xong task** |

@@ -13,9 +13,15 @@ if [[ -d tests ]]; then
   test_text="$(find tests -type f ! -name .gitkeep ! -name README.md -print0 | xargs -0 cat 2>/dev/null || true)"
 fi
 
-for d in .sdd/specs/feat-*/; do
+for d in .sdd/specs/*/; do
   [[ -d "$d" ]] || continue
-  d="${d%/}"; name="$(basename "$d")"; slug="${name#feat-}"
+  d="${d%/}"; name="$(basename "$d")"
+  [[ "$name" == _* ]] && continue
+  if [[ ! "$name" =~ ^[0-9]{2}-feat-[a-z0-9]+(-[a-z0-9]+)*$ ]]; then
+    err "$name: tên thư mục spec phải có tiền tố số 2 chữ số dạng '<NN>-feat-<slug>' (vd: 01-feat-foundation-jpa)"
+    continue
+  fi
+  slug="${name#[0-9][0-9]-feat-}"
   [[ -f "$d/SPEC.md" ]] || { warn "$name: thiếu SPEC.md"; continue; }
   t="$(tr -d '\r' < "$d/SPEC.md")"
   if ! grep -qE '^\|[[:space:]]*Status[[:space:]]*\|[[:space:]]*`?LOCKED`?[[:space:]]*\|' <<<"$t"; then
@@ -93,7 +99,12 @@ fi
 req_speckit="$(grep -E '^REQUIRE_SPECKIT=' .sdd/project.conf 2>/dev/null | head -1 | cut -d= -f2- | tr -d '\r')"
 req_speckit="${req_speckit:-warn}"
 has_features=0
-for d in .sdd/specs/feat-*/; do [[ -d "$d" ]] && has_features=1 && break; done
+for d in .sdd/specs/*/; do
+  [[ -d "$d" ]] || continue
+  bn="$(basename "${d%/}")"
+  [[ "$bn" == _* ]] && continue
+  has_features=1; break
+done
 if [[ "$req_speckit" != "off" && ( "$has_features" -eq 1 || "$req_speckit" == "error" ) && ! -d .specify ]]; then
   if [[ "$req_speckit" == "error" ]]; then err "Chưa setup Spec Kit (.specify/) — chạy ./scripts/setup-tools.sh (specify init)"
   else warn "Chưa setup Spec Kit (.specify/) — chạy ./scripts/setup-tools.sh trước khi viết Spec"; fi

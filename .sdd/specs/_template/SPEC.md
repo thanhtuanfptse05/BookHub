@@ -5,7 +5,7 @@
 
 | Trường | Giá trị |
 |---|---|
-| Feature ID | `feat-{{slug}}` |
+| Feature ID | `{{num}}-feat-{{slug}}` |
 | Tier | Full |
 | UI | Không |
 | Status | `DRAFT → REVIEW → LOCKED` |

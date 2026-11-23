@@ -17,7 +17,7 @@
 
 Nghi ngờ ⇒ chọn tier **cao hơn**. Đang làm Quick mà phát hiện chạm vùng Full ⇒ **dừng**, nâng tier.
 **Có giao diện (UI):** chỉnh copy/style nhỏ ⇒ Quick · màn hình/luồng UI mới ⇒ Standard (+ `DESIGN.md` của feature) · đổi token/design system/layout chung ⇒ Full. Không phát minh màu/spacing ngoài `.sdd/design/`.
-**Spec Kit bắt buộc:** Tier Standard/Full **phải đã setup Spec Kit** (`scripts/setup-tools` → `.specify/` tồn tại) trước khi viết Spec; chạy tuần tự `/speckit-specify` → `/speckit-clarify` → `/speckit-plan` → `/speckit-tasks` → `/speckit-implement` và đồng bộ bản khóa về `.sdd/specs/feat-<x>/`.
+**Spec Kit bắt buộc:** Tier Standard/Full **phải đã setup Spec Kit** (`scripts/setup-tools` → `.specify/` tồn tại) trước khi viết Spec; chạy tuần tự `/speckit-specify` → `/speckit-clarify` → `/speckit-plan` → `/speckit-tasks` → `/speckit-implement` và đồng bộ bản khóa về `.sdd/specs/<NN>-feat-<slug>/` (bắt buộc tiền tố số 2 chữ số `01`, `02`, … theo thứ tự triển khai; máy kiểm ở `scripts/spec-check`).
 **Website công khai (SEO/AEO/GEO):** trang mới ⇒ Standard (+ mục SEO) · đổi robots/sitemap/schema toàn site/chính sách AI crawler ⇒ Full. Luật: `.sdd/constraints/seo.md`.
 Prompt dựng sẵn cho từng pha: `.sdd/prompts/` (map sang lệnh `speckit-*` ở `prompts/README.md`).
 
@@ -26,7 +26,7 @@ Prompt dựng sẵn cho từng pha: `.sdd/prompts/` (map sang lệnh `speckit-*`
 **CodeGraph & Graphify trước khi grep/đọc mò** (xem `.sdd/skills/code-intelligence.md`):
 - Khi `.codegraph/` tồn tại ⇒ dùng `codegraph_explore` / `codegraph impact` / `codegraph affected` trước `grep` tuần tự.
 - Khi `graphify-out/graph.json` tồn tại ⇒ dùng `query_graph` / `GRAPH_REPORT.md` cho câu hỏi kiến trúc tổng thể & liên kết Code↔Docs↔Spec.
-**Tier Standard/Full thêm:** `.sdd/constitution.md`, `.sdd/constraints/*`, thư mục `.sdd/specs/feat-<x>/` (CONTEXT → SPEC → PLAN → TASKS → PROGRESS).
+**Tier Standard/Full thêm:** `.sdd/constitution.md`, `.sdd/constraints/*`, thư mục `.sdd/specs/<NN>-feat-<slug>/` (CONTEXT → SPEC → PLAN → TASKS → PROGRESS).
 **Việc có UI thêm:** `.sdd/constraints/ui.md` + `.sdd/design/{DESIGN.md,tokens.css,components.md}` + `.sdd/skills/ui-craft-routing.md` (điều phối `impeccable` / `hallmark` / `design-taste-frontend`) + `DESIGN.md` của feature; xác minh bằng ảnh chụp thật (xem `ui.md`).
 **Website công khai thêm:** `.sdd/constraints/seo.md` + `.sdd/seo/SEO.md` + `.sdd/skills/seo-aeo-geo.md`; xác minh bằng `scripts/seo-check` + HTML thô.
 **Khi cần:** `.sdd/shared_context.md` (nếu tồn tại) khi đụng API/kiểu dùng chung · `.sdd/skills/INDEX.md` → chỉ mở skill khớp domain · source **liên quan** · tôn trọng `.agentignore`.

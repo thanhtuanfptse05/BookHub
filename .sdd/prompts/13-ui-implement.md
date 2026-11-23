@@ -1,8 +1,8 @@
 # 13 — UI implement (code sạch + chụp ảnh đối chiếu)
 
 ```text
-Làm task <T-00x> có UI của feat-<slug>. Tuân AGENTS.md §5 và .sdd/constraints/ui.md (U-01…U-08).
-Đọc: TASKS.md, SPEC.md, specs/feat-<slug>/DESIGN.md, .sdd/design/{DESIGN.md,tokens.css,components.md}, .sdd/skills/ui-craft-routing.md, và các skill UI liên quan (`impeccable` / `hallmark` / `design-taste-frontend`, `component-design`, `responsive-layout`, `ui-accessibility`).
+Làm task <T-00x> có UI của <NN>-feat-<slug>. Tuân AGENTS.md §5 và .sdd/constraints/ui.md (U-01…U-08).
+Đọc: TASKS.md, SPEC.md, specs/<NN>-feat-<slug>/DESIGN.md, .sdd/design/{DESIGN.md,tokens.css,components.md}, .sdd/skills/ui-craft-routing.md, và các skill UI liên quan (`impeccable` / `hallmark` / `design-taste-frontend`, `component-design`, `responsive-layout`, `ui-accessibility`).
 Quy trình:
 1) Cập nhật PROGRESS.md. Kiểm tra SPEC + DESIGN.md phải ở trạng thái LOCKED.
 2) Dùng đúng skill UI đã phân vai trong `ui-craft-routing.md` (không trộn layout của `hallmark` và `taste-skill` trên cùng màn hình). Tái sử dụng component trong `components.md` trước; tuyệt đối không copy code export tĩnh từ Figma/Stitch.

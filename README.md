@@ -93,7 +93,7 @@ BookHub/
 
 Dự án áp dụng quy trình **Spec-First** (`AGENTS.md`):
 - **Kiểm tra nền:** `./scripts/verify.ps1` (`spec-check` + `ui-check` + `seo-check` + `secret-scan` + build/test khi cấu hình).
-- **Khởi tạo feature mới:** `./scripts/new-feature.ps1 <slug> -Tier Full -Ui` (tạo thư mục `.sdd/specs/feat-<slug>/`).
+- **Khởi tạo feature mới:** `./scripts/new-feature.ps1 <slug> -Tier Full -Ui` (tự động tạo thư mục `.sdd/specs/<NN>-feat-<slug>/` với số thứ tự `01`, `02`, …).
 - **Luồng làm việc:** `CONTEXT → SPEC (Gate 1) → PLAN (Gate 2) → TASKS (Gate 3) → IMPLEMENT → REVIEW → DONE`.
 - **Git & PR:** Làm việc trên nhánh `feat/*`, `fix/*`, `chore/*`; commit theo Conventional Commits; đẩy lên GitHub qua PR và `scripts/ship`.
 

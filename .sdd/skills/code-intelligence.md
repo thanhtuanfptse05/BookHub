@@ -23,7 +23,7 @@ Bộ ba công cụ chuẩn hóa ngữ cảnh giúp Agent **không đọc mò t�
 - **Bắt buộc setup trước khi viết Spec (tier Standard/Full):** Chạy `scripts/setup-tools` (gồm `specify init . --integration agy --force --ignore-agent-tools`). Nếu `REQUIRE_SPECKIT=true` trong `.sdd/project.conf`, `scripts/spec-check` sẽ chặn nếu thiếu `.specify/`.
 - **Phối hợp `.sdd/` ↔ Spec Kit:**
   - Dùng quy trình `/speckit-specify` (EARS, Out of Scope, AC) → `/speckit-clarify` → `/speckit-plan` → `/speckit-tasks` → `/speckit-analyze` → `/speckit-implement`.
-  - Hợp đồng feature chính thức của repo lưu tại `.sdd/specs/feat-<slug>/`; khi mâu thuẫn luật, `.sdd/constitution.md` và `.sdd/constraints/safety.md` thắng.
+  - Hợp đồng feature chính thức của repo lưu tại `.sdd/specs/<NN>-feat-<slug>/` (tiền tố số 2 chữ số `01`, `02`, …); khi mâu thuẫn luật, `.sdd/constitution.md` và `.sdd/constraints/safety.md` thắng.
 
 ## 4. Multi-Agent & Tiết kiệm Token
 - **Khi chia nhiều Agent / Subagent song song:**

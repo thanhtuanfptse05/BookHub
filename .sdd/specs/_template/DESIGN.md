@@ -5,7 +5,7 @@
 
 | Trường | Giá trị |
 |---|---|
-| Feature | `feat-{{slug}}` |
+| Feature | `{{num}}-feat-{{slug}}` |
 | Status | `DRAFT → LOCKED` |
 | Tham chiếu Stitch/Figma | {{link hoặc đường dẫn ảnh trong `.sdd/design/references/` (ghi "không có" nếu AI tự đề xuất)}} |
 

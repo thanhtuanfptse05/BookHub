@@ -1,6 +1,6 @@
 # Quy Trình Nghiệp Vụ — BookHub (hiện trạng đang chạy)
 
-> **Loại:** Mô tả hệ thống **đang chạy thật (As-Is)**, KHÔNG thay thế đặc tả yêu cầu (`BookHub_PRJ301_Project_Plan_Requirements.md` và `.sdd/specs/feat-<slug>/SPEC.md`).
+> **Loại:** Mô tả hệ thống **đang chạy thật (As-Is)**, KHÔNG thay thế đặc tả yêu cầu (`BookHub_PRJ301_Project_Plan_Requirements.md` và `.sdd/specs/<NN>-feat-<slug>/SPEC.md`).
 > **Nguồn:** Trace trực tiếp từ `src/java/` và `web/WEB-INF/views/`. Cập nhật file này cùng PR mỗi khi hoàn thành một feature (đổi `⬜` → `✅` và điền đúng đường dẫn file thật).
 
 | Mục | Giá trị |
@@ -12,14 +12,14 @@
 ## Mục lục quy trình (Kế hoạch MVP → cập nhật khi implement)
 | Mã | Quy trình | Ai thực hiện | Trạng thái (As-Is) | Module / Spec dự kiến |
 |---|---|---|---|---|
-| `QT-01` | Đăng ký, Đăng nhập, Đăng xuất, Quên/Đặt lại mật khẩu & Hồ sơ | Guest / Customer / Admin | ⬜ Chưa implement | `feat-auth` (EPIC 3) |
-| `QT-02` | Xem Home, Tìm kiếm, Lọc, Sắp xếp, Phân trang & Chi tiết sách | Guest / All | ⬜ Chưa implement | `feat-catalog` (EPIC 4) |
-| `QT-03` | Quản lý Giỏ hàng (Add / Update / Remove / Subtotal) | Customer | ⬜ Chưa implement | `feat-cart` (EPIC 6) |
-| `QT-04` | Checkout COD nguyên tử & Trừ tồn kho | Customer | ⬜ Chưa implement | `feat-checkout-cod` (EPIC 6) |
-| `QT-05` | Theo dõi & Hủy đơn hàng / Cập nhật trạng thái đơn | Customer / Admin | ⬜ Chưa implement | `feat-orders` (EPIC 6) |
-| `QT-06` | Viết & Kiểm duyệt Đánh giá sách (Review) | Customer / Admin | ⬜ Chưa implement | `feat-reviews` (EPIC 7) |
-| `QT-07` | Đặt câu hỏi & Trả lời / Ẩn Q&A | Customer / Admin | ⬜ Chưa implement | `feat-qa` (EPIC 7) |
-| `QT-08` | Admin CRUD Sách/Danh mục, Quản lý User & Báo cáo Thống kê | Admin | ⬜ Chưa implement | `feat-admin-crud` / `feat-reports` (EPIC 5, 8) |
+| `QT-01` | Đăng ký, Đăng nhập, Đăng xuất, Quên/Đặt lại mật khẩu & Hồ sơ | Guest / Customer / Admin | ⬜ Chưa implement | `03-feat-auth-account` (EPIC 3) |
+| `QT-02` | Xem Home, Tìm kiếm, Lọc, Sắp xếp, Phân trang & Chi tiết sách | Guest / All | ⬜ Chưa implement | `04-feat-public-catalog` (EPIC 4) |
+| `QT-03` | Quản lý Giỏ hàng (Add / Update / Remove / Subtotal) | Customer | ⬜ Chưa implement | `06-feat-cart-checkout-orders` (EPIC 6) |
+| `QT-04` | Checkout COD nguyên tử & Trừ tồn kho | Customer | ⬜ Chưa implement | `06-feat-cart-checkout-orders` (EPIC 6) |
+| `QT-05` | Theo dõi & Hủy đơn hàng / Cập nhật trạng thái đơn | Customer / Admin | ⬜ Chưa implement | `06-feat-cart-checkout-orders` (EPIC 6) |
+| `QT-06` | Viết & Kiểm duyệt Đánh giá sách (Review) | Customer / Admin | ⬜ Chưa implement | `07-feat-reviews-qa` (EPIC 7) |
+| `QT-07` | Đặt câu hỏi & Trả lời / Ẩn Q&A | Customer / Admin | ⬜ Chưa implement | `07-feat-reviews-qa` (EPIC 7) |
+| `QT-08` | Admin CRUD Sách/Danh mục, Quản lý User & Báo cáo Thống kê | Admin | ⬜ Chưa implement | `05-feat-admin-catalog-crud` / `08-feat-admin-users-reports` (EPIC 5, 8) |
 
 ---
 

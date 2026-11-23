@@ -16,8 +16,13 @@ if (Test-Path 'tests') {
 }
 
 if (Test-Path '.sdd/specs') {
-    foreach ($d in (Get-ChildItem '.sdd/specs' -Directory | Where-Object { $_.Name -like 'feat-*' })) {
-        $name = $d.Name; $slug = $name.Substring(5)
+    foreach ($d in (Get-ChildItem '.sdd/specs' -Directory | Where-Object { -not $_.Name.StartsWith('_') } | Sort-Object Name)) {
+        $name = $d.Name
+        if ($name -notmatch '^\d{2}-feat-[a-z0-9]+(-[a-z0-9]+)*$') {
+            Err "${name}: tên thư mục spec phải có tiền tố số 2 chữ số dạng '<NN>-feat-<slug>' (vd: 01-feat-foundation-jpa)"
+            continue
+        }
+        $slug = $name -replace '^\d{2}-feat-', ''
         $specPath = Join-Path $d.FullName 'SPEC.md'
         if (-not (Test-Path $specPath)) { Warn "${name}: thiếu SPEC.md"; continue }
         $t = Read-Text $specPath
@@ -98,7 +103,7 @@ if (Test-Path '.sdd/project.conf') {
     $m = [regex]::Match((Read-Text '.sdd/project.conf'), '(?m)^REQUIRE_SPECKIT=(\w+)')
     if ($m.Success) { $reqSpeckit = $m.Groups[1].Value }
 }
-$hasFeatures = (Test-Path '.sdd/specs') -and ((Get-ChildItem '.sdd/specs' -Directory -ErrorAction SilentlyContinue | Where-Object { $_.Name -like 'feat-*' }).Count -gt 0)
+$hasFeatures = (Test-Path '.sdd/specs') -and ((Get-ChildItem '.sdd/specs' -Directory -ErrorAction SilentlyContinue | Where-Object { -not $_.Name.StartsWith('_') }).Count -gt 0)
 if ($reqSpeckit -ne 'off' -and ($hasFeatures -or $reqSpeckit -eq 'error') -and -not (Test-Path '.specify')) {
     if ($reqSpeckit -eq 'error') { Err "Chưa setup Spec Kit (.specify/) — chạy ./scripts/setup-tools.ps1 (specify init)" }
     else { Warn "Chưa setup Spec Kit (.specify/) — chạy ./scripts/setup-tools.ps1 trước khi viết Spec" }

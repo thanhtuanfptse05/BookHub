@@ -5,27 +5,27 @@
 
 | Trường | Giá trị |
 |---|---|
-| Giai đoạn hiện tại | `MVP — P0 Scope & Setup` |
-| Thời lượng baseline | 4 tuần (triển khai theo vertical slice, EPIC 0 → EPIC 9) |
+| Giai đoạn hiện tại | `MVP — Pha 2–3 (Đã khóa Gate 1 & lập xong 8 PLAN + 48 TASKS, sẵn sàng Gate 2–3)` |
+| Thời lượng baseline | 4 tuần (triển khai theo vertical slice, 8 feature tương ứng EPIC 1 → EPIC 8) |
 | Cập nhật lần cuối | 2026-11-23 |
 
 ## 1. Đang làm (Now)
 | Feature / Phase | Tier | Spec | Tiến độ | Ghi chú |
 |---|---|---|---|---|
-| **P0 / EPIC 0** — Scope, Git & SDD Foundation | Full | Tài liệu nền tảng + GitHub repo | Đang hoàn thiện | Đã đẩy repo lên GitHub và hoàn thiện bộ tài liệu `.md` theo requirement |
+| **Pha 2–3 — Thiết kế & Phân rã Task (8 tính năng)** | Full | `.sdd/specs/01-feat-*` .. `08-feat-*` | 8/8 `SPEC+DESIGN LOCKED`, 8/8 `PLAN+TASKS` xong | Chờ người duyệt Gate 2–3 để bắt đầu code từ `01-feat-foundation-jpa` (`T-001`) |
 
-## 2. Sắp tới (Next — Lộ trình 4 tuần MVP)
-| Tuần | Ưu tiên | Phase / EPIC | Mục tiêu ngắn & Exit Criteria | Phụ thuộc |
+## 2. Sắp tới (Next — Lộ trình 8 Feature Vertical Slice)
+| Tuần | Ưu tiên | Feature Spec | Mục tiêu ngắn & Exit Criteria | Phụ thuộc |
 |---|---|---|---|---|
-| Tuần 1 | P1 | **EPIC 1** — Database & JPA | `01_schema.sql`, `02_seed.sql`, runtime JARs (`web/WEB-INF/lib`), `persistence.xml`, `JpaUtil`, 12 Entities → Hibernate `validate` & query được `Books` | EPIC 0 |
-| Tuần 1 | P1 | **EPIC 2** — MVC & Security Filters | `EncodingFilter`, `AuthenticationFilter`, `AdminAuthorizationFilter`, `CsrfFilter`, `/403`/`/404`/`/500`, common JSTL layout (`scripting-invalid=true`) | EPIC 1 |
-| Tuần 1 | P1 | **EPIC 3** — Authentication & Account | Register, Login/Logout (session rotation), Profile, Change Password, Forgot/Reset token 15 phút → đủ 1.0đ PRJ301 | EPIC 2 |
-| Tuần 2 | P1 | **EPIC 4** — Public Catalog | Home (featured/newest/bestseller), `/books` search/filter/sort/paging (12/trang), `/books/detail`, sách tương tự → đủ 2.0đ PRJ301 | EPIC 1, 2 |
-| Tuần 2 | P1 | **EPIC 5** — Admin Books & Categories CRUD | CRUD + search/filter/paging + soft-deactivate cho `Categories` & `Books` → phần lõi 2.0đ CRUD PRJ301 | EPIC 2, 4 |
-| Tuần 3 | P1 | **EPIC 6** — Cart, Checkout COD & Orders | Cart DB, Checkout COD transactional (30.000 ₫ ship, trừ kho atomic, snapshot), My Orders/Cancel (hoàn kho 1 lần), Admin Order state machine → đủ 1.0đ Cart | EPIC 3, 4 |
-| Tuần 4 | P1 | **EPIC 7** — Reviews & Q&A | Customer Review (sau `DELIVERED`, 1/user/book, `PENDING`→`APPROVED`/`HIDDEN`); Customer Question (`OPEN`) & Admin Answer (`ANSWERED`/`HIDDEN`) → đủ 2.0đ Q&A | EPIC 3, 4, 6 |
-| Tuần 4 | P1 | **EPIC 8** — Admin Users, Dashboard & Reports | Khóa/mở khóa Customer; Dashboard & Reports `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`, bestseller → đủ 1.0đ Statistics | EPIC 5, 6, 7 |
-| Tuần 4 | P2 | **EPIC 9** — Quality, Security & Submission | Responsive UI, full test cases (`TC-*`), quét không scriptlet/không `javax.*`/không JDBC DAO/không secret, clean DB test, screenshots & demo script | EPIC 3–8 |
+| Tuần 1 | P1 | **`01-feat-foundation-jpa`** (EPIC 1) | `01_schema.sql`, `02_seed.sql`, runtime JARs (`web/WEB-INF/lib`), `persistence.xml`, `JpaUtil`, 12 Entities → Hibernate `validate` & query được `Books` | — |
+| Tuần 1 | P1 | **`02-feat-mvc-security-shell`** (EPIC 2) | `EncodingFilter`, `AuthenticationFilter`, `AdminAuthorizationFilter`, `CsrfFilter`, `/403`/`/404`/`/500`, common JSTL layout (`scripting-invalid=true`) | `01-feat-foundation-jpa` |
+| Tuần 1 | P1 | **`03-feat-auth-account`** (EPIC 3) | Register, Login/Logout (session rotation), Profile, Change Password, Forgot/Reset token 15 phút (`SCR-04..07, 13`) → đủ 1.0đ PRJ301 | `02-feat-mvc-security-shell` |
+| Tuần 2 | P1 | **`04-feat-public-catalog`** (EPIC 4) | Home (featured/newest/bestseller), `/books` search/filter/sort/paging (12/trang), `/books/detail`, sách tương tự (`SCR-01..03b`) → đủ 2.0đ PRJ301 | `02-feat-mvc-security-shell` |
+| Tuần 2 | P1 | **`05-feat-admin-catalog-crud`** (EPIC 5) | CRUD + search/filter/paging + soft-deactivate cho `Categories` & `Books` (`SCR-15..17`) → phần lõi 2.0đ CRUD PRJ301 | `03-feat-auth-account`, `04-feat-public-catalog` |
+| Tuần 3 | P1 | **`06-feat-cart-checkout-orders`** (EPIC 6) | Cart DB, Checkout COD transactional (30.000 ₫ ship, trừ kho atomic, snapshot), My Orders/Cancel (hoàn kho 1 lần), Admin Order state machine (`SCR-08..12b, 18`) → đủ 1.0đ Cart | `03-feat-auth-account`, `04-feat-public-catalog` |
+| Tuần 4 | P1 | **`07-feat-reviews-qa`** (EPIC 7) | Customer Review (sau `DELIVERED`, 1/user/book, `PENDING`→`APPROVED`/`HIDDEN`); Customer Question (`OPEN`) & Admin Answer (`ANSWERED`/`HIDDEN`) (`SCR-03, 12b, 20, 21`) → đủ 2.0đ Q&A | `06-feat-cart-checkout-orders` |
+| Tuần 4 | P1 | **`08-feat-admin-users-reports`** (EPIC 8) | Khóa/mở khóa Customer; Dashboard & Reports `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`, bestseller (`SCR-14, 19, 22`) → đủ 1.0đ Statistics | `05`, `06`, `07` |
+| Tuần 4 | P2 | **EPIC 9** — Quality, Security & Submission | Responsive UI, full test cases (`TC-*`), quét không scriptlet/không `javax.*`/không JDBC DAO/không secret, clean DB test, screenshots & demo script | Cả 8 feature trên |
 
 ### Các mốc nghiệm thu (Milestones)
 - **M1 — Environment ready:** NetBeans 17 build/deploy WAR lên Tomcat 10.1.x, kết nối SQL Server `localhost:1433`.

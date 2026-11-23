@@ -5,7 +5,7 @@
 
 | Trường | Giá trị |
 |---|---|
-| Feature | `feat-{{slug}}` · Tier: {{Standard/Full}} · Nhánh: `feat/{{slug}}` |
+| Feature | `{{num}}-feat-{{slug}}` · Tier: {{Standard/Full}} · Nhánh: `feat/{{slug}}` |
 | Pha hiện tại | `specifying → planning → tasking → implementing → reviewing → done` |
 | Task đang làm | `T-{{id}}` |
 | Cập nhật | {{YYYY-MM-DD HH:mm}} |

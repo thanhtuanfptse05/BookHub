@@ -23,7 +23,7 @@ Dán nguyên văn vào chat (thay `<slug>`). Mỗi prompt tự nêu file phải 
 | `16-ship.md` | Ship an toàn: verify → push nhánh feature → PR + auto-merge | Mọi tier | — |
 
 ## Dùng chung với Spec Kit
-Nếu công cụ có lệnh `/speckit-*`, dùng song song được, nhưng **ghi đầu ra vào đường dẫn của template này** (`.sdd/specs/feat-<slug>/…`) và tuân `AGENTS.md`/`constraints/*`. Khi mâu thuẫn, **`AGENTS.md` thắng**.
+Nếu công cụ có lệnh `/speckit-*`, dùng song song được, nhưng **ghi đầu ra vào đường dẫn của template này** (`.sdd/specs/<NN>-feat-<slug>/…`) và tuân `AGENTS.md`/`constraints/*`. Khi mâu thuẫn, **`AGENTS.md` thắng**.
 
 ## Quy ước
 - Prompt ngắn, nhắc "đọc `AGENTS.md`" — luật không sao chép vào prompt.

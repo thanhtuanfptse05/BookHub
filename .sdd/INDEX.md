@@ -17,10 +17,10 @@
 | `docs/ci-cd.md` | Push/PR/auto-merge, deploy, release, rollback | Khi đụng pipeline hoặc ship |
 | `docs/business-flows.md` · `docs/roadmap.md` | Xem luồng nghiệp vụ đang chạy (`QT-xx`) · đồng bộ tiến độ sản phẩm | Khi tra hiện trạng / xong feature |
 | `design/{DESIGN.md,tokens.css,components.md}` | Dựng/sửa UI (màu, chữ, spacing, UX, component có sẵn) | Việc có UI |
-| `specs/feat-<x>/DESIGN.md` | Feature có UI (`UI = Có` trong SPEC) | Std/Full có UI |
+| `specs/<NN>-feat-<slug>/DESIGN.md` | Feature có UI (`UI = Có` trong SPEC) | Std/Full có UI |
 | `shared_context.md` (nếu có) | Đụng API/kiểu/event dùng chung | Std/Full |
-| `specs/feat-<x>/CONTEXT→SPEC→PLAN→TASKS` | Làm feature đó | Std/Full |
-| `specs/feat-<x>/PROGRESS.md` | Đầu & cuối session | Std/Full |
+| `specs/<NN>-feat-<slug>/CONTEXT→SPEC→PLAN→TASKS` | Làm feature đó | Std/Full |
+| `specs/<NN>-feat-<slug>/PROGRESS.md` | Đầu & cuối session | Std/Full |
 | `specs/_example-create-todo/` | Cần ví dụ văn phong chuẩn | Khi cần |
 | `skills/INDEX.md` → skill khớp | Khi chạm domain tương ứng | Khi cần |
 | `rfcs/ADR-*` (nếu có) | Hỏi "vì sao thiết kế thế này", hoặc đổi kiến trúc | Khi cần |
