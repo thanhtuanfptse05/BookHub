@@ -1,0 +1,114 @@
+/* tokens.css — Synchronized 100% from .sdd/design/tokens.css (Figma LOCKED 2026-11-23).
+   All component styling in bookhub.css MUST reference these tokens (U-01, U-02). */
+
+:root {
+  --color-bg: #faf8f5;
+  --color-surface: #ffffff;
+  --color-surface-raised: rgba(255, 255, 255, 0.95);
+  --color-surface-subtle: #f5f5f4;
+  --color-surface-hover: #fafaf9;
+
+  --color-border: #e6e1d8;
+  --color-border-strong: #c9c2b6;
+
+  --color-text: #1a222c;
+  --color-text-muted: #5a6472;
+  --color-text-placeholder: #8a929e;
+
+  --color-primary: #1e5649;
+  --color-primary-hover: #164238;
+  --color-primary-contrast: #ffffff;
+  --color-primary-soft: #ecfdf5;
+  --color-primary-soft-border: #a7f3d0;
+
+  --color-accent: #c85a32;
+  --color-accent-hover: #a8431f;
+  --color-accent-contrast: #ffffff;
+
+  --color-shell-dark: #164238;
+  --color-shell-dark-text: rgba(255, 255, 255, 0.85);
+  --color-shell-dark-muted: rgba(255, 255, 255, 0.68);
+  --color-shell-dark-divider: rgba(255, 255, 255, 0.14);
+  --color-shell-dark-hover: rgba(255, 255, 255, 0.10);
+
+  --color-success: #15803d;
+  --color-success-bg: #f0fdf4;
+  --color-success-border: #bbf7d0;
+
+  --color-warning: #b45309;
+  --color-warning-bg: #fffbeb;
+  --color-warning-border: #fde68a;
+
+  --color-danger: #b91c1c;
+  --color-danger-bg: #fef2f2;
+  --color-danger-border: #fecaca;
+
+  --color-info: #1d4ed8;
+  --color-info-bg: #eff6ff;
+  --color-info-border: #bfdbfe;
+
+  --color-focus-ring: #1e5649;
+  --color-focus-ring-soft: rgba(30, 86, 73, 0.25);
+
+  --font-serif: "Newsreader", Georgia, serif;
+  --font-sans: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-md: 0.9375rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-hero: 3.5rem;
+
+  --leading-hero: 1.12;
+  --leading-heading: 1.22;
+  --leading-body: 1.55;
+  --tracking-heading: -0.01em;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+
+  --container-max: 75rem;
+  --header-height: 4rem;
+  --sidebar-width: 16rem;
+  --touch-target-min: 2.75rem;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 1px 2px rgb(26 34 44 / 0.06);
+  --shadow-md: 0 4px 12px rgb(26 34 44 / 0.08);
+  --shadow-lg: 0 12px 24px rgb(26 34 44 / 0.12);
+
+  --motion-fast: 120ms;
+  --motion-base: 150ms;
+  --motion-slow: 250ms;
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 0ms;
+    --motion-base: 0ms;
+    --motion-slow: 0ms;
+  }
+}
