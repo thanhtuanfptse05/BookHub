@@ -1,41 +1,41 @@
-# SEO.md — Nguồn sự thật SEO · AEO · GEO của {{PROJECT_NAME}}
+# SEO.md — Nguồn sự thật SEO · AEO · GEO của BookHub
 
-> Điền **1 lần** đầu dự án (prompt `15-seo-page` hỗ trợ), cập nhật khi thêm trang công khai. Luật: `.sdd/constraints/seo.md`. Mẫu & playbook: `.sdd/skills/seo-aeo-geo.md`.
-> Chỉ dùng cho website/trang công khai. App đăng nhập, API, dashboard nội bộ: đặt `noindex` và bỏ qua file này.
+> Luật: `.sdd/constraints/seo.md`. Playbook: `.sdd/skills/seo-aeo-geo.md`.
+> Lưu ý: BookHub MVP chạy local/demo (`localhost:8080/BookHub`); các quy chuẩn HTML/meta/SSR vẫn được tuân thủ để sẵn sàng nếu triển khai công khai. Khu vực đăng nhập (`/account/*`, `/cart`, `/checkout`, `/admin/*`) luôn đặt `noindex`.
 
-## 1. Định danh thực thể (giữ **nhất quán** ở mọi nơi — AI dựa vào đây để nhận ra bạn)
+## 1. Định danh thực thể
 | Trường | Giá trị |
 |---|---|
-| Domain chuẩn (canonical) | {{SITE_URL}} |
-| Tên thương hiệu (viết đúng 1 cách) | {{PROJECT_NAME}} |
-| Mô tả 1 câu (dùng lại làm mô tả Organization) | {{PROJECT_ONE_LINER}} |
-| Ngôn ngữ / thị trường | {{vi-VN}} |
-| Hồ sơ chính thức (`sameAs`) | {{LinkedIn, Facebook, GitHub, Wikipedia/Wikidata nếu có}} |
-| Liên hệ / địa chỉ (nếu là doanh nghiệp) | {{...}} |
+| Domain chuẩn (canonical) | `http://localhost:8080/BookHub` _(cập nhật domain thật nếu deploy công khai)_ |
+| Tên thương hiệu (viết đúng 1 cách) | BookHub |
+| Mô tả 1 câu | BookHub — Website bán sách trực tuyến đơn giản, tìm kiếm nhanh, đặt mua COD tiện lợi kèm đánh giá và hỏi đáp trực tiếp cùng cửa hàng. |
+| Ngôn ngữ / thị trường | `vi-VN` (Việt Nam, tiền tệ VND) |
+| Hồ sơ chính thức (`sameAs`) | `https://github.com/thanhtuanfptse05/BookHub` |
+| Liên hệ / cửa hàng | Cửa hàng sách trực tuyến BookHub (dự án học phần PRJ301 — single-store demo) |
 
 ## 2. Chiến lược render (bắt buộc cho trang công khai — SE-01)
-- Chế độ: `SSG | SSR | Prerender` — framework: {{UI_STACK}}.
-- Trang chỉ-đăng-nhập / app: `noindex` + không đưa vào sitemap.
-- Kiểm tra: `curl -s {{SITE_URL}} | grep -i "<h1"` phải thấy tiêu đề chính.
+- Chế độ: **SSR (Server-Side Rendering)** thuần bằng **Jakarta Servlet 6.0 + JSP 3.1 / JSTL 3.0** — toàn bộ tiêu đề, giá, mô tả sách, review và Q&A đã có sẵn trong HTML trả về lần đầu.
+- Trang chỉ-đăng-nhập / nội bộ (`/login`, `/register`, `/forgot-password`, `/reset-password`, `/cart`, `/checkout`, `/orders/*`, `/account/*`, `/admin/*`): đặt `<meta name="robots" content="noindex, nofollow">` và không đưa vào sitemap.
+- Kiểm tra nhanh (khi Tomcat chạy local): nội dung HTML trả về từ `GET /` và `GET /books` phải chứa `<h1>` và danh sách sách không phụ thuộc JS client-render.
 
-## 3. Chính sách AI crawler (quyết định của người)
-`AI_CRAWLERS = {{allow | block-training | block-all}}` (đặt trong `.sdd/project.conf`) — lý do: {{...}}
+## 3. Chính sách AI crawler
+`AI_CRAWLERS = allow` (đặt trong `.sdd/project.conf`) — lý do: dự án học tập/demo website bán sách công khai, cho phép bot tìm kiếm và trích dẫn danh mục sách công khai trong khi vẫn chặn các đường dẫn riêng tư (`/account/`, `/cart`, `/checkout`, `/admin/`).
 
 ## 4. Danh mục trang công khai
 | URL | Ý định / câu hỏi chính trang trả lời | Title (≲ 60) | Description (≲ 160) | H1 | Schema | Trạng thái |
 |---|---|---|---|---|---|---|
-| `/` | {{vd: {{PROJECT_NAME}} là gì & dành cho ai?}} | | | | Organization + WebSite | ⬜ |
+| `/` | BookHub bán sách gì, sách nổi bật/mới/bán chạy nào đang có? | `BookHub — Nhà sách trực tuyến` | `Khám phá sách nổi bật, sách mới và sách bán chạy tại BookHub. Đặt mua COD nhanh chóng, phí ship cố định 30.000 ₫.` | `Khám phá thế giới sách tại BookHub` | Organization + WebSite | ⬜ |
+| `/books` | Tìm, lọc theo danh mục & khoảng giá, sắp xếp sách tại BookHub | `Danh mục sách — BookHub` | `Tìm kiếm sách theo tên, tác giả, ISBN; lọc theo danh mục và khoảng giá tại BookHub.` | `Danh mục sách` | CollectionPage + BreadcrumbList | ⬜ |
+| `/books/detail?id={id}` | Thông tin, giá, tồn kho, đánh giá và hỏi đáp của một cuốn sách | `{Tên sách} — BookHub` | `Mua {Tên sách} của {Tác giả} giá {Giá} ₫ tại BookHub. Xem đánh giá đã xác thực và hỏi đáp cùng cửa hàng.` | `{Tên sách}` | Book / Product + BreadcrumbList | ⬜ |
 
-## 5. Quy tắc nội dung AEO/GEO (áp dụng khi viết mọi trang)
-1. **Trả lời trước, giải thích sau:** dưới mỗi heading dạng câu hỏi, câu đầu là đáp án trực tiếp (≈ 40–60 từ).
-2. **Có bằng chứng:** nêu nguồn, số liệu, trích dẫn có gán tên; không bịa. Không có dữ liệu thật ⇒ bỏ câu đó.
-3. **Dễ trích:** danh sách, bảng, định nghĩa ngắn, một ý một đoạn.
-4. **Tươi & có tác giả:** hiển thị ngày đăng/cập nhật và tác giả; cập nhật `dateModified` khi sửa thật.
-5. **Một trang – một chủ đề**; liên kết nội bộ tới trang liên quan bằng anchor có nghĩa.
+## 5. Quy tắc nội dung AEO/GEO (áp dụng cho trang công khai)
+1. **Thông tin rõ ràng, có cấu trúc:** Trang chi tiết sách hiển thị rõ tên sách, tác giả, nhà xuất bản, năm xuất bản, ISBN, giá VND, tình trạng còn/hết hàng, điểm đánh giá trung bình từ Review `APPROVED`.
+2. **Dữ liệu thật từ DB:** Không hardcode danh sách sách hay thống kê giả trên trang công khai.
+3. **Liên kết nội bộ rõ nghĩa:** Breadcrumb (`Trang chủ → Danh mục → Tên sách`), danh mục tắt, sách tương tự cùng danh mục.
+4. **Ảnh bìa có `alt`:** Mọi ảnh bìa dùng `alt="Bìa sách {Tên sách}"` với ảnh fallback khi thiếu URL.
 
 ## 6. Đo lường
 | Kênh | Việc làm | Tần suất |
 |---|---|---|
-| Google Search Console + Bing Webmaster | Gửi `sitemap.xml`, xem lập chỉ mục & lỗi | Sau mỗi lần deploy lớn |
-| Lighthouse CI (`LHCI_ENABLED`) | Điểm SEO ≥ 95, CWV đạt | Mỗi PR |
-| Kiểm trích dẫn AI (thủ công) | Hỏi ChatGPT/Perplexity/Gemini các câu hỏi mục tiêu, ghi có/không được trích | Hằng tháng |
+| `scripts/seo-check.ps1` | Kiểm tra title/description/H1/alt/HTML thô khi có trang build | Trước khi nộp/deploy |
+| Kiểm tra thủ công HTML nguồn | View-source kiểm tra `<c:out>`, meta, heading và `noindex` trên trang riêng tư | Cuối EPIC 4 & EPIC 9 |

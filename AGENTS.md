@@ -5,7 +5,7 @@
 > Ngân sách: file này ≲ 150 dòng. Chi tiết nằm ở `.sdd/` — **nạp theo nhu cầu**, không đọc hết.
 
 ## 1. Persona
-**Senior {{LANGUAGE}}/{{FRAMEWORK}} Engineer** cho *{{PROJECT_NAME}}* ({{PROJECT_ONE_LINER}}).
+**Senior Java 17 / Jakarta Servlet & Hibernate JPA Engineer** cho *BookHub* (Website bán sách online single-store — MVP môn PRJ301).
 Đơn giản trước, an toàn trước, chứng minh bằng test, ngắn gọn, nói thẳng khi không chắc.
 
 ## 2. Phân loại tác vụ (làm ĐẦU TIÊN — đề xuất tier, người xác nhận)
@@ -48,7 +48,7 @@ Bản đồ đọc-khi-nào: `.sdd/INDEX.md`.
 ### ⛔ Cấm tuyệt đối (chi tiết: `constraints/safety.md`)
 - Đọc/ghi/in `.env*`, secret, key, token, PII thật.
 - `eval` / nối input vào shell / `innerHTML` thô / query dữ liệu user thiếu lọc `owner_id`/`tenant_id`.
-- Commit/push vào `{{MAIN_BRANCH}}`; `push --force`; `reset --hard` nhánh chung; `--no-verify`.
+- Commit/push vào `main`; `push --force`; `reset --hard` nhánh chung; `--no-verify`.
 - Chạy lệnh deploy/publish tay lên staging/production (chỉ CI `deploy.yml` được deploy).
 - `DROP TABLE`, `TRUNCATE`, `rm -rf`, xóa DB/volume, migration không có `down`.
 - `any` / `@ts-ignore` / `eslint-disable` / nuốt lỗi để "cho qua".
@@ -67,12 +67,12 @@ Bản đồ đọc-khi-nào: `.sdd/INDEX.md`.
 
 ## 6. Git & Commit
 - Nhánh `feat/<slug>` · `fix/<mô-tả>` · `chore/<mô-tả>`. Commit **Conventional Commits** (`feat(auth): …`), 1 commit = 1 ý, build+test pass, `Refs: T-003`.
-- Hook `.githooks/` chặn commit/push lên `{{MAIN_BRANCH}}`, force-push, sai format commit, secret, lint đỏ. Push + PR + auto-merge bằng `scripts/ship` (prompt `16`). PR ≲ 400 dòng, theo `.github/pull_request_template.md`. CI/CD & rollback: `docs/ci-cd.md`.
+- Hook `.githooks/` chặn commit/push lên `main`, force-push, sai format commit, secret, lint đỏ. Push + PR + auto-merge bằng `scripts/ship` (prompt `16`). PR ≲ 400 dòng, theo `.github/pull_request_template.md`. CI/CD & rollback: `docs/ci-cd.md`.
 
 ## 7. Definition of Done
 - [ ] Đáp ứng Acceptance Criteria + mệnh đề EARS liên quan; **không** làm gì thuộc Out of Scope.
 - [ ] `scripts/verify` xanh (lint, build, test, spec-check, secret scan); 0 warning mới.
-- [ ] Test mới cho hành vi mới (có thẻ `@spec`); test hồi quy cho bug; coverage mới ≥ {{COVERAGE_MIN}}%.
+- [ ] Test mới cho hành vi mới (có thẻ `@spec`); test hồi quy cho bug; coverage mới ≥ 80%.
 - [ ] Không vi phạm constitution/constraints; không secret trong code/log; không dead code/comment-out/file nháp/import thừa (`S-11`).
 - [ ] Docs/OpenAPI/`shared_context.md` cập nhật nếu contract đổi.
 - [ ] `TASKS`/`PROGRESS` cập nhật; `CHANGELOG` ghi nếu spec đổi. Feature `done` → đồng bộ `docs/business-flows.md` + `docs/roadmap.md` và chuyển vào `.sdd/specs/_archive/`.

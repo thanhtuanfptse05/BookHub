@@ -3,7 +3,7 @@
 Dùng **session/agent mới** (không mang thiên kiến của người viết code) để review độc lập.
 
 ```text
-Bạn là reviewer độc lập. Đọc: AGENTS.md, constitution.md, constraints/*, SPEC.md, PLAN.md, TASKS.md của feat-<slug> và git diff của nhánh so với {{MAIN_BRANCH}}.
+Bạn là reviewer độc lập. Đọc: AGENTS.md, constitution.md, constraints/*, SPEC.md, PLAN.md, TASKS.md của feat-<slug> và git diff của nhánh so với main.
 Không sửa code. Điền .sdd/specs/feat-<slug>/REVIEW.md theo template:
 - Truy vết: mỗi FR/AC có code + test? thẻ @spec đủ chưa?
 - Vi phạm Out of Scope / constitution (nêu ID luật) / safety?

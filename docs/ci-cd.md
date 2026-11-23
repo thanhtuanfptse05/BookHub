@@ -1,6 +1,7 @@
-# CI/CD tự động — {{PROJECT_NAME}}
+# CI/CD tự động — BookHub
 
-> Mục tiêu: **code vào `main` chỉ qua PR đã xanh CI; deploy & release tự động; Agent không bao giờ push `main` hay deploy tay.**
+> Mục tiêu: **code vào `main` chỉ qua PR đã xanh CI; Agent không bao giờ push trực tiếp `main` hay deploy tay.**
+> *Lưu ý MVP PRJ301:* BookHub deploy local trên Apache Tomcat 10.1.x qua NetBeans 17 / Ant WAR (`docs/runbook.md`); luồng `deploy.yml`/`release.yml` bên dưới áp dụng khi kích hoạt CI/CD mở rộng trên GitHub.
 
 ## 1. Luồng
 ```mermaid

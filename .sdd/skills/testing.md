@@ -21,7 +21,7 @@ description: Chiến lược & quy tắc viết test (TDD, kim tự tháp test, 
 - ❌ Cấm: xóa/skip test, `sleep` để chờ, test phụ thuộc kết quả test khác, hạ ngưỡng coverage.
 
 ## Coverage
-- ≥ {{COVERAGE_MIN}}% cho code mới; coverage là *chỉ báo*, không thay thế assertion có ý nghĩa.
+- ≥ 80% cho code mới; coverage là *chỉ báo*, không thay thế assertion có ý nghĩa.
 
 ## Checklist
 - [ ] Mọi AC có test · [ ] Có test đường lỗi · [ ] Không flaky (chạy 3 lần liên tiếp) · [ ] Chạy nhanh

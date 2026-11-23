@@ -1,15 +1,22 @@
-# components.md — Danh mục component
+# components.md — Danh mục component UI (BookHub)
 
-> **Luật dùng lại:** Trước khi tạo component mới, tra bảng dưới. Có rồi → dùng lại (hoặc thêm variant). Tạo mới xong → ghi thêm 1 dòng vào đây.
-> Nguyên tắc chung: chỉ dùng token (`--color-*`, `--space-*`), prop theo hành vi (`variant`, `size`, `disabled`, `loading`), đủ trạng thái (`hover/focus-visible/disabled`), HTML ngữ nghĩa.
+> **Đồng bộ từ Figma Prototype:** `https://agenda-kale-62994833.figma.site` (14 nhóm component tái sử dụng).
+> **Luật dùng lại (U-04):** Trước khi tạo JSP fragment / CSS component mới, tra bảng dưới. Có rồi → dùng lại (hoặc thêm biến thể). Tạo mới xong → ghi thêm 1 dòng vào đây.
+> **Nguyên tắc:** Chỉ dùng token trong `tokens.css` (ánh xạ sang Bootstrap 5.3), chỉ dùng JSTL 3.0 + EL (`<c:out>`), đủ trạng thái (`hover/focus-visible/disabled`), HTML ngữ nghĩa.
 
-| Component | Biến thể (variant) | Trạng thái | Đường dẫn code | Dùng ở |
-|---|---|---|---|---|
-| Button | primary · secondary · ghost · danger · sm/md/lg | default · hover · focus · disabled · loading | {{...}} | |
-| TextField | label · hint · error | default · focus · error · disabled | | |
-| Select / Checkbox / Switch | | default · focus · checked · disabled · error | | |
-| Card | flat · raised | default · interactive | | |
-| Modal / Dialog | confirm · form | open · closed · loading | | |
-| Toast / Alert | success · warning · danger · info | | | |
-| Table / List | | loading(skeleton) · empty · error · data | | |
-| EmptyState / ErrorState | | | | |
+| # | Component / Fragment | Biến thể (variant) & Đặc tả từ Figma | Trạng thái | Đường dẫn JSP / CSS dự kiến | Dùng ở |
+|---|---|---|---|---|---|
+| 1 | **StorefrontHeader** | Sticky `64px`, `bg-white/95 blur`, logo + wordmark Newsreader, nav (`Trang chủ`, `Danh mục sách`), pill search bar, `Đăng nhập` (Guest) hoặc avatar initials pill (`MA Minh Anh`, Customer), nút Giỏ hàng + badge terracotta, hamburger mobile 2 hàng | guest · customer · active-nav · mobile-menu-open | `web/WEB-INF/views/common/header.jsp`, `nav.jsp` | SCR-01..03, SCR-08..13, SCR-23 |
+| 2 | **StorefrontFooter** | Nền `--color-shell-dark` (`#164238`), lưới 3 cột (`Brand`, `CHÍNH SÁCH`, `LIÊN HỆ`) + thanh bản quyền | default (desktop 3-col / mobile 1-col) | `web/WEB-INF/views/common/footer.jsp` | SCR-01..03, SCR-08..13, SCR-23 |
+| 3 | **AdminShell** | Sidebar trái `256px` nền `#164238` (logo `BookHub` + pill `ADMIN` terracotta, 8 mục menu, mục active nền trắng chữ `#164238`) + Topbar trắng (`QT Quản trị viên`, `Đăng xuất`) | desktop-sticky · mobile-offcanvas-drawer · active-item | `web/WEB-INF/views/admin/layout-sidebar.jsp`, `layout-topbar.jsp` | SCR-14..22 |
+| 4 | **BookCard** | Card trắng `radius-2xl` + viền `1px --color-border`, ảnh bìa tỉ lệ `2:3` (có fallback & `alt`), tên sách clamp 2 dòng, tác giả chữ muted, giá VND đậm (`whitespace-nowrap`) + `StatusBadge` còn/hết hàng, nút full-width outline teal `Xem chi tiết` | in-stock · out-of-stock · hover (`--shadow-sm`) | `web/WEB-INF/views/common/book-card.jsp` | SCR-01 (Home), SCR-02 (Catalogue), SCR-03 (Similar) |
+| 5 | **Button** | `primary-teal` (`#1e5649`), `accent-terra` (`#c85a32` cho Hero CTA), `outline-teal`, `outline-neutral`, `danger-solid` / `danger-outline` (`#b91c1c`); `radius-lg` (8px), `whitespace-nowrap` | default · hover · focus-visible · disabled · loading | `web/assets/css/bookhub.css` (`.bh-btn-*` mở rộng `.btn`) | Mọi màn hình |
+| 6 | **FormControl** | Input / Select / Textarea (`radius-lg`, viền `--color-border-strong` `#c9c2b6`, `15px`, placeholder `#8a929e`) + `<label for>` tường minh + helper text `12px` + lỗi inline đỏ bên dưới; password có nút hiện/ẩn | default · focus (`ring teal/25`) · invalid · disabled (`--color-surface-subtle`) | `web/assets/css/bookhub.css` (Bootstrap `.form-control`, `.invalid-feedback`) | Auth, Filter, Checkout, Profile, Review/Q&A, Admin Forms |
+| 7 | **StatusBadge** | Pill `radius-full`, viền `1px`, `12px semibold`, chấm tròn dẫn đầu — 6 bộ màu ngữ nghĩa: `PENDING` (amber), `CONFIRMED` (blue), `SHIPPING` (emerald/teal), `DELIVERED` / `Còn hàng` / `Đang bán` (green), `CANCELLED` / `Đã khóa` (red), `Hết hàng` / `Ngừng bán` / `Đã ẩn` (stone/neutral) | 6 semantic variants (luôn có chữ + màu) | `web/WEB-INF/views/common/status-badge.jsp`, `bookhub.css` | BookCard, Book Detail, Orders, Admin lists & Reports |
+| 8 | **AlertBanner** | Hộp `radius-xl` (12px), viền `1px`, padding `16px`, icon trái + nội dung `15px` — 4 mức `error` (red), `success` (green), `info` (blue), `warning` (amber) | dismissible · PRG flash message · inline notice | `web/WEB-INF/views/common/messages.jsp` | Mọi màn hình (Auth, Cart/Checkout, Profile, Admin) |
+| 9 | **QuantityStepper** | Nhóm nút `−` / ô số lượng / `+` có viền `--color-border-strong`, kèm dòng gợi ý tồn kho (`Còn 14 cuốn`) | default · min(1) · max(stock) · disabled (out-of-stock) | `web/assets/js/quantity-stepper.js`, `bookhub.css` | SCR-03 / 03b (Book Detail), SCR-08 (Cart) |
+| 10 | **Pagination** | Hàng nút căn giữa `Trước`, số trang (active nền `--color-primary` chữ trắng, thường nền trắng viền `--color-border`), `Sau`; bảo toàn query string bộ lọc qua `<c:url>` / `<c:param>` | active · default · disabled | `web/WEB-INF/views/common/pagination.jsp` | SCR-02 (Catalogue), SCR-11 (My Orders), SCR-15/18/19/20/21 |
+| 11 | **OrderStepper** | Thanh tiến trình ngang 4 bước: `1 Chờ xác nhận` → `2 Đã xác nhận` → `3 Đang giao` → `4 Đã giao` (hoặc hiển thị badge `Đã hủy` khi đơn bị hủy) | completed · current · upcoming · cancelled | `web/WEB-INF/views/customer/order-stepper.jsp` | SCR-12 / 12b (Order Detail) |
+| 12 | **EmptyState** | Card trắng `radius-2xl` viền nét đứt (`dashed --color-border-strong`), icon tròn nền nhạt, tiêu đề Newsreader, mô tả muted, **1 nút CTA chính** | empty-search · empty-cart · empty-orders · error-403/404/500 | `web/WEB-INF/views/common/empty-state.jsp`, `error/*.jsp` | SCR-02, SCR-08, SCR-11, SCR-23 |
+| 13 | **ConfirmModal** | Hộp thoại trắng `radius-2xl` căn giữa nêu rõ đối tượng & hậu quả (hủy đơn, ngừng bán sách/danh mục, khóa tài khoản, ẩn nội dung), 2 nút: giữ nguyên (outline neutral) + xác nhận hành động (danger solid) | open · closed · submitting (ESC đóng, trả focus) | `web/WEB-INF/views/common/confirm-modal.jsp`, `web/assets/js/confirm-modal.js` | SCR-12, SCR-15, SCR-17, SCR-18, SCR-19, SCR-20, SCR-21 |
+| 14 | **KpiCard & ReportBars** | Card trắng `radius-2xl` viền `1px --color-border`, nhãn muted, ô icon nền emerald nhạt góc phải, số liệu Newsreader (`whitespace-nowrap`), tag SQL/badge trạng thái; thanh tiến trình ngang thuần HTML/CSS cho `COUNT` theo trạng thái (không dùng thư viện chart JS) | metric-currency · metric-count · action-queue (amber border) · zero-data (`0 ₫`) | `web/WEB-INF/views/admin/kpi-card.jsp`, `bookhub.css` | SCR-14 (Dashboard), SCR-22 (Reports) |
