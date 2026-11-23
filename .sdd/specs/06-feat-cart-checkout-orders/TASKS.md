@@ -6,14 +6,14 @@
 
 | ID | Task | Phụ thuộc | Ước lượng | Truy vết | Trạng thái |
 |---|---|---|---|---|---|
-| T-001 | Tạo `OrderStateMachine`, `OrderCodeGenerator` & bộ DTO Cart/Checkout/Order + unit tests | — | 2.5h | FR-05, FR-11..12, AC-08..09 | ⬜ |
-| T-002 | Tạo `CartRepository`, `OrderRepository`, bổ sung lock `findByIdsForUpdate` trong `BookRepository` | T-001 | 3h | FR-01..12 | ⬜ |
-| T-003 | Tạo `CartService` + integration tests (`AC-01..02`) | T-002 | 2.5h | FR-01..03, AC-01..02 | ⬜ |
-| T-004 | Tạo `CheckoutService` (atomic TX, lock sách theo ID tăng dần, snapshot, xóa cart) + concurrency/rollback tests (`AC-03..04`) | T-002 | 4h | FR-04..06, EC-01..02, EC-04..05, AC-03..04 | ⬜ |
-| T-005 | Tạo `OrderService` (Customer list/detail/cancel hoàn kho 1 lần + Admin state transition) + concurrency tests (`AC-05..09`) | T-002 | 3.5h | FR-07..12, EC-03, AC-05..09 | ⬜ |
-| T-006 | Tạo `CartServlet`, `CheckoutServlet`, `OrderSuccessServlet` + `cart.jsp`, `checkout.jsp`, `order-success.jsp` (`SCR-08..10`) | T-003, T-004 | 3.5h | FR-01..06, AC-01..04 | ⬜ |
-| T-007 | Tạo `MyOrdersServlet`, `OrderDetailServlet`, `OrderCancelServlet` + `orders.jsp`, `order-detail.jsp`, `order-stepper.jsp` (`SCR-11..12b`) | T-005 | 3h | FR-07..09, AC-05..07 | ⬜ |
-| T-008 | Tạo `AdminOrderServlet` + `views/admin/orders.jsp` (`SCR-18`) + nối badge đếm giỏ Header + kiểm trực quan 375/1280 | T-005, T-006 | 3h | FR-10..12, AC-08..09, VAC-01..02 | ⬜ |
+| T-001 | Tạo `OrderStateMachine`, `OrderCodeGenerator` & bộ DTO Cart/Checkout/Order + unit tests | — | 2.5h | FR-05, FR-11..12, AC-08..09 | ✅ |
+| T-002 | Tạo `CartRepository`, `OrderRepository`, bổ sung lock `lockBooksOrdered` & atomic stock update trong `BookRepository` | T-001 | 3h | FR-01..12 | ✅ |
+| T-003 | Tạo `CartService` + integration tests (`AC-01..02`) | T-002 | 2.5h | FR-01..03, AC-01..02 | ✅ |
+| T-004 | Tạo `CheckoutService` (atomic TX, lock sách theo ID tăng dần, snapshot, xóa cart) + concurrency/rollback tests (`AC-03..04`) | T-002 | 4h | FR-04..06, EC-01..02, EC-04..05, AC-03..04 | ✅ |
+| T-005 | Tạo `OrderService` (Customer list/detail/cancel hoàn kho 1 lần + Admin state transition) + concurrency tests (`AC-05..09`) | T-002 | 3.5h | FR-07..12, EC-03, AC-05..09 | ✅ |
+| T-006 | Tạo `CartServlet`, `CheckoutServlet`, `OrderSuccessServlet` + `cart.jsp`, `checkout.jsp`, `order-success.jsp` (`SCR-08..10`) | T-003, T-004 | 3.5h | FR-01..06, AC-01..04 | ✅ |
+| T-007 | Tạo `MyOrdersServlet`, `OrderDetailServlet`, `OrderCancelServlet` + `orders.jsp`, `order-detail.jsp` (`SCR-11..12b`) | T-005 | 3h | FR-07..09, AC-05..07 | ✅ |
+| T-008 | Tạo `AdminOrderServlet` + `views/admin/orders.jsp` (`SCR-18`) + nối badge đếm giỏ Header (chờ Gate 4 `REVIEW.md`) | T-005, T-006 | 3h | FR-10..12, AC-08..09, VAC-01..02 | 🔄 |
 
 ## Chi tiết task
 

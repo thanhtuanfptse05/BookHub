@@ -6,12 +6,12 @@
 
 | ID | Task | Phụ thuộc | Ước lượng | Truy vết | Trạng thái |
 |---|---|---|---|---|---|
-| T-001 | Tạo bộ DTO (`BookCardDTO`, `BookDetailDTO`, `BookFilterCriteria`, `BookSortOption`, `PageResult<T>`, `CategoryShortcutDTO`, `PublicReviewDTO`, `PublicQaDTO`) + unit test sort/filter | — | 2h | FR-04..05, EC-03, AC-04 | ⬜ |
-| T-002 | Bổ sung truy vấn JPA trong `BookRepository` & `CategoryRepository` (Home 3 nhóm, search/filter/sort/paging DB, similar, public review/Q&A) | T-001 | 3.5h | FR-01..03, FR-05, FR-07, EC-01, AC-01..06 | ⬜ |
-| T-003 | Tạo `CatalogService` + bộ integration test `AC-01..08` | T-002 | 3h | FR-01..09, EC-01..04, AC-01..08 | ⬜ |
-| T-004 | Tạo `HomeServlet` + `views/site/home.jsp` (`SCR-01`) | T-003 | 2.5h | FR-01, FR-02, AC-01 | ⬜ |
-| T-005 | Tạo `BookListServlet` + `views/site/books.jsp` (`SCR-02` + filter chips + pagination + empty state) | T-003 | 3h | FR-03..06, EC-02, AC-02..05 | ⬜ |
-| T-006 | Tạo `BookDetailServlet` + `views/site/book-detail.jsp` (`SCR-03` & `SCR-03b`) + kiểm trực quan 375/1280 & SEO | T-003 | 3h | FR-07..09, AC-06..08, VAC-01..02 | ⬜ |
+| T-001 | Tạo bộ DTO (`BookCardDTO`, `BookDetailDTO`, `BookFilterCriteria`, `BookSortOption`, `PageResult<T>`, `CategoryShortcutDTO`, `PublicReviewDTO`, `PublicQaDTO`) + unit test sort/filter | — | 2h | FR-04..05, EC-03, AC-04 | ✅ |
+| T-002 | Bổ sung truy vấn JPA trong `BookRepository` & `CategoryRepository` (Home 3 nhóm, search/filter/sort/paging DB, similar, public review/Q&A) | T-001 | 3.5h | FR-01..03, FR-05, FR-07, EC-01, AC-01..06 | ✅ |
+| T-003 | Tạo `CatalogService` + bộ integration test `AC-01..08` | T-002 | 3h | FR-01..09, EC-01..04, AC-01..08 | ✅ |
+| T-004 | Tạo `HomeServlet` + `views/site/home.jsp` (`SCR-01`) | T-003 | 2.5h | FR-01, FR-02, AC-01 | ✅ |
+| T-005 | Tạo `BookListServlet` + `views/site/books.jsp` (`SCR-02` + filter chips + pagination + empty state) | T-003 | 3h | FR-03..06, EC-02, AC-02..05 | ✅ |
+| T-006 | Tạo `BookDetailServlet` + `views/site/book-detail.jsp` (`SCR-03` & `SCR-03b`) + kiểm trực quan & SEO (chờ Gate 4 `REVIEW.md`) | T-003 | 3h | FR-07..09, AC-06..08, VAC-01..02 | 🔄 |
 
 ## Chi tiết task
 

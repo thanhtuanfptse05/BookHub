@@ -74,6 +74,8 @@ Browser → Filter (UTF-8, Auth, Admin, CSRF) → Servlet Controller (parse & va
 |---|---|---|---|
 | 2026-11-23 | `sqlcmd` báo lỗi `Msg 1934: QUOTED_IDENTIFIER` khi INSERT vào bảng có filtered index (`UX_Books_isbn_not_null`) | `sqlcmd` mặc định `QUOTED_IDENTIFIER OFF` khác với SSMS | Mọi file `.sql` SQL Server phải đặt `SET ANSI_NULLS ON; SET QUOTED_IDENTIFIER ON;` ở đầu và lưu UTF-8 BOM (`database/*.sql`) |
 | 2026-11-23 | NetBeans Ant `build-impl.xml` tìm `persistence.xml` trực tiếp ở `${persistence.xml.dir}/persistence.xml` và chứa đường dẫn tuyệt đối cũ tới `allowedlib` | Mặc định NetBeans đặt `persistence.xml.dir=${conf.dir}` và giữ `<copyfiles>` cũ trong `build-impl.xml` | Đặt `persistence.xml.dir=${conf.dir}/META-INF` trong `nbproject/project.properties`, dùng đường dẫn tương đối `web/WEB-INF/lib/*.jar`, và override `library-inclusion-in-*` trong `build.xml` |
+| 2026-11-23 | Test đồng thời 2 luồng checkout 1 cuốn cuối bị oversell (`expected 1, actual 2`) dù có `PESSIMISTIC_WRITE` | `CartRepository` dùng `JOIN FETCH ci.book` nạp `Book` vào Hibernate L1 cache trước khi `em.find(..., PESSIMISTIC_WRITE)` chạy, giữ giá trị `stockQty` cũ | Phải `em.refresh(book, LockModeType.PESSIMISTIC_WRITE)` VÀ trừ kho bằng conditional `UPDATE Book SET stockQty = stockQty - :qty WHERE stockQty >= :qty` (kiểm tra `updated == 1`) |
+| 2026-11-23 | Tomcat 10.1 Jasper từ chối biểu thức EL `${pageResult.empty}` / `${cart.empty}` và `/admin/reviews` trả 500 khi `status == null` | `empty` là từ khóa dành riêng trong JSP EL 5.0; nối chuỗi JPQL `where + "ORDER BY"` thiếu khoảng trắng khi `where = ""` | Luôn viết `${empty pageResult.items}` thay vì `.empty`; luôn giữ dấu cách phân tách trước `ORDER BY` trong mọi JPQL động và có test regression nhánh `status == null` |
 
 ## 6. Vùng nguy hiểm (Known Hazards)
 - **Trộn `javax.*` và `jakarta.*`:** Gây lỗi compile/deploy trên Tomcat 10.1.x. Luôn kiểm tra import và JAR trước build.
@@ -96,8 +98,9 @@ Xem `.sdd/rfcs/` — mỗi quyết định = 1 ADR:
 - [ADR-009](.sdd/rfcs/ADR-009-local-reset-link-output.md) — Ghi reset password URL ra server log cho local demo _(Accepted)_
 
 ## 8. Việc đang dang dở / Nợ kỹ thuật
-- [x] EPIC 0–1 (`01-feat-foundation-jpa`): `database/*.sql`, 23 runtime JARs trong `web/WEB-INF/lib`, `persistence.xml` + `AppConfig`/`JpaUtil` + 12 Entities + 4 Repositories + 13/13 JUnit 5 tests (chờ duyệt `REVIEW.md` Gate 4)
-- [ ] EPIC 2–3 (`02`–`03`): Dựng Filters (UTF-8, Auth, Admin, CSRF), error pages, common JSTL layout và module Authentication — _ưu tiên: cao_
-- [ ] EPIC 4–5 (`04`–`05`): Public Catalog (Home, search/filter/sort/paging, detail, similar) và Admin CRUD Books/Categories — _ưu tiên: cao_
-- [ ] EPIC 6–8 (`06`–`08`): Cart, Checkout COD transactional, Order lifecycle, Review moderation, Q&A và Dashboard Reports (`COUNT/SUM/AVG/MIN/MAX`) — _ưu tiên: cao_
-- [ ] Cấu hình `TEST_CMD`/`BUILD_CMD` trong `.sdd/project.conf` — _ưu tiên: vừa_
+- [x] EPIC 0–1 (`01-feat-foundation-jpa`): `database/*.sql`, 23 runtime JARs trong `web/WEB-INF/lib`, `persistence.xml` + `AppConfig`/`JpaUtil` + 12 Entities + Repositories + 13/13 JUnit 5 tests (chờ duyệt `REVIEW.md` Gate 4)
+- [x] EPIC 2–3 (`02`–`03`): `web.xml` (`scripting-invalid=true`), 4 Filters (UTF-8, CSRF, Auth, Admin), Error pages (`/403`/`/404`/`/500`), common JSTL layout + Auth & Account (`SCR-04..07, 13`) + 11/11 JUnit 5 tests (chờ duyệt `REVIEW.md` Gate 4)
+- [x] EPIC 4–5 (`04`–`05`): Public Catalog (`SCR-01..03b`: Home, search/filter/sort/paging DB, detail, similar) + Admin CRUD Books/Categories (`SCR-15..17`) + 5/5 JUnit 5 tests (chờ duyệt `REVIEW.md` Gate 4)
+- [x] EPIC 6–8 (`06`–`08`): Cart DB, Checkout COD atomic + concurrency-safe, Order lifecycle & cancel, Review/Q&A moderation, Admin Users & Dashboard/Reports SQL aggregates (`COUNT/SUM/AVG/MIN/MAX`) + 8/8 JUnit 5 tests + live Tomcat 10.1 verification (chờ duyệt `REVIEW.md` Gate 4)
+- [ ] Duyệt Gate 4 (`REVIEW.md` của `01`..`08`), merge `feat/bookhub-mvp-01-08` vào `main`, và chụp ảnh trực quan UI 375/768/1280 + đóng gói tài liệu nộp PRJ301 (EPIC 9) — _ưu tiên: cao_
+- [ ] Cấu hình `TEST_CMD`/`BUILD_CMD` trong `.sdd/project.conf` (cần xác nhận Owner theo mục 4 `AGENTS.md`) — _ưu tiên: vừa_

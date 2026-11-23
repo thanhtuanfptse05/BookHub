@@ -2,28 +2,34 @@
 
 | Trường | Giá trị |
 |---|---|
-| Feature | `04-feat-public-catalog` · Tier: Full · Nhánh: `feat/public-catalog` |
-| Pha hiện tại | `tasking` (SPEC & DESIGN `LOCKED` v1.0.0 · PLAN & TASKS `DRAFT` chờ duyệt Gate 2–3) |
-| Task đang làm | Chưa bắt đầu (phụ thuộc xong `02-feat-mvc-security-shell`) |
+| Feature | `04-feat-public-catalog` · Tier: Full · Nhánh: `feat/bookhub-mvp-01-08` |
+| Pha hiện tại | `verifying` (code & 3/3 integration tests xanh + live Tomcat verify; chờ Owner duyệt `REVIEW.md`) |
+| Task đang làm | `T-006` (đã hoàn tất code, test `AC-01..08`, SEO meta & fix EL `.empty`; chờ Gate 4 `REVIEW.md`) |
 | Cập nhật | 2026-11-23 |
 
 ## 1. Plan của task hiện tại
-- **Mục tiêu (đo được):** Sau khi xong `02` và duyệt Gate 2–3, tạo nhánh `feat/public-catalog` và làm `T-001` → `T-006`.
-- [ ] Duyệt `PLAN.md` (Gate 2) & `TASKS.md` (Gate 3)
+- [x] `T-001`: Bộ DTO công khai (`PageResult<T>`, `BookSortOption`, `BookFilterCriteria`, `BookCardDTO`, `CategoryShortcutDTO`, `PublicReviewDTO`, `PublicQaDTO`, `BookDetailDTO`, `HomePageDTO`)
+- [x] `T-002`: Mở rộng `BookRepository` & `CategoryRepository` (Home 3 kệ active tối đa 8/nhóm, search/filter/sort whitelist + phân trang DB, sách tương tự, Review `APPROVED` & Q&A `ANSWERED`)
+- [x] `T-003`: `CatalogService` + `PublicCatalogIntegrationTest` (`@spec public-catalog/AC-01..08`)
+- [x] `T-004`: `HomeServlet` (`urlPatterns = {""}`) + `views/site/home.jsp` (`SCR-01`)
+- [x] `T-005`: `BookListServlet` (`/books`) + `views/site/books.jsp` (`SCR-02`, filter chips, pagination, empty state)
+- [ ] `T-006`: `BookDetailServlet` (`/books/detail`) + `views/site/book-detail.jsp` (`SCR-03`, `SCR-03b`) & kiểm tra live Tomcat — **chờ Owner duyệt `REVIEW.md` Gate 4**
 
 ## 2. Nhật ký thực thi
 | Giờ | Việc đã làm | Kết quả |
 |---|---|---|
-| 2026-11-23 | Khóa SPEC & DESIGN v1.0.0 (Gate 1); lập `PLAN.md` và `TASKS.md` (`T-001`..`T-006`) | Xong Pha 1–3 |
+| 2026-11-23 | Triển khai `T-001`..`T-006` & `PublicCatalogIntegrationTest`, commit `5a0ee73` | 3/3 integration tests PASS trên SQL Server 2022 (`@spec public-catalog/AC-01..08`) |
+| 2026-11-23 | Sửa biểu thức EL `${pageResult.empty}` → `${empty pageResult.items}` & verify live Tomcat 10.1 | `/`, `/books`, `/books/detail?id=1` trả `200 OK`; ID sai/inactive trả `404` |
 
 ## 3. Kiểm tra
-Lint ⬜ · Test ⬜ · Build ⬜ · spec-check ✅ · Secret scan ✅ · Coverage mới ⬜ %
+Test ✅ (3/3 JUnit 5 `PublicCatalogIntegrationTest`) · Build ✅ (`dist/BookHub.war`, 0 warning) · ui-check ✅ · spec-check ✅ · Secret scan ✅
 
 ## 4. Blockers / câu hỏi cho người
-- ⬜ Chờ hoàn tất `02-feat-mvc-security-shell` và duyệt Gate 2–3.
+- ⬜ Chờ Owner review & duyệt `.sdd/specs/04-feat-public-catalog/REVIEW.md` (Gate 4).
 
 ## 5. Quyết định & giả định
-- Có thể chạy song song với `03-feat-auth-account` sau khi xong `02`.
+- `HomeServlet` ánh xạ `urlPatterns = {""}` (chuỗi rỗng, không dùng `"/"`) để `DefaultServlet` của Tomcat vẫn phục vụ `/assets/*` và `/robots.txt` bình thường.
 
 ## 6. Handoff
-- **Đã xong:** CONTEXT, SPEC (LOCKED), DESIGN (LOCKED), PLAN, TASKS. · **Làm tiếp:** Triển khai sau khi xong `02`. · **Cẩn thận:** Luôn lọc `Books.is_active = 1 AND Categories.is_active = 1`.
+- **Đã xong:** Toàn bộ 3 trang công khai (`RT-001`..`RT-003`, `SCR-01`..`SCR-03b`).
+- **Làm tiếp:** Sau khi Owner duyệt `REVIEW.md` → đánh `APPROVED` và đóng `T-006`.

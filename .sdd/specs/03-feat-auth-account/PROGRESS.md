@@ -2,28 +2,35 @@
 
 | Trường | Giá trị |
 |---|---|
-| Feature | `03-feat-auth-account` · Tier: Full · Nhánh: `feat/auth-account` |
-| Pha hiện tại | `tasking` (SPEC & DESIGN `LOCKED` v1.0.0 · PLAN & TASKS `DRAFT` chờ duyệt Gate 2–3) |
-| Task đang làm | Chưa bắt đầu (phụ thuộc xong `02-feat-mvc-security-shell`) |
+| Feature | `03-feat-auth-account` · Tier: Full · Nhánh: `feat/bookhub-mvp-01-08` |
+| Pha hiện tại | `verifying` (code & 4/4 integration tests xanh + live Tomcat login/profile verified; chờ Owner duyệt `REVIEW.md`) |
+| Task đang làm | `T-006` (đã hoàn tất code & test `AC-01..10`; chờ Gate 4 `REVIEW.md`) |
 | Cập nhật | 2026-11-23 |
 
 ## 1. Plan của task hiện tại
-- **Mục tiêu (đo được):** Sau khi xong `02` và duyệt Gate 2–3, tạo nhánh `feat/auth-account` và làm `T-001` → `T-006`.
-- [ ] Duyệt `PLAN.md` (Gate 2) & `TASKS.md` (Gate 3)
+- [x] `T-001`: `RoleRepository`, `PasswordResetTokenRepository` (`markUsedAtomically`, `invalidateOpenTokens`), mở rộng `UserRepository`
+- [x] `T-002`: `AuthService`, `ResetLinkNotifier`, `LocalLogResetLinkNotifier` (BCrypt, email normalize, thông báo `LOCKED` chỉ sau đúng mật khẩu, SHA-256 token 15 phút dùng 1 lần)
+- [x] `T-003`: `UserService` (`UserProfileDTO`, `updateProfile` allow-list `fullName`/`phone`, `changePassword` vô hiệu token cũ trong 1 TX)
+- [x] `T-004`: `RegisterServlet`, `LoginServlet` (rotate `changeSessionId()` + nạp `cartCount`), `LogoutServlet` + `auth/{register,login}.jsp` (`SCR-04`, `SCR-05`)
+- [x] `T-005`: `ForgotPasswordServlet`, `ResetPasswordServlet` + `auth/{forgot-password,reset-password}.jsp` (`SCR-06`, `SCR-07`)
+- [ ] `T-006`: `ProfileServlet` + `customer/profile.jsp` (`SCR-13`), nối Header menu & 4/4 integration tests xanh — **chờ Owner duyệt `REVIEW.md` Gate 4**
 
 ## 2. Nhật ký thực thi
 | Giờ | Việc đã làm | Kết quả |
 |---|---|---|
-| 2026-11-23 | Chốt Q1–Q2 & khóa SPEC + DESIGN v1.0.0 (Gate 1); lập `PLAN.md` và `TASKS.md` (`T-001`..`T-006`) | Xong Pha 1–3 |
+| 2026-11-23 | Triển khai `T-001`..`T-006` và `AuthAccountIntegrationTest`, commit `cb6007c` | 4/4 integration tests PASS trên SQL Server 2022 (`@spec auth-account/AC-01..10`) |
+| 2026-11-23 | Kiểm tra live Tomcat 10.1 | `/register`, `/login`, `/forgot-password`, `/reset-password?token=invalid`, login Customer & Admin + `/account/profile` đều hoạt động 200 OK |
 
 ## 3. Kiểm tra
-Lint ⬜ · Test ⬜ · Build ⬜ · spec-check ✅ · Secret scan ✅ · Coverage mới ⬜ %
+Test ✅ (4/4 JUnit 5 `AuthAccountIntegrationTest`) · Build ✅ (`dist/BookHub.war`, 0 warning) · ui-check ✅ · spec-check ✅ · Secret scan ✅
 
 ## 4. Blockers / câu hỏi cho người
-- ⬜ Chờ hoàn tất `02-feat-mvc-security-shell` và duyệt Gate 2–3.
+- ⬜ Chờ Owner review & duyệt `.sdd/specs/03-feat-auth-account/REVIEW.md` (Gate 4).
 
 ## 5. Quyết định & giả định
-- `SCR-13` chỉ sửa `full_name`, `phone`; user `LOCKED`/`DISABLED` báo bị khóa chỉ sau khi đúng mật khẩu.
+- Giữ đúng quyết định Gate 1: thông báo `"Tài khoản của bạn đã bị khóa."` chỉ hiện sau khi xác minh đúng mật khẩu BCrypt; không thêm cột `default_address` vào `dbo.Users`.
+- `LocalLogResetLinkNotifier` ghi link reset ra server log phục vụ demo local PRJ301 (ADR-009).
 
 ## 6. Handoff
-- **Đã xong:** CONTEXT, SPEC (LOCKED), DESIGN (LOCKED), PLAN, TASKS. · **Làm tiếp:** Triển khai sau khi xong `02`. · **Cẩn thận:** Không log mật khẩu hay token reset ở production.
+- **Đã xong:** Đầy đủ luồng Auth & Profile (`RT-004`..`RT-008`, `RT-015`).
+- **Làm tiếp:** Sau khi Owner duyệt `REVIEW.md` → đánh `APPROVED` và đóng `T-006`.

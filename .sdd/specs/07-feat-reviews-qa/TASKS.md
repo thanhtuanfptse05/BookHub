@@ -6,11 +6,11 @@
 
 | ID | Task | Phụ thuộc | Ước lượng | Truy vết | Trạng thái |
 |---|---|---|---|---|---|
-| T-001 | Tạo `ReviewRepository`, `QuestionRepository`, DTOs và `OrderRepository.hasDeliveredPurchase()` | — | 2.5h | FR-01..09 | ⬜ |
-| T-002 | Tạo `ReviewService` (eligibility `DELIVERED`, 1/user/book, `PENDING`→`APPROVED`/`HIDDEN`) + tests (`AC-01..03`) | T-001 | 3h | FR-01..04, EC-01, EC-04, AC-01..03 | ⬜ |
-| T-003 | Tạo `QuestionService` (ask `OPEN`, transactional `answer` → `ANSWERED`, `updateAnswer`, `hide`) + tests (`AC-04..07`) | T-001 | 3h | FR-05..09, EC-03, AC-04..07 | ⬜ |
-| T-004 | Tạo `ReviewServlet`, `QuestionServlet`, cập nhật form Review/Q&A trên `book-detail.jsp` & link `Viết đánh giá` ở `order-detail.jsp` (`SCR-03`, `SCR-12b`) | T-002, T-003 | 3h | FR-01..02, FR-05..06, FR-10, AC-08 | ⬜ |
-| T-005 | Tạo `AdminReviewServlet`, `AdminQuestionServlet` + `views/admin/{reviews,questions}.jsp` (`SCR-20`, `SCR-21`) + test XSS & kiểm trực quan 375/1280 | T-002, T-003 | 3.5h | FR-03..04, FR-07..10, EC-02, AC-08, VAC-01..02 | ⬜ |
+| T-001 | Tạo `ReviewRepository`, `QuestionRepository`, DTOs và `OrderRepository.hasDeliveredPurchase()` | — | 2.5h | FR-01..09 | ✅ |
+| T-002 | Tạo `ReviewService` (eligibility `DELIVERED`, 1/user/book, `PENDING`→`APPROVED`/`HIDDEN`) + tests (`AC-01..03`) | T-001 | 3h | FR-01..04, EC-01, EC-04, AC-01..03 | ✅ |
+| T-003 | Tạo `QuestionService` (ask `OPEN`, transactional `answer` → `ANSWERED`, `updateAnswer`, `hide`) + tests (`AC-04..07`) | T-001 | 3h | FR-05..09, EC-03, AC-04..07 | ✅ |
+| T-004 | Tạo `ReviewServlet`, `QuestionServlet`, cập nhật form Review/Q&A trên `book-detail.jsp` & link `Viết đánh giá` ở `order-detail.jsp` (`SCR-03`, `SCR-12b`) | T-002, T-003 | 3h | FR-01..02, FR-05..06, FR-10, AC-08 | ✅ |
+| T-005 | Tạo `AdminReviewServlet`, `AdminQuestionServlet` + `views/admin/{reviews,questions}.jsp` (`SCR-20`, `SCR-21`) + test XSS (chờ Gate 4 `REVIEW.md`) | T-002, T-003 | 3.5h | FR-03..04, FR-07..10, EC-02, AC-08, VAC-01..02 | 🔄 |
 
 ## Chi tiết task
 

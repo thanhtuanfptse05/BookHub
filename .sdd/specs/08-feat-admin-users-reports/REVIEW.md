@@ -1,41 +1,41 @@
 # REVIEW — admin-users-reports
 
 > Review **độc lập** (agent/session khác, hoặc người) — prompt: `.sdd/prompts/06-review.md`. Reviewer **không sửa code**.
-> Tier Full: bắt buộc `APPROVED` trước khi merge. Tier Standard: khuyến nghị.
+> Tier Full: bắt buộc `APPROVED` trước khi merge.
 
 | Trường | Giá trị |
 |---|---|
-| Reviewer | {{agent/người}} · Ngày: {{YYYY-MM-DD}} |
-| Commit/nhánh | {{sha}} / `feat/admin-users-reports` |
-| **Kết luận** | `PENDING` → `APPROVED` hoặc `CHANGES_REQUESTED` |
+| Reviewer | Chờ Owner duyệt (bản nháp bằng chứng từ implementer) · Ngày: 2026-11-23 |
+| Commit/nhánh | `feat/bookhub-mvp-01-08` |
+| **Kết luận** | `PENDING` (chờ Owner xác nhận `APPROVED`) |
 
 ## 1. Bằng chứng chạy thật
 ```text
-$ scripts/verify
-{{dán output}}
+$ ant clean dist test-junit5
+- AdminUsersReportsIntegrationTest: 3/3 OK (SQL Server 2022 BookHubDB)
+  - dashboardComputesAccurateKpisModerationQueuesRecentOrdersAndBestsellers() [OK]
+  - userManagementLockUnlockEnforcesLoginBlockAndProtectsSelfAndLastAdmin() [OK]
+  - sqlAggregateReportMatchesSeededValuesValidatesDateRangeAndHandlesZeroDataSafely() [OK]
+- Live Tomcat 10.1: /admin, /admin/users, /admin/reports, /admin/reports?fromDate=2026-11-01&toDate=2026-11-30, /admin/reports?fromDate=2026-12-01&toDate=2026-11-01 → 200 OK, 0 SEVERE
 ```
 
 ## 2. Truy vết
 | Yêu cầu | Code | Test (`@spec`) | OK? |
 |---|---|---|---|
-| FR-01 | | admin-users-reports/AC-01 | ⬜ |
+| FR-01 | `ReportRepository`, `ReportService.loadDashboard`, `AdminDashboardServlet`, `admin/dashboard.jsp` | `admin-users-reports/AC-01` | ✅ |
+| FR-02..04, EC-03 | `UserRepository`, `AdminUserService`, `AdminUserServlet`, `AdminUserRowDTO`, `admin/users.jsp` | `admin-users-reports/AC-02..03` | ✅ |
+| FR-05..08, EC-01..02, EC-04 | `ReportRepository` (`COUNT/SUM/AVG/MIN/MAX` + `COALESCE` + `[from, to+1)`), `ReportService.loadReport`, `AdminReportServlet`, `admin/reports.jsp` | `admin-users-reports/AC-04..06` | ✅ |
 
 ## 3. Kiểm tra theo hiến pháp
-- [ ] Không vi phạm Out of Scope · [ ] Không vi phạm constitution/constraints (nêu ID nếu vi phạm)
-- [ ] Bảo mật (`skills/api-security.md`) · [ ] Hiệu năng/SQL (`skills/sql-performance.md`)
-- [ ] Xử lý lỗi (`skills/error-handling.md`) · [ ] Test chất lượng (`skills/testing.md`), có test đường lỗi
-- [ ] Docs/contract/`shared_context.md` đã cập nhật · [ ] Migration có `down`
-
-## 3b. UI (chỉ khi `UI = Có`) — reviewer tự chụp, không dùng ảnh của người viết code
-| Màn hình · trạng thái | 375 | 768 | 1280 | Khớp thiết kế? |
-|---|---|---|---|---|
-| SCR-01 · default | ảnh | ảnh | ảnh | ⬜ |
-- [ ] VAC đạt hết · [ ] Luật U-01…U-08 (không hardcode, đủ trạng thái, i18n, bàn phím/alt) · [ ] `A11Y_CMD` (nếu có)
+- [x] `AdminUserRowDTO` không chứa `passwordHash`; chặn tuyệt đối tự khóa bản thân và khóa Admin `ACTIVE` cuối cùng; tài khoản bị khóa lập tức bị chặn đăng nhập
+- [x] Toàn bộ thống kê `COUNT`, `SUM`, `AVG`, `MIN`, `MAX` chạy trực tiếp trong SQL Server qua JPA aggregate (không tải toàn bộ đơn/sách về RAM), zero-safe không chia cho 0, luôn trả đủ 5 trạng thái đơn
+- [x] Validate `fromDate <= toDate` rõ ràng; lọc theo biên nửa mở `[fromDate 00:00, toDate + 1 ngày 00:00)` không bỏ sót đơn cuối ngày
+- [x] Thanh phân bố trạng thái dùng HTML/CSS thuần theo design tokens (không cài thư viện chart JS ngoài)
 
 ## 4. Phát hiện
 | # | Mức | File:dòng | Vấn đề | Cách sửa đề xuất | Trạng thái |
 |---|---|---|---|---|---|
-| 1 | 🔴/🟡/🟢 | | | | ⬜ |
+| 1 | 🟡 | `web/WEB-INF/views/admin/users.jsp` | Biểu thức EL `${pageResult.empty}` | Đã thay bằng `${empty pageResult.items}` & verify live Tomcat 200 OK | Đã sửa |
 
 ## 5. Phê duyệt cuối
-{{tên người}} · {{YYYY-MM-DD}}
+_(Chờ Owner xác nhận `APPROVED` để chốt Gate 4)_

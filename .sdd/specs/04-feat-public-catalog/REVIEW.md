@@ -1,41 +1,41 @@
 # REVIEW — public-catalog
 
 > Review **độc lập** (agent/session khác, hoặc người) — prompt: `.sdd/prompts/06-review.md`. Reviewer **không sửa code**.
-> Tier Full: bắt buộc `APPROVED` trước khi merge. Tier Standard: khuyến nghị.
+> Tier Full: bắt buộc `APPROVED` trước khi merge.
 
 | Trường | Giá trị |
 |---|---|
-| Reviewer | {{agent/người}} · Ngày: {{YYYY-MM-DD}} |
-| Commit/nhánh | {{sha}} / `feat/public-catalog` |
-| **Kết luận** | `PENDING` → `APPROVED` hoặc `CHANGES_REQUESTED` |
+| Reviewer | Chờ Owner duyệt (bản nháp bằng chứng từ implementer) · Ngày: 2026-11-23 |
+| Commit/nhánh | `feat/bookhub-mvp-01-08` (commit `5a0ee73` + fix JSP EL) |
+| **Kết luận** | `PENDING` (chờ Owner xác nhận `APPROVED`) |
 
 ## 1. Bằng chứng chạy thật
 ```text
-$ scripts/verify
-{{dán output}}
+$ ant clean dist test-junit5
+- PublicCatalogIntegrationTest: 3/3 OK (SQL Server 2022 BookHubDB)
+  - homeDataLoadsFeaturedNewestBestsellerShelvesAndExcludesInactiveBooks() [OK]
+  - searchFilterSortWhitelistAndPaginationWorkCorrectly() [OK]
+  - bookDetailLoadsApprovedReviewsAnsweredQaSimilarOutOfStockAndRejectsInactive() [OK]
+- Live Tomcat 10.1: /, /books, /books/detail?id=1 → 200 OK; /books/detail?id=999999 → 404
 ```
 
 ## 2. Truy vết
 | Yêu cầu | Code | Test (`@spec`) | OK? |
 |---|---|---|---|
-| FR-01 | | public-catalog/AC-01 | ⬜ |
+| FR-01..02 | `HomeServlet`, `CatalogService.loadHomePage`, `site/home.jsp` | `public-catalog/AC-01` | ✅ |
+| FR-03..06 | `BookListServlet`, `BookSortOption`, `BookRepository.searchPublicBooks`, `site/books.jsp` | `public-catalog/AC-02..05` | ✅ |
+| FR-07..09 | `BookDetailServlet`, `CatalogService.loadBookDetail`, `site/book-detail.jsp` | `public-catalog/AC-06..08` | ✅ |
 
 ## 3. Kiểm tra theo hiến pháp
-- [ ] Không vi phạm Out of Scope · [ ] Không vi phạm constitution/constraints (nêu ID nếu vi phạm)
-- [ ] Bảo mật (`skills/api-security.md`) · [ ] Hiệu năng/SQL (`skills/sql-performance.md`)
-- [ ] Xử lý lỗi (`skills/error-handling.md`) · [ ] Test chất lượng (`skills/testing.md`), có test đường lỗi
-- [ ] Docs/contract/`shared_context.md` đã cập nhật · [ ] Migration có `down`
-
-## 3b. UI (chỉ khi `UI = Có`) — reviewer tự chụp, không dùng ảnh của người viết code
-| Màn hình · trạng thái | 375 | 768 | 1280 | Khớp thiết kế? |
-|---|---|---|---|---|
-| SCR-01 · default | ảnh | ảnh | ảnh | ⬜ |
-- [ ] VAC đạt hết · [ ] Luật U-01…U-08 (không hardcode, đủ trạng thái, i18n, bàn phím/alt) · [ ] `A11Y_CMD` (nếu có)
+- [x] Mọi truy vấn công khai lọc cứng `Books.is_active = 1 AND Categories.is_active = 1`, named parameters 100%, sort qua whitelist `BookSortOption`
+- [x] Phân trang trực tiếp ở DB (`setFirstResult`/`setMaxResults`), 12 sách/trang, clamp page an toàn
+- [x] Toàn bộ text người dùng escape qua `<c:out>`, không truyền Entity JPA lazy ra JSP
+- [x] `HomeServlet` dùng `urlPatterns = {""}` giữ nguyên phục vụ `/assets/*` và `/robots.txt`
 
 ## 4. Phát hiện
 | # | Mức | File:dòng | Vấn đề | Cách sửa đề xuất | Trạng thái |
 |---|---|---|---|---|---|
-| 1 | 🔴/🟡/🟢 | | | | ⬜ |
+| 1 | 🟡 | `web/WEB-INF/views/site/books.jsp` | Biểu thức EL `${pageResult.empty}` xung đột từ khóa dành riêng `empty` của JSP EL 5.0 | Đã thay bằng `${empty pageResult.items}` & xác minh live Tomcat 200 OK | Đã sửa |
 
 ## 5. Phê duyệt cuối
-{{tên người}} · {{YYYY-MM-DD}}
+_(Chờ Owner xác nhận `APPROVED` để chốt Gate 4)_

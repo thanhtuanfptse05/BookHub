@@ -6,12 +6,12 @@
 
 | ID | Task | Phụ thuộc | Ước lượng | Truy vết | Trạng thái |
 |---|---|---|---|---|---|
-| T-001 | Tạo `RoleRepository`, `PasswordResetTokenRepository`, mở rộng `UserRepository` | — | 2h | FR-01..08 | ⬜ |
-| T-002 | Tạo `AuthService` (register, authenticate, forgot/reset token) + `ResetLinkNotifier` + tests | T-001 | 3.5h | FR-01..08, EC-01, EC-03, AC-01..08 | ⬜ |
-| T-003 | Tạo `UserService` (updateProfile allow-list, changePassword + invalidate tokens) + tests | T-001 | 2h | FR-09..11, EC-02, AC-09..10 | ⬜ |
-| T-004 | Tạo `RegisterServlet`, `LoginServlet`, `LogoutServlet` + `register.jsp`, `login.jsp` (`SCR-04`, `SCR-05`) | T-002 | 3h | FR-01..05, EC-04, AC-01..05 | ⬜ |
-| T-005 | Tạo `ForgotPasswordServlet`, `ResetPasswordServlet` + `forgot-password.jsp`, `reset-password.jsp` (`SCR-06`, `SCR-07`) | T-002 | 2.5h | FR-06..08, AC-06..08 | ⬜ |
-| T-006 | Tạo `ProfileServlet` + `profile.jsp` (`SCR-13`), nối Header menu & kiểm tra trực quan 375/1280 | T-003, T-004 | 2.5h | FR-09..11, AC-09..10, VAC-01..02 | ⬜ |
+| T-001 | Tạo `RoleRepository`, `PasswordResetTokenRepository`, mở rộng `UserRepository` | — | 2h | FR-01..08 | ✅ |
+| T-002 | Tạo `AuthService` (register, authenticate, forgot/reset token) + `ResetLinkNotifier` + tests | T-001 | 3.5h | FR-01..08, EC-01, EC-03, AC-01..08 | ✅ |
+| T-003 | Tạo `UserService` (updateProfile allow-list, changePassword + invalidate tokens) + tests | T-001 | 2h | FR-09..11, EC-02, AC-09..10 | ✅ |
+| T-004 | Tạo `RegisterServlet`, `LoginServlet`, `LogoutServlet` + `register.jsp`, `login.jsp` (`SCR-04`, `SCR-05`) | T-002 | 3h | FR-01..05, EC-04, AC-01..05 | ✅ |
+| T-005 | Tạo `ForgotPasswordServlet`, `ResetPasswordServlet` + `forgot-password.jsp`, `reset-password.jsp` (`SCR-06`, `SCR-07`) | T-002 | 2.5h | FR-06..08, AC-06..08 | ✅ |
+| T-006 | Tạo `ProfileServlet` + `profile.jsp` (`SCR-13`), nối Header menu & kiểm tra trực quan (chờ Gate 4 `REVIEW.md`) | T-003, T-004 | 2.5h | FR-09..11, AC-09..10, VAC-01..02 | 🔄 |
 
 ## Chi tiết task
 

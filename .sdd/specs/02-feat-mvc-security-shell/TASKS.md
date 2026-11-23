@@ -6,12 +6,12 @@
 
 | ID | Task | Phụ thuộc | Ước lượng | Truy vết | Trạng thái |
 |---|---|---|---|---|---|
-| T-001 | Tạo `web/WEB-INF/web.xml` (Servlet 6.0, `scripting-invalid=true`, `HttpOnly`, error pages) & bộ Exception | — | 2h | FR-01, FR-09, AC-01 | ⬜ |
-| T-002 | Tạo `PasswordUtil`, `CsrfUtil`, `UrlSafeUtil`, `FlashUtil`, `SessionUser` + unit tests | — | 2.5h | FR-03, FR-05, FR-07, EC-01, AC-06 | ⬜ |
-| T-003 | Tạo 4 Filter (`Encoding`, `Csrf`, `Authentication`, `AdminAuthorization`) + unit tests | T-001, T-002 | 3h | FR-02..06, EC-02, AC-02..05 | ⬜ |
-| T-004 | Thêm Bootstrap 5.3 + đồng bộ `tokens.css`, `bookhub.css`, fallback SVG & minimal JS | — | 3h | FR-08, NFR-03, EC-04 | ⬜ |
-| T-005 | Tạo JSP fragments dùng chung (`common/*.jsp`, `admin/layout-*.jsp`) chuẩn JSTL 3.0 | T-004 | 3h | FR-08, NFR-02, AC-07 | ⬜ |
-| T-006 | Tạo `ErrorPageServlet` + `views/error/{403,404,500}.jsp` + kiểm tra trực quan 375/1280 & `verify` | T-003, T-005 | 2h | FR-09, EC-03, AC-07, VAC-01..02 | ⬜ |
+| T-001 | Tạo `web/WEB-INF/web.xml` (Servlet 6.0, `scripting-invalid=true`, `HttpOnly`, error pages) & bộ Exception | — | 2h | FR-01, FR-09, AC-01 | ✅ |
+| T-002 | Tạo `PasswordUtil`, `CsrfUtil`, `UrlSafeUtil`, `FlashUtil`, `SessionUser` + unit tests | — | 2.5h | FR-03, FR-05, FR-07, EC-01, AC-06 | ✅ |
+| T-003 | Tạo 4 Filter (`Encoding`, `Csrf`, `Authentication`, `AdminAuthorization`) + unit tests | T-001, T-002 | 3h | FR-02..06, EC-02, AC-02..05 | ✅ |
+| T-004 | Thêm Bootstrap 5.3 + đồng bộ `tokens.css`, `bookhub.css`, fallback SVG & minimal JS | — | 3h | FR-08, NFR-03, EC-04 | ✅ |
+| T-005 | Tạo JSP fragments dùng chung (`common/*.jsp`, `admin/layout-*.jsp`) chuẩn JSTL 3.0 | T-004 | 3h | FR-08, NFR-02, AC-07 | ✅ |
+| T-006 | Tạo `ErrorPageServlet` + `views/error/{403,404,500}.jsp` + kiểm tra trực quan & `verify` (chờ Gate 4 `REVIEW.md`) | T-003, T-005 | 2h | FR-09, EC-03, AC-07, VAC-01..02 | 🔄 |
 
 ## Chi tiết task
 
