@@ -8,11 +8,11 @@
 |---|---|---|---|---|---|
 | T-001 | Tạo `database/01_schema.sql`, `99_drop_all.sql` và `README_DATABASE.md` | — | 2h | FR-01, EC-03, AC-01 | ✅ |
 | T-002 | Tạo `database/02_seed.sql` (BCrypt hash thực) & `03_demo_queries.sql` | T-001 | 2h | FR-02, AC-02 | ✅ |
-| T-003 | Chuẩn hóa runtime JARs trong `web/WEB-INF/lib/` & JUnit 5 test classpath | — | 2h | FR-09, AC-07 | ⬜ |
-| T-004 | Tạo `persistence.xml`, `bookhub-local.properties.example`, `AppConfig`, `JpaUtil`, `AppLifecycleListener` | T-003 | 3h | FR-03..06, FR-08, EC-01..02, AC-04..06 | ⬜ |
-| T-005 | Tạo 6 Enum & 6 Entity lõi (`Role`, `User`, `Category`, `Book`, `Cart`, `CartItem`) | T-004 | 3h | FR-07, AC-03, AC-08 | ⬜ |
-| T-006 | Tạo 6 Entity giao dịch & tương tác (`Order`, `OrderItem`, `Review`, `Question`, `Answer`, `PasswordResetToken`) | T-005 | 3h | FR-07, AC-03 | ⬜ |
-| T-007 | Tạo `BaseRepository` + smoke Repositories (`User`, `Category`, `Book`) & bộ integration test `AC-01..08` | T-002, T-006 | 3h | FR-01..09, AC-01..08 | ⬜ |
+| T-003 | Chuẩn hóa runtime JARs trong `web/WEB-INF/lib/` & JUnit 5 test classpath | — | 2h | FR-09, AC-07 | ✅ |
+| T-004 | Tạo `persistence.xml`, `bookhub-local.properties.example`, `AppConfig`, `JpaUtil`, `AppLifecycleListener` | T-003 | 3h | FR-03..06, FR-08, EC-01..02, AC-04..06 | ✅ |
+| T-005 | Tạo 6 Enum & 6 Entity lõi (`Role`, `User`, `Category`, `Book`, `Cart`, `CartItem`) | T-004 | 3h | FR-07, AC-03, AC-08 | ✅ |
+| T-006 | Tạo 6 Entity giao dịch & tương tác (`Order`, `OrderItem`, `Review`, `Question`, `Answer`, `PasswordResetToken`) | T-005 | 3h | FR-07, AC-03 | ✅ |
+| T-007 | Tạo `BaseRepository` + smoke Repositories (`User`, `Category`, `Book`) & bộ integration test `AC-01..08` | T-002, T-006 | 3h | FR-01..09, AC-01..08 | 🔄 |
 
 ## Chi tiết task
 

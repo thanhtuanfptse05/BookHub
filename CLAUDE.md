@@ -19,7 +19,7 @@
 | UI stack / Design system | Bootstrap 5.3.x + Brand CSS (`Newsreader` + `Be Vietnam Pro`, `#1e5649` / `#c85a32` / `#faf8f5`) · `.sdd/design/` (`LOCKED` từ Figma) · `docs/ui-screens.md` |
 | Test | JUnit 5 (unit/service tests + JPA integration tests) |
 | Build WAR | `ant dist` (hoặc NetBeans Clean & Build) |
-| Test | `ant test` (khi đã cấu hình JUnit 5 test classpath) |
+| Test | `ant test-junit5` (JUnit 5 unit + JPA integration tests) |
 | Verify dự án | `./scripts/verify.ps1` |
 | Chạy dev | Deploy WAR lên Apache Tomcat 10.1.x trong NetBeans 17 (`http://localhost:8080/BookHub/`) |
 
@@ -73,6 +73,7 @@ Browser → Filter (UTF-8, Auth, Admin, CSRF) → Servlet Controller (parse & va
 | Ngày | Sự cố / Lỗi | Nguyên nhân gốc | Quy tắc rút ra |
 |---|---|---|---|
 | 2026-11-23 | `sqlcmd` báo lỗi `Msg 1934: QUOTED_IDENTIFIER` khi INSERT vào bảng có filtered index (`UX_Books_isbn_not_null`) | `sqlcmd` mặc định `QUOTED_IDENTIFIER OFF` khác với SSMS | Mọi file `.sql` SQL Server phải đặt `SET ANSI_NULLS ON; SET QUOTED_IDENTIFIER ON;` ở đầu và lưu UTF-8 BOM (`database/*.sql`) |
+| 2026-11-23 | NetBeans Ant `build-impl.xml` tìm `persistence.xml` trực tiếp ở `${persistence.xml.dir}/persistence.xml` và chứa đường dẫn tuyệt đối cũ tới `allowedlib` | Mặc định NetBeans đặt `persistence.xml.dir=${conf.dir}` và giữ `<copyfiles>` cũ trong `build-impl.xml` | Đặt `persistence.xml.dir=${conf.dir}/META-INF` trong `nbproject/project.properties`, dùng đường dẫn tương đối `web/WEB-INF/lib/*.jar`, và override `library-inclusion-in-*` trong `build.xml` |
 
 ## 6. Vùng nguy hiểm (Known Hazards)
 - **Trộn `javax.*` và `jakarta.*`:** Gây lỗi compile/deploy trên Tomcat 10.1.x. Luôn kiểm tra import và JAR trước build.
@@ -95,8 +96,8 @@ Xem `.sdd/rfcs/` — mỗi quyết định = 1 ADR:
 - [ADR-009](.sdd/rfcs/ADR-009-local-reset-link-output.md) — Ghi reset password URL ra server log cho local demo _(Accepted)_
 
 ## 8. Việc đang dang dở / Nợ kỹ thuật
-- [ ] EPIC 0–1: Tạo `database/01_schema.sql`, `02_seed.sql`, thêm runtime JARs vào `web/WEB-INF/lib`, tạo `persistence.xml` + `JpaUtil` + 12 Entities — _ưu tiên: cao_
-- [ ] EPIC 2–3: Dựng Filters (UTF-8, Auth, Admin, CSRF), error pages, common JSTL layout và module Authentication — _ưu tiên: cao_
-- [ ] EPIC 4–5: Public Catalog (Home, search/filter/sort/paging, detail, similar) và Admin CRUD Books/Categories — _ưu tiên: cao_
-- [ ] EPIC 6–8: Cart, Checkout COD transactional, Order lifecycle, Review moderation, Q&A và Dashboard Reports (`COUNT/SUM/AVG/MIN/MAX`) — _ưu tiên: cao_
-- [ ] Cấu hình `TEST_CMD`/`BUILD_CMD` trong `.sdd/project.conf` và khởi tạo Spec Kit (`.specify/`) trước khi code feature — _ưu tiên: vừa_
+- [x] EPIC 0–1 (`01-feat-foundation-jpa`): `database/*.sql`, 23 runtime JARs trong `web/WEB-INF/lib`, `persistence.xml` + `AppConfig`/`JpaUtil` + 12 Entities + 4 Repositories + 13/13 JUnit 5 tests (chờ duyệt `REVIEW.md` Gate 4)
+- [ ] EPIC 2–3 (`02`–`03`): Dựng Filters (UTF-8, Auth, Admin, CSRF), error pages, common JSTL layout và module Authentication — _ưu tiên: cao_
+- [ ] EPIC 4–5 (`04`–`05`): Public Catalog (Home, search/filter/sort/paging, detail, similar) và Admin CRUD Books/Categories — _ưu tiên: cao_
+- [ ] EPIC 6–8 (`06`–`08`): Cart, Checkout COD transactional, Order lifecycle, Review moderation, Q&A và Dashboard Reports (`COUNT/SUM/AVG/MIN/MAX`) — _ưu tiên: cao_
+- [ ] Cấu hình `TEST_CMD`/`BUILD_CMD` trong `.sdd/project.conf` — _ưu tiên: vừa_
