@@ -216,7 +216,7 @@ public class BookRepository extends BaseRepository<Book, Long> {
     }
 
     /**
-     * Locks books in deterministic ascending ID order using PESSIMISTIC_WRITE to prevent deadlocks (NFR-01).
+     * Locks books in deterministic ascending ID order using PESSIMISTIC_WRITE + refresh so L1 cache is never stale.
      */
     public Map<Long, Book> lockBooksOrdered(EntityManager em, List<Long> bookIds) {
         List<Long> sorted = bookIds.stream().distinct().sorted().collect(Collectors.toList());
@@ -224,10 +224,33 @@ public class BookRepository extends BaseRepository<Book, Long> {
         for (Long id : sorted) {
             Book b = em.find(Book.class, id, LockModeType.PESSIMISTIC_WRITE);
             if (b != null) {
+                em.refresh(b, LockModeType.PESSIMISTIC_WRITE);
                 locked.put(id, b);
             }
         }
         return locked;
+    }
+
+    /**
+     * Atomic conditional stock deduction at SQL Server level preventing lost updates and negative stock (A-09).
+     */
+    public int decrementStockAtomically(EntityManager em, Long bookId, int qty) {
+        return em.createQuery(
+                        "UPDATE Book b SET b.stockQty = b.stockQty - :qty "
+                                + "WHERE b.bookId = :id AND b.active = true AND b.stockQty >= :qty")
+                .setParameter("qty", qty)
+                .setParameter("id", bookId)
+                .executeUpdate();
+    }
+
+    /**
+     * Atomic stock restoration on order cancellation preventing lost updates with concurrent checkouts.
+     */
+    public int incrementStockAtomically(EntityManager em, Long bookId, int qty) {
+        return em.createQuery("UPDATE Book b SET b.stockQty = b.stockQty + :qty WHERE b.bookId = :id")
+                .setParameter("qty", qty)
+                .setParameter("id", bookId)
+                .executeUpdate();
     }
 
     private static void appendPublicFilters(StringBuilder where, Map<String, Object> params, BookFilterCriteria c) {
