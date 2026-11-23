@@ -5,9 +5,9 @@
 
 | Trường | Giá trị |
 |---|---|
-| Reviewer | Chờ Owner duyệt (bản nháp bằng chứng từ implementer) · Ngày: 2026-11-23 |
+| Reviewer | Owner (BookHub) · Ngày: 2026-11-23 |
 | Commit/nhánh | `feat/bookhub-mvp-01-08` (commit `6514c7d` + fix JSP EL) |
-| **Kết luận** | `PENDING` (chờ Owner xác nhận `APPROVED`) |
+| **Kết luận** | `APPROVED` (Owner đã duyệt Gate 4 ngày 2026-11-23) |
 
 ## 1. Bằng chứng chạy thật
 ```text
@@ -44,4 +44,4 @@ $ ant clean dist test-junit5
 | 1 | 🟢 | `web/WEB-INF/views/common/head.jsp` | Đã sửa chuỗi quote lồng nhau bằng `<c:set>` để Jasper biên dịch sạch trên Tomcat 10.1 | Đã sửa & xác minh live Tomcat 200 OK | Đã sửa |
 
 ## 5. Phê duyệt cuối
-_(Chờ Owner xác nhận `APPROVED` để chốt Gate 4)_
+**`APPROVED`** — Owner (BookHub) · 2026-11-23

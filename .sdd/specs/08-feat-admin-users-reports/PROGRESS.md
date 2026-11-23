@@ -3,8 +3,8 @@
 | Trường | Giá trị |
 |---|---|
 | Feature | `08-feat-admin-users-reports` · Tier: Full · Nhánh: `feat/bookhub-mvp-01-08` |
-| Pha hiện tại | `verifying` (code & 3/3 integration tests xanh + live Tomcat verify; chờ Owner duyệt `REVIEW.md`) |
-| Task đang làm | `T-005` (đã hoàn tất code, test `AC-01..06`, live Tomcat `/admin`, `/admin/users`, `/admin/reports`; chờ Gate 4 `REVIEW.md`) |
+| Pha hiện tại | `done` (Owner đã duyệt `REVIEW.md` `APPROVED` — đóng đủ `T-001`..`T-005`) |
+| Task đang làm | — (đã hoàn tất toàn bộ `T-001`..`T-005`) |
 | Cập nhật | 2026-11-23 |
 
 ## 1. Plan của task hiện tại
@@ -12,7 +12,7 @@
 - [x] `T-002`: `AdminUserService` (tìm kiếm/lọc/phân trang không lộ `passwordHash`, khóa/mở khóa, chặn tự khóa bản thân & khóa Admin `ACTIVE` cuối cùng)
 - [x] `T-003`: `ReportService` (Dashboard KPIs + Reports validate `fromDate <= toDate`, zero-safe đủ 5 trạng thái đơn)
 - [x] `T-004`: `AdminUserServlet` (`/admin/users`) + `views/admin/users.jsp` (`SCR-19`, `ConfirmModal`)
-- [ ] `T-005`: `AdminDashboardServlet` (`/admin`), `AdminReportServlet` (`/admin/reports`) + `admin/{dashboard,reports}.jsp` (`SCR-14`, `SCR-22`) & 3/3 tests xanh — **chờ Owner duyệt `REVIEW.md` Gate 4**
+- [x] `T-005`: `AdminDashboardServlet` (`/admin`), `AdminReportServlet` (`/admin/reports`) + `admin/{dashboard,reports}.jsp` (`SCR-14`, `SCR-22`) & 3/3 tests xanh — Owner đã duyệt `REVIEW.md` (`APPROVED`)
 
 ## 2. Nhật ký thực thi
 | Giờ | Việc đã làm | Kết quả |

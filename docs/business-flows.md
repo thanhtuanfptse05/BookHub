@@ -6,20 +6,20 @@
 | Mục | Giá trị |
 |---|---|
 | Cập nhật lần cuối | 2026-11-23 |
-| Hiện trạng mã nguồn | Đã triển khai đủ 8 tính năng MVP (`01`..`08`) trên nhánh `feat/bookhub-mvp-01-08`: 116 file Java, 34 file JSP (JSTL 3.0 + EL 5.0, 0 scriptlet), 25 routes hoạt động trên Tomcat 10.1 + SQL Server 2022 (chờ duyệt Gate 4 `REVIEW.md`) |
+| Hiện trạng mã nguồn | Đã hoàn tất và được Owner duyệt (`APPROVED` Gate 4) đủ 8 tính năng MVP (`01`..`08`) trên `feat/bookhub-mvp-01-08`: 116 file Java, 34 file JSP (JSTL 3.0 + EL 5.0, 0 scriptlet), 25 routes hoạt động trên Tomcat 10.1 + SQL Server 2022 |
 | Nguồn trace | `src/java/com/bookhub/` · `web/WEB-INF/views/` |
 
 ## Mục lục quy trình (As-Is trên `feat/bookhub-mvp-01-08`)
 | Mã | Quy trình | Ai thực hiện | Trạng thái (As-Is) | Module / Spec |
 |---|---|---|---|---|
-| `QT-01` | Đăng ký, Đăng nhập, Đăng xuất, Quên/Đặt lại mật khẩu & Hồ sơ | Guest / Customer / Admin | ✅ Đã triển khai & test (chờ Gate 4) | `03-feat-auth-account` |
-| `QT-02` | Xem Home, Tìm kiếm, Lọc, Sắp xếp, Phân trang & Chi tiết sách | Guest / All | ✅ Đã triển khai & test (chờ Gate 4) | `04-feat-public-catalog` |
-| `QT-03` | Quản lý Giỏ hàng (Add / Update / Remove / Subtotal) | Customer | ✅ Đã triển khai & test (chờ Gate 4) | `06-feat-cart-checkout-orders` |
-| `QT-04` | Checkout COD nguyên tử & Trừ tồn kho | Customer | ✅ Đã triển khai & test (chờ Gate 4) | `06-feat-cart-checkout-orders` |
-| `QT-05` | Theo dõi & Hủy đơn hàng / Cập nhật trạng thái đơn | Customer / Admin | ✅ Đã triển khai & test (chờ Gate 4) | `06-feat-cart-checkout-orders` |
-| `QT-06` | Viết & Kiểm duyệt Đánh giá sách (Review) | Customer / Admin | ✅ Đã triển khai & test (chờ Gate 4) | `07-feat-reviews-qa` |
-| `QT-07` | Đặt câu hỏi & Trả lời / Sửa phản hồi / Ẩn Q&A | Customer / Admin | ✅ Đã triển khai & test (chờ Gate 4) | `07-feat-reviews-qa` |
-| `QT-08` | Admin CRUD Sách/Danh mục, Quản lý User & Báo cáo Thống kê | Admin | ✅ Đã triển khai & test (chờ Gate 4) | `05-feat-admin-catalog-crud` / `08-feat-admin-users-reports` |
+| `QT-01` | Đăng ký, Đăng nhập, Đăng xuất, Quên/Đặt lại mật khẩu & Hồ sơ | Guest / Customer / Admin | ✅ Hoàn tất (`APPROVED`) | `03-feat-auth-account` |
+| `QT-02` | Xem Home, Tìm kiếm, Lọc, Sắp xếp, Phân trang & Chi tiết sách | Guest / All | ✅ Hoàn tất (`APPROVED`) | `04-feat-public-catalog` |
+| `QT-03` | Quản lý Giỏ hàng (Add / Update / Remove / Subtotal) | Customer | ✅ Hoàn tất (`APPROVED`) | `06-feat-cart-checkout-orders` |
+| `QT-04` | Checkout COD nguyên tử & Trừ tồn kho | Customer | ✅ Hoàn tất (`APPROVED`) | `06-feat-cart-checkout-orders` |
+| `QT-05` | Theo dõi & Hủy đơn hàng / Cập nhật trạng thái đơn | Customer / Admin | ✅ Hoàn tất (`APPROVED`) | `06-feat-cart-checkout-orders` |
+| `QT-06` | Viết & Kiểm duyệt Đánh giá sách (Review) | Customer / Admin | ✅ Hoàn tất (`APPROVED`) | `07-feat-reviews-qa` |
+| `QT-07` | Đặt câu hỏi & Trả lời / Sửa phản hồi / Ẩn Q&A | Customer / Admin | ✅ Hoàn tất (`APPROVED`) | `07-feat-reviews-qa` |
+| `QT-08` | Admin CRUD Sách/Danh mục, Quản lý User & Báo cáo Thống kê | Admin | ✅ Hoàn tất (`APPROVED`) | `05-feat-admin-catalog-crud` / `08-feat-admin-users-reports` |
 
 ---
 

@@ -12,7 +12,7 @@
 | T-004 | Tạo `persistence.xml`, `bookhub-local.properties.example`, `AppConfig`, `JpaUtil`, `AppLifecycleListener` | T-003 | 3h | FR-03..06, FR-08, EC-01..02, AC-04..06 | ✅ |
 | T-005 | Tạo 6 Enum & 6 Entity lõi (`Role`, `User`, `Category`, `Book`, `Cart`, `CartItem`) | T-004 | 3h | FR-07, AC-03, AC-08 | ✅ |
 | T-006 | Tạo 6 Entity giao dịch & tương tác (`Order`, `OrderItem`, `Review`, `Question`, `Answer`, `PasswordResetToken`) | T-005 | 3h | FR-07, AC-03 | ✅ |
-| T-007 | Tạo `BaseRepository` + smoke Repositories (`User`, `Category`, `Book`) & bộ integration test `AC-01..08` | T-002, T-006 | 3h | FR-01..09, AC-01..08 | 🔄 |
+| T-007 | Tạo `BaseRepository` + smoke Repositories (`User`, `Category`, `Book`) & bộ integration test `AC-01..08` | T-002, T-006 | 3h | FR-01..09, AC-01..08 | ✅ |
 
 ## Chi tiết task
 

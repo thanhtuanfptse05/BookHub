@@ -98,9 +98,9 @@ Xem `.sdd/rfcs/` — mỗi quyết định = 1 ADR:
 - [ADR-009](.sdd/rfcs/ADR-009-local-reset-link-output.md) — Ghi reset password URL ra server log cho local demo _(Accepted)_
 
 ## 8. Việc đang dang dở / Nợ kỹ thuật
-- [x] EPIC 0–1 (`01-feat-foundation-jpa`): `database/*.sql`, 23 runtime JARs trong `web/WEB-INF/lib`, `persistence.xml` + `AppConfig`/`JpaUtil` + 12 Entities + Repositories + 13/13 JUnit 5 tests (chờ duyệt `REVIEW.md` Gate 4)
-- [x] EPIC 2–3 (`02`–`03`): `web.xml` (`scripting-invalid=true`), 4 Filters (UTF-8, CSRF, Auth, Admin), Error pages (`/403`/`/404`/`/500`), common JSTL layout + Auth & Account (`SCR-04..07, 13`) + 11/11 JUnit 5 tests (chờ duyệt `REVIEW.md` Gate 4)
-- [x] EPIC 4–5 (`04`–`05`): Public Catalog (`SCR-01..03b`: Home, search/filter/sort/paging DB, detail, similar) + Admin CRUD Books/Categories (`SCR-15..17`) + 5/5 JUnit 5 tests (chờ duyệt `REVIEW.md` Gate 4)
-- [x] EPIC 6–8 (`06`–`08`): Cart DB, Checkout COD atomic + concurrency-safe, Order lifecycle & cancel, Review/Q&A moderation, Admin Users & Dashboard/Reports SQL aggregates (`COUNT/SUM/AVG/MIN/MAX`) + 8/8 JUnit 5 tests + live Tomcat 10.1 verification (chờ duyệt `REVIEW.md` Gate 4)
-- [ ] Duyệt Gate 4 (`REVIEW.md` của `01`..`08`), merge `feat/bookhub-mvp-01-08` vào `main`, và chụp ảnh trực quan UI 375/768/1280 + đóng gói tài liệu nộp PRJ301 (EPIC 9) — _ưu tiên: cao_
+- [x] EPIC 0–1 (`01-feat-foundation-jpa`): `database/*.sql`, 23 runtime JARs trong `web/WEB-INF/lib`, `persistence.xml` + `AppConfig`/`JpaUtil` + 12 Entities + Repositories + 13/13 JUnit 5 tests (`APPROVED` Gate 4)
+- [x] EPIC 2–3 (`02`–`03`): `web.xml` (`scripting-invalid=true`), 4 Filters (UTF-8, CSRF, Auth, Admin), Error pages (`/403`/`/404`/`/500`), common JSTL layout + Auth & Account (`SCR-04..07, 13`) + 11/11 JUnit 5 tests (`APPROVED` Gate 4)
+- [x] EPIC 4–5 (`04`–`05`): Public Catalog (`SCR-01..03b`: Home, search/filter/sort/paging DB, detail, similar) + Admin CRUD Books/Categories (`SCR-15..17`) + 5/5 JUnit 5 tests (`APPROVED` Gate 4)
+- [x] EPIC 6–8 (`06`–`08`): Cart DB, Checkout COD atomic + concurrency-safe, Order lifecycle & cancel, Review/Q&A moderation, Admin Users & Dashboard/Reports SQL aggregates (`COUNT/SUM/AVG/MIN/MAX`) + 8/8 JUnit 5 tests + live Tomcat 10.1 verification (`APPROVED` Gate 4)
+- [ ] Merge `feat/bookhub-mvp-01-08` vào `main`, chụp ảnh báo cáo UI 375/768/1280 và đóng gói tài liệu nộp PRJ301 (EPIC 9) — _ưu tiên: cao_
 - [ ] Cấu hình `TEST_CMD`/`BUILD_CMD` trong `.sdd/project.conf` (cần xác nhận Owner theo mục 4 `AGENTS.md`) — _ưu tiên: vừa_

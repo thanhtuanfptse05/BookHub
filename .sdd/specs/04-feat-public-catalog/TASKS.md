@@ -11,7 +11,7 @@
 | T-003 | Tạo `CatalogService` + bộ integration test `AC-01..08` | T-002 | 3h | FR-01..09, EC-01..04, AC-01..08 | ✅ |
 | T-004 | Tạo `HomeServlet` + `views/site/home.jsp` (`SCR-01`) | T-003 | 2.5h | FR-01, FR-02, AC-01 | ✅ |
 | T-005 | Tạo `BookListServlet` + `views/site/books.jsp` (`SCR-02` + filter chips + pagination + empty state) | T-003 | 3h | FR-03..06, EC-02, AC-02..05 | ✅ |
-| T-006 | Tạo `BookDetailServlet` + `views/site/book-detail.jsp` (`SCR-03` & `SCR-03b`) + kiểm trực quan & SEO (chờ Gate 4 `REVIEW.md`) | T-003 | 3h | FR-07..09, AC-06..08, VAC-01..02 | 🔄 |
+| T-006 | Tạo `BookDetailServlet` + `views/site/book-detail.jsp` (`SCR-03` & `SCR-03b`) + kiểm trực quan & SEO (Gate 4 `APPROVED`) | T-003 | 3h | FR-07..09, AC-06..08, VAC-01..02 | ✅ |
 
 ## Chi tiết task
 
@@ -50,4 +50,4 @@ T-001 ──► T-002 ──► T-003 ─┬─► T-004
 ```
 
 ## Phê duyệt (Gate 3)
-(chờ duyệt) · —
+Owner (BookHub) · 2026-11-23

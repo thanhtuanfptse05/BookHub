@@ -2,9 +2,9 @@
 
 | Trường | Giá trị |
 |---|---|
-| Feature | `01-feat-foundation-jpa` · Tier: Full · Nhánh: `feat/foundation-jpa` |
-| Pha hiện tại | `reviewing` (code & 13/13 test JUnit 5 đã xanh; chờ Owner duyệt `REVIEW.md` Pha 5 để đóng `T-007`) |
-| Task đang làm | `T-007` (đã hoàn tất code + test `AC-01..08`, chờ Gate 4 `REVIEW.md`) |
+| Feature | `01-feat-foundation-jpa` · Tier: Full · Nhánh: `feat/bookhub-mvp-01-08` |
+| Pha hiện tại | `done` (Owner đã duyệt `REVIEW.md` `APPROVED` — đóng đủ `T-001`..`T-007`) |
+| Task đang làm | — (đã hoàn tất toàn bộ `T-001`..`T-007`) |
 | Cập nhật | 2026-11-23 12:17 |
 
 ## 1. Plan của task hiện tại
@@ -14,7 +14,7 @@
 - [x] `T-004`: `src/conf/META-INF/persistence.xml` (`BookHubPU`, `RESOURCE_LOCAL`, `validate`), `bookhub-local.properties.example`, `AppConstants`, `AppConfig`, `JpaUtil`, `AppLifecycleListener`
 - [x] `T-005`: 6 Enum (`RoleCode`, `UserStatus`, `PaymentMethod`, `OrderStatus`, `ReviewStatus`, `QuestionStatus`) + 6 Core Entities (`Role`, `User`, `Category`, `Book`, `Cart`, `CartItem`)
 - [x] `T-006`: 6 Commerce/Interaction Entities (`Order`, `OrderItem`, `Review`, `Question`, `Answer`, `PasswordResetToken`)
-- [ ] `T-007`: `BaseRepository` + smoke Repositories (`User`, `Category`, `Book`) & 13/13 JUnit 5 tests (`@spec foundation-jpa/AC-01..08`) đã xanh — **chờ Owner duyệt `REVIEW.md` để chốt `✅`**
+- [x] `T-007`: `BaseRepository` + smoke Repositories (`User`, `Category`, `Book`) & 13/13 JUnit 5 tests (`@spec foundation-jpa/AC-01..08`) — Owner đã duyệt `REVIEW.md` (`APPROVED`)
 
 ## 2. Nhật ký thực thi
 | Giờ | Việc đã làm | Kết quả |

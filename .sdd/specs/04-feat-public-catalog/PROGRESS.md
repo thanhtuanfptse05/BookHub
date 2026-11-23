@@ -3,8 +3,8 @@
 | Trường | Giá trị |
 |---|---|
 | Feature | `04-feat-public-catalog` · Tier: Full · Nhánh: `feat/bookhub-mvp-01-08` |
-| Pha hiện tại | `verifying` (code & 3/3 integration tests xanh + live Tomcat verify; chờ Owner duyệt `REVIEW.md`) |
-| Task đang làm | `T-006` (đã hoàn tất code, test `AC-01..08`, SEO meta & fix EL `.empty`; chờ Gate 4 `REVIEW.md`) |
+| Pha hiện tại | `done` (Owner đã duyệt `REVIEW.md` `APPROVED` — đóng đủ `T-001`..`T-006`) |
+| Task đang làm | — (đã hoàn tất toàn bộ `T-001`..`T-006`) |
 | Cập nhật | 2026-11-23 |
 
 ## 1. Plan của task hiện tại
@@ -13,7 +13,7 @@
 - [x] `T-003`: `CatalogService` + `PublicCatalogIntegrationTest` (`@spec public-catalog/AC-01..08`)
 - [x] `T-004`: `HomeServlet` (`urlPatterns = {""}`) + `views/site/home.jsp` (`SCR-01`)
 - [x] `T-005`: `BookListServlet` (`/books`) + `views/site/books.jsp` (`SCR-02`, filter chips, pagination, empty state)
-- [ ] `T-006`: `BookDetailServlet` (`/books/detail`) + `views/site/book-detail.jsp` (`SCR-03`, `SCR-03b`) & kiểm tra live Tomcat — **chờ Owner duyệt `REVIEW.md` Gate 4**
+- [x] `T-006`: `BookDetailServlet` (`/books/detail`) + `views/site/book-detail.jsp` (`SCR-03`, `SCR-03b`) & kiểm tra live Tomcat — Owner đã duyệt `REVIEW.md` (`APPROVED`)
 
 ## 2. Nhật ký thực thi
 | Giờ | Việc đã làm | Kết quả |

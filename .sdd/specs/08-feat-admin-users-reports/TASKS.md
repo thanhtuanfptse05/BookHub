@@ -10,7 +10,7 @@
 | T-002 | Tạo `AdminUserService` (search/filter/paging, lock/unlock, guard Admin cuối) + integration tests (`AC-02..03`) | — | 2.5h | FR-02..04, EC-03, AC-02..03 | ✅ |
 | T-003 | Tạo `ReportService` (Dashboard + Reports date validation + zero-safe) + unit/integration tests (`AC-01`, `AC-04..06`) | T-001 | 3h | FR-01, FR-05..08, AC-01, AC-04..06 | ✅ |
 | T-004 | Tạo `AdminUserServlet` + `views/admin/users.jsp` (`SCR-19` + `ConfirmModal`) | T-002 | 2.5h | FR-02..04, AC-02..03 | ✅ |
-| T-005 | Tạo `AdminDashboardServlet`, `AdminReportServlet` + `views/admin/{dashboard,reports}.jsp` (`SCR-14`, `SCR-22`) & `verify` (chờ Gate 4 `REVIEW.md`) | T-003 | 3.5h | FR-01, FR-05..08, AC-01, AC-04..06, VAC-01..02 | 🔄 |
+| T-005 | Tạo `AdminDashboardServlet`, `AdminReportServlet` + `views/admin/{dashboard,reports}.jsp` (`SCR-14`, `SCR-22`) & `verify` (Gate 4 `APPROVED`) | T-003 | 3.5h | FR-01, FR-05..08, AC-01, AC-04..06, VAC-01..02 | ✅ |
 
 ## Chi tiết task
 
@@ -45,4 +45,4 @@ T-002 ──► T-004
 ```
 
 ## Phê duyệt (Gate 3)
-(chờ duyệt) · —
+Owner (BookHub) · 2026-11-23

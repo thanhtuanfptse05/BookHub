@@ -5,9 +5,9 @@
 
 | Trường | Giá trị |
 |---|---|
-| Reviewer | Chờ Owner duyệt (bản nháp bằng chứng từ implementer) · Ngày: 2026-11-23 |
-| Commit/nhánh | `feat/foundation-jpa` |
-| **Kết luận** | `PENDING` (chờ Owner xác nhận `APPROVED`) |
+| Reviewer | Owner (BookHub) · Ngày: 2026-11-23 |
+| Commit/nhánh | `feat/bookhub-mvp-01-08` |
+| **Kết luận** | `APPROVED` (Owner đã duyệt Gate 4 ngày 2026-11-23) |
 
 ## 1. Bằng chứng chạy thật
 ```text
@@ -47,4 +47,4 @@ $ ant clean dist test-junit5
 | 1 | 🟢 | `src/conf/META-INF/persistence.xml:27` | Hibernate 6.6 log `WARN HHH90000025` vì `hibernate.dialect` được khai báo tường minh (khớp đúng yêu cầu `FR-03`) | Giữ nguyên để tuân `FR-03` hoặc bỏ nếu có `CHANGELOG` duyệt | Chấp nhận |
 
 ## 5. Phê duyệt cuối
-_(Chờ Owner xác nhận `APPROVED` để chốt Gate 4)_
+**`APPROVED`** — Owner (BookHub) · 2026-11-23

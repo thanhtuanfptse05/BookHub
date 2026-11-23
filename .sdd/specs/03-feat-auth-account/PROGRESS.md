@@ -3,8 +3,8 @@
 | Trường | Giá trị |
 |---|---|
 | Feature | `03-feat-auth-account` · Tier: Full · Nhánh: `feat/bookhub-mvp-01-08` |
-| Pha hiện tại | `verifying` (code & 4/4 integration tests xanh + live Tomcat login/profile verified; chờ Owner duyệt `REVIEW.md`) |
-| Task đang làm | `T-006` (đã hoàn tất code & test `AC-01..10`; chờ Gate 4 `REVIEW.md`) |
+| Pha hiện tại | `done` (Owner đã duyệt `REVIEW.md` `APPROVED` — đóng đủ `T-001`..`T-006`) |
+| Task đang làm | — (đã hoàn tất toàn bộ `T-001`..`T-006`) |
 | Cập nhật | 2026-11-23 |
 
 ## 1. Plan của task hiện tại
@@ -13,7 +13,7 @@
 - [x] `T-003`: `UserService` (`UserProfileDTO`, `updateProfile` allow-list `fullName`/`phone`, `changePassword` vô hiệu token cũ trong 1 TX)
 - [x] `T-004`: `RegisterServlet`, `LoginServlet` (rotate `changeSessionId()` + nạp `cartCount`), `LogoutServlet` + `auth/{register,login}.jsp` (`SCR-04`, `SCR-05`)
 - [x] `T-005`: `ForgotPasswordServlet`, `ResetPasswordServlet` + `auth/{forgot-password,reset-password}.jsp` (`SCR-06`, `SCR-07`)
-- [ ] `T-006`: `ProfileServlet` + `customer/profile.jsp` (`SCR-13`), nối Header menu & 4/4 integration tests xanh — **chờ Owner duyệt `REVIEW.md` Gate 4**
+- [x] `T-006`: `ProfileServlet` + `customer/profile.jsp` (`SCR-13`), nối Header menu & 4/4 integration tests xanh — Owner đã duyệt `REVIEW.md` (`APPROVED`)
 
 ## 2. Nhật ký thực thi
 | Giờ | Việc đã làm | Kết quả |

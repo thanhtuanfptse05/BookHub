@@ -3,8 +3,8 @@
 | Trường | Giá trị |
 |---|---|
 | Feature | `07-feat-reviews-qa` · Tier: Full · Nhánh: `feat/bookhub-mvp-01-08` |
-| Pha hiện tại | `verifying` (code & 2/2 integration tests xanh + live Tomcat verify; chờ Owner duyệt `REVIEW.md`) |
-| Task đang làm | `T-005` (đã hoàn tất code, test `AC-01..08`, fix JPQL `status == null` & live Tomcat 200 OK; chờ Gate 4 `REVIEW.md`) |
+| Pha hiện tại | `done` (Owner đã duyệt `REVIEW.md` `APPROVED` — đóng đủ `T-001`..`T-005`) |
+| Task đang làm | — (đã hoàn tất toàn bộ `T-001`..`T-005`) |
 | Cập nhật | 2026-11-23 |
 
 ## 1. Plan của task hiện tại
@@ -12,7 +12,7 @@
 - [x] `T-002`: `ReviewService` (kiểm tra đã mua & `DELIVERED`, chặn duplicate `(user_id, book_id)`, mặc định `PENDING`, Admin duyệt `APPROVED`/`HIDDEN`)
 - [x] `T-003`: `QuestionService` (Customer hỏi `OPEN`, Admin trả lời 1-1 `ANSWERED` trong 1 TX, `updateAnswer` theo Gate 1 Q1, ẩn `HIDDEN`)
 - [x] `T-004`: `ReviewServlet` (`/books/review`), `QuestionServlet` (`/books/question`), tích hợp form trên `book-detail.jsp` & link trên `order-detail.jsp`
-- [ ] `T-005`: `AdminReviewServlet`, `AdminQuestionServlet` + `admin/{reviews,questions}.jsp` (`SCR-20`, `SCR-21`), test XSS & live Tomcat — **chờ Owner duyệt `REVIEW.md` Gate 4**
+- [x] `T-005`: `AdminReviewServlet`, `AdminQuestionServlet` + `admin/{reviews,questions}.jsp` (`SCR-20`, `SCR-21`), test XSS & live Tomcat — Owner đã duyệt `REVIEW.md` (`APPROVED`)
 
 ## 2. Nhật ký thực thi
 | Giờ | Việc đã làm | Kết quả |

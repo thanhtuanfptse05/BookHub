@@ -13,7 +13,7 @@
 | T-005 | Tạo `OrderService` (Customer list/detail/cancel hoàn kho 1 lần + Admin state transition) + concurrency tests (`AC-05..09`) | T-002 | 3.5h | FR-07..12, EC-03, AC-05..09 | ✅ |
 | T-006 | Tạo `CartServlet`, `CheckoutServlet`, `OrderSuccessServlet` + `cart.jsp`, `checkout.jsp`, `order-success.jsp` (`SCR-08..10`) | T-003, T-004 | 3.5h | FR-01..06, AC-01..04 | ✅ |
 | T-007 | Tạo `MyOrdersServlet`, `OrderDetailServlet`, `OrderCancelServlet` + `orders.jsp`, `order-detail.jsp` (`SCR-11..12b`) | T-005 | 3h | FR-07..09, AC-05..07 | ✅ |
-| T-008 | Tạo `AdminOrderServlet` + `views/admin/orders.jsp` (`SCR-18`) + nối badge đếm giỏ Header (chờ Gate 4 `REVIEW.md`) | T-005, T-006 | 3h | FR-10..12, AC-08..09, VAC-01..02 | 🔄 |
+| T-008 | Tạo `AdminOrderServlet` + `views/admin/orders.jsp` (`SCR-18`) + nối badge đếm giỏ Header (Gate 4 `APPROVED`) | T-005, T-006 | 3h | FR-10..12, AC-08..09, VAC-01..02 | ✅ |
 
 ## Chi tiết task
 
@@ -57,4 +57,4 @@ T-001 ──► T-002 ─┬─► T-003 ──┬─► T-006 ──┬─► T
 ```
 
 ## Phê duyệt (Gate 3)
-(chờ duyệt) · —
+Owner (BookHub) · 2026-11-23

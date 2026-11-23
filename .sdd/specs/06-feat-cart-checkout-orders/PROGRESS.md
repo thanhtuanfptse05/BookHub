@@ -3,8 +3,8 @@
 | Trường | Giá trị |
 |---|---|
 | Feature | `06-feat-cart-checkout-orders` · Tier: Full · Nhánh: `feat/bookhub-mvp-01-08` |
-| Pha hiện tại | `verifying` (code & 3/3 integration+concurrency tests xanh + live Tomcat verify; chờ Owner duyệt `REVIEW.md`) |
-| Task đang làm | `T-008` (đã hoàn tất code, test `AC-01..09` gồm 2-thread concurrency checkout & cancel; chờ Gate 4 `REVIEW.md`) |
+| Pha hiện tại | `done` (Owner đã duyệt `REVIEW.md` `APPROVED` — đóng đủ `T-001`..`T-008`) |
+| Task đang làm | — (đã hoàn tất toàn bộ `T-001`..`T-008`) |
 | Cập nhật | 2026-11-23 |
 
 ## 1. Plan của task hiện tại
@@ -15,7 +15,7 @@
 - [x] `T-005`: `OrderService` (Customer list/detail ownership check, cancel khóa `Order` hoàn kho đúng 1 lần, Admin chuyển trạng thái theo `OrderStateMachine`)
 - [x] `T-006`: `CartServlet`, `CheckoutServlet`, `OrderSuccessServlet` + `customer/{cart,checkout,order-success}.jsp` (`SCR-08..10`)
 - [x] `T-007`: `MyOrdersServlet`, `OrderDetailServlet`, `OrderCancelServlet` + `customer/{orders,order-detail}.jsp` (`SCR-11..12b`)
-- [ ] `T-008`: `AdminOrderServlet` + `admin/orders.jsp` (`SCR-18`), nối `cartCount` Header & 3/3 tests xanh — **chờ Owner duyệt `REVIEW.md` Gate 4**
+- [x] `T-008`: `AdminOrderServlet` + `admin/orders.jsp` (`SCR-18`), nối `cartCount` Header & 3/3 tests xanh — Owner đã duyệt `REVIEW.md` (`APPROVED`)
 
 ## 2. Nhật ký thực thi
 | Giờ | Việc đã làm | Kết quả |

@@ -11,7 +11,7 @@
 | T-003 | Tạo `UserService` (updateProfile allow-list, changePassword + invalidate tokens) + tests | T-001 | 2h | FR-09..11, EC-02, AC-09..10 | ✅ |
 | T-004 | Tạo `RegisterServlet`, `LoginServlet`, `LogoutServlet` + `register.jsp`, `login.jsp` (`SCR-04`, `SCR-05`) | T-002 | 3h | FR-01..05, EC-04, AC-01..05 | ✅ |
 | T-005 | Tạo `ForgotPasswordServlet`, `ResetPasswordServlet` + `forgot-password.jsp`, `reset-password.jsp` (`SCR-06`, `SCR-07`) | T-002 | 2.5h | FR-06..08, AC-06..08 | ✅ |
-| T-006 | Tạo `ProfileServlet` + `profile.jsp` (`SCR-13`), nối Header menu & kiểm tra trực quan (chờ Gate 4 `REVIEW.md`) | T-003, T-004 | 2.5h | FR-09..11, AC-09..10, VAC-01..02 | 🔄 |
+| T-006 | Tạo `ProfileServlet` + `profile.jsp` (`SCR-13`), nối Header menu & kiểm tra trực quan (Gate 4 `APPROVED`) | T-003, T-004 | 2.5h | FR-09..11, AC-09..10, VAC-01..02 | ✅ |
 
 ## Chi tiết task
 
@@ -51,4 +51,4 @@ T-001 ─┬─► T-002 ─┬─► T-004 ─┬─► T-006
 ```
 
 ## Phê duyệt (Gate 3)
-(chờ duyệt) · —
+Owner (BookHub) · 2026-11-23

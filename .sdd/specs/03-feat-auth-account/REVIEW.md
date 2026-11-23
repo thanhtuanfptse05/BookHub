@@ -5,9 +5,9 @@
 
 | Trường | Giá trị |
 |---|---|
-| Reviewer | Chờ Owner duyệt (bản nháp bằng chứng từ implementer) · Ngày: 2026-11-23 |
+| Reviewer | Owner (BookHub) · Ngày: 2026-11-23 |
 | Commit/nhánh | `feat/bookhub-mvp-01-08` (commit `cb6007c`) |
-| **Kết luận** | `PENDING` (chờ Owner xác nhận `APPROVED`) |
+| **Kết luận** | `APPROVED` (Owner đã duyệt Gate 4 ngày 2026-11-23) |
 
 ## 1. Bằng chứng chạy thật
 ```text
@@ -39,4 +39,4 @@ $ ant clean dist test-junit5
 | — | — | — | Không có phát hiện tồn đọng | — | — |
 
 ## 5. Phê duyệt cuối
-_(Chờ Owner xác nhận `APPROVED` để chốt Gate 4)_
+**`APPROVED`** — Owner (BookHub) · 2026-11-23

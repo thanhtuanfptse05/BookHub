@@ -10,7 +10,7 @@
 | T-002 | Tạo `AdminCategoryService` + integration tests (`AC-01..03`) | T-001 | 2.5h | FR-01..04, AC-01..03 | ✅ |
 | T-003 | Tạo `AdminBookService` + unit/integration tests (`AC-04..07`) | T-001 | 3.5h | FR-05..08, EC-01..04, AC-04..07 | ✅ |
 | T-004 | Tạo `AdminCategoryServlet` + `views/admin/categories.jsp` (`SCR-17`) | T-002 | 2.5h | FR-01..04, AC-01..03 | ✅ |
-| T-005 | Tạo `AdminBookServlet`, `AdminBookFormServlet` + `views/admin/{books,book-form}.jsp` (`SCR-15`, `SCR-16`) + live preview (chờ Gate 4 `REVIEW.md`) | T-003 | 3.5h | FR-05..08, AC-04..07, VAC-01..02 | 🔄 |
+| T-005 | Tạo `AdminBookServlet`, `AdminBookFormServlet` + `views/admin/{books,book-form}.jsp` (`SCR-15`, `SCR-16`) + live preview (Gate 4 `APPROVED`) | T-003 | 3.5h | FR-05..08, AC-04..07, VAC-01..02 | ✅ |
 
 ## Chi tiết task
 
@@ -45,4 +45,4 @@ T-001 ─┬─► T-002 ──► T-004
 ```
 
 ## Phê duyệt (Gate 3)
-(chờ duyệt) · —
+Owner (BookHub) · 2026-11-23

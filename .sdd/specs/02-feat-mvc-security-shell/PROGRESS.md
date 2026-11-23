@@ -3,8 +3,8 @@
 | Trường | Giá trị |
 |---|---|
 | Feature | `02-feat-mvc-security-shell` · Tier: Full · Nhánh: `feat/bookhub-mvp-01-08` |
-| Pha hiện tại | `verifying` (code & 7/7 unit tests đã xanh + kiểm tra Tomcat 10.1; chờ Owner duyệt `REVIEW.md` Gate 4) |
-| Task đang làm | `T-006` (đã hoàn tất code, test `AC-01..07`, live Tomcat error/CSRF checks; chờ Gate 4 `REVIEW.md`) |
+| Pha hiện tại | `done` (Owner đã duyệt `REVIEW.md` `APPROVED` — đóng đủ `T-001`..`T-006`) |
+| Task đang làm | — (đã hoàn tất toàn bộ `T-001`..`T-006`) |
 | Cập nhật | 2026-11-23 |
 
 ## 1. Plan của task hiện tại
@@ -13,7 +13,7 @@
 - [x] `T-003`: 4 Filters (`EncodingFilter`, `CsrfFilter`, `AuthenticationFilter`, `AdminAuthorizationFilter`) ánh xạ theo đúng thứ tự trong `web.xml`
 - [x] `T-004`: Bootstrap 5.3.3 local (`web/assets/vendor/bootstrap/`), `tokens.css`, `bookhub.css` (0 hardcode màu), `book-placeholder.svg`, `bookhub.js`, `robots.txt`
 - [x] `T-005`: 11 JSP fragments dùng chung chuẩn JSTL 3.0 + EL 5.0 (`common/{head,header,footer,messages,book-card,pagination,confirm-modal}.jsp`, `admin/{layout-start,layout-end}.jsp`)
-- [ ] `T-006`: `ErrorPageServlet` + `views/error/{403,404,500}.jsp` + 7/7 tests (`MvcSecurityShellTest`) & live Tomcat verify xong — **chờ Owner duyệt `REVIEW.md` Gate 4**
+- [x] `T-006`: `ErrorPageServlet` + `views/error/{403,404,500}.jsp` + 7/7 tests (`MvcSecurityShellTest`) & live Tomcat verify — Owner đã duyệt `REVIEW.md` (`APPROVED`)
 
 ## 2. Nhật ký thực thi
 | Giờ | Việc đã làm | Kết quả |

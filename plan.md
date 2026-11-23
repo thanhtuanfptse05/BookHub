@@ -6,10 +6,10 @@
 ## 1. Đang làm
 | Trường | Giá trị |
 |---|---|
-| Feature | `01`..`08` (Toàn bộ MVP BookHub đã triển khai & kiểm thử, chờ Owner duyệt Gate 4 `REVIEW.md`) |
-| Tier | `Full` |
-| Tiến độ chi tiết | `.sdd/specs/01-feat-foundation-jpa/PROGRESS.md` .. `.sdd/specs/08-feat-admin-users-reports/PROGRESS.md` |
-| Nhánh Git | `feat/bookhub-mvp-01-08` |
+| Feature | _(trống — đã hoàn tất & duyệt Gate 4 `APPROVED` toàn bộ `01`..`08` MVP BookHub)_ |
+| Tier | — |
+| Tiến độ chi tiết | `.sdd/specs/01-feat-foundation-jpa/` .. `.sdd/specs/08-feat-admin-users-reports/` (`done`) |
+| Nhánh Git | `feat/bookhub-mvp-01-08` (sẵn sàng merge vào `main`) |
 | Cập nhật lần cuối | 2026-11-23 |
 
 ## 2. Sổ nháp tier Quick (bỏ trống nếu không phải Quick)
@@ -21,11 +21,10 @@
 - [ ] Ghi bài học vào `CLAUDE.md §5` nếu lỗi có thể lặp lại
 
 ## 3. Blockers / câu hỏi cho người
-- ⬜ Duyệt Gate 4 (`REVIEW.md` cho các tính năng `01`..`08`), chuyển `PENDING` → `APPROVED` và đánh `✅` task cuối của từng `TASKS.md`.
-- ⬜ Merge nhánh `feat/bookhub-mvp-01-08` vào `main` sau khi duyệt (và chuyển các spec `done` vào `.sdd/specs/_archive/` nếu muốn chốt bản MVP).
-- ⬜ Kiểm tra giao diện trực quan 375/768/1280 trên trình duyệt thực khi chạy từ NetBeans 17 + Tomcat 10.1 (`http://localhost:8080/BookHub/`).
+- ⬜ Merge nhánh `feat/bookhub-mvp-01-08` vào `main`.
+- ⬜ (Tùy chọn) Archive thư mục `01`..`08` vào `.sdd/specs/_archive/` nếu muốn bắt đầu tính năng mới (`09-feat-*`).
 
 ## 4. Handoff cho session kế tiếp
-- **Đã xong:** Toàn bộ 8 tính năng MVP (`01`..`08`) trên nhánh `feat/bookhub-mvp-01-08`: 116 file nguồn Java, 25 routes (`RT-001`..`RT-025`), 34 file JSP (0 scriptlet, 100% JSTL 3.0 + EL 5.0), 9 bộ JUnit 5 tests (37/37 PASS trên SQL Server 2022 `BookHubDB`, gồm test concurrency checkout & cancel), live Tomcat 10.1 smoke test toàn bộ routes 0 lỗi `SEVERE`/`ELException`, `dist/BookHub.war` build sạch 0 warning, `scripts/verify.ps1` xanh.
-- **Làm tiếp:** Sau khi Owner review & duyệt `REVIEW.md` → đánh `APPROVED`, đóng task cuối, merge vào `main` và thực hiện EPIC 9 (chụp ảnh báo cáo nộp PRJ301 nếu cần).
-- **Cẩn thận:** Tuyệt đối không commit `bookhub-local.properties`; luôn biên dịch Ant với JDK 17 (`C:\Program Files\Java\jdk-17`).
+- **Đã xong:** Toàn bộ 8/8 tính năng MVP (`01`..`08`) đã được Owner duyệt Gate 4 (`APPROVED`), 48/48 tasks `✅`, `37/37` JUnit 5 tests + live Tomcat 10.1 pass, `scripts/verify.ps1` xanh (`0 lỗi, 0 cảnh báo`).
+- **Làm tiếp:** Merge `feat/bookhub-mvp-01-08` vào `main` và thực hiện EPIC 9 (chụp ảnh giao diện / kịch bản demo nộp PRJ301 nếu cần).
+- **Cẩn thận:** Không commit `bookhub-local.properties`; luôn chạy Ant với JDK 17 (`C:\Program Files\Java\jdk-17`).
