@@ -1,0 +1,14 @@
+# BookHub Local Configuration Template
+# Copy this file to `bookhub-local.properties` at the project root (or set BOOKHUB_CONFIG_PATH)
+# and fill in your local SQL Server credentials.
+# NEVER commit `bookhub-local.properties` to Git (protected by .gitignore & .agentignore).
+
+db.url=jdbc:sqlserver://localhost:1433;databaseName=BookHubDB;encrypt=true;trustServerCertificate=true;characterEncoding=UTF-8
+db.username=sa
+db.password=CHANGE_ME_LOCAL_SQL_SERVER_PASSWORD
+
+# Optional application defaults
+app.shipping.fee=30000.00
+app.reset.token.ttl.minutes=15
+app.show.sql=false
+app.base.url=http://localhost:8080/BookHub

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_1.xsd"
+             version="3.1">
+    <persistence-unit name="BookHubPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <!-- All 12 BookHub JPA Entities (explicitly listed for deterministic WAR + JUnit discovery) -->
+        <class>com.bookhub.entity.Role</class>
+        <class>com.bookhub.entity.User</class>
+        <class>com.bookhub.entity.Category</class>
+        <class>com.bookhub.entity.Book</class>
+        <class>com.bookhub.entity.Cart</class>
+        <class>com.bookhub.entity.CartItem</class>
+        <class>com.bookhub.entity.Order</class>
+        <class>com.bookhub.entity.OrderItem</class>
+        <class>com.bookhub.entity.Review</class>
+        <class>com.bookhub.entity.Question</class>
+        <class>com.bookhub.entity.Answer</class>
+        <class>com.bookhub.entity.PasswordResetToken</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+
+        <properties>
+            <!-- Connection URL, username, and password are injected at runtime by JpaUtil from AppConfig (outside Git). -->
+            <property name="jakarta.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="validate"/>
+            <property name="hibernate.show_sql" value="false"/>
+            <property name="hibernate.format_sql" value="false"/>
+            <property name="hibernate.jdbc.batch_size" value="20"/>
+            <property name="hibernate.order_inserts" value="true"/>
+            <property name="hibernate.order_updates" value="true"/>
+            <property name="hibernate.default_schema" value="dbo"/>
+        </properties>
+    </persistence-unit>
+</persistence>
