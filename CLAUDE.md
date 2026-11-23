@@ -39,7 +39,7 @@ src/
 └── conf/META-INF/persistence.xml   # BookHubPU (RESOURCE_LOCAL, SQLServerDialect, hbm2ddl.auto=validate)
 
 web/
-├── assets/            # css/, js/, images/, vendor/bootstrap/
+├── assets/            # css/, js/, images/ (Bootstrap 5.3.3 đóng gói dạng Servlet WebJar trong WEB-INF/lib/)
 └── WEB-INF/
     ├── web.xml        # Servlet 6.0, <scripting-invalid>true</scripting-invalid>, error pages 403/404/500
     ├── lib/           # Runtime JARs (không trùng API Tomcat cung cấp)
@@ -78,6 +78,7 @@ Browser → Filter (UTF-8, Auth, Admin, CSRF) → Servlet Controller (parse & va
 | 2026-11-23 | Tomcat 10.1 Jasper từ chối biểu thức EL `${pageResult.empty}` / `${cart.empty}` và `/admin/reviews` trả 500 khi `status == null` | `empty` là từ khóa dành riêng trong JSP EL 5.0; nối chuỗi JPQL `where + "ORDER BY"` thiếu khoảng trắng khi `where = ""` | Luôn viết `${empty pageResult.items}` thay vì `.empty`; luôn giữ dấu cách phân tách trước `ORDER BY` trong mọi JPQL động và có test regression nhánh `status == null` |
 | 2026-11-23 | NetBeans Run (in-place deploy `build/web`) báo `FAIL - context failed to start` vì không tìm thấy `bookhub-local.properties` | Tomcat khởi chạy với `user.dir = Tomcat/bin` nên `Paths.get("bookhub-local.properties")` không quét thư mục gốc project | `AppLifecycleListener` truyền `ServletContext.getRealPath("/")` vào `AppConfig.loadForWebApp()`, tự quét lên tối đa 2 cấp cha (`build/web` → `<projectRoot>`) trước khi fallback `catalina.base/conf` và `~/.bookhub` |
 | 2026-11-23 | Chữ tiếng Việt trong `book-placeholder.svg` hiển thị lỗi font (`HIá»†U SÃCH`) khi chạy Tomcat 10.1 trên Windows | `EncodingFilter` gọi `response.setCharacterEncoding("UTF-8")` cho cả `/assets/*` khiến Tomcat `DefaultServlet` đọc file bằng `Cp1252` rồi re-encode thành UTF-8 | Bỏ qua `response.setCharacterEncoding` trong `EncodingFilter` với `/assets/*` & `/robots.txt`, và luôn thêm `<?xml version="1.0" encoding="UTF-8"?>` ở đầu file SVG |
+| 2026-11-23 | NetBeans 17 gắn dấu đỏ giả trên `web/assets/vendor/bootstrap/bootstrap.min.css` | CSS parser cũ của NetBeans 17 không hiểu cú pháp Bootstrap 5.3 (`--bs-*: ;`, `rgba(var(...))`) | Đóng gói Bootstrap 5.3.3 thành Servlet 6.0 WebJar (`web/WEB-INF/lib/bootstrap-5.3.3-webjar.jar` với `META-INF/resources/assets/vendor/bootstrap/*`) để chạy offline 100% và sạch dấu đỏ trên mọi máy NetBeans |
 
 ## 6. Vùng nguy hiểm (Known Hazards)
 - **Trộn `javax.*` và `jakarta.*`:** Gây lỗi compile/deploy trên Tomcat 10.1.x. Luôn kiểm tra import và JAR trước build.

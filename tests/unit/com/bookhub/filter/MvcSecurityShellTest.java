@@ -24,6 +24,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.zip.ZipFile;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -188,7 +189,14 @@ class MvcSecurityShellTest {
     // @spec mvc-security-shell/AC-07
     @Test
     void sharedAssetsErrorPagesAndTokensExistWithoutHardcodedColorsInBookhubCss() throws IOException {
-        assertTrue(Files.isRegularFile(Paths.get("web", "assets", "vendor", "bootstrap", "bootstrap.min.css")));
+        Path bootstrapWebJar = Paths.get("web", "WEB-INF", "lib", "bootstrap-5.3.3-webjar.jar");
+        assertTrue(Files.isRegularFile(bootstrapWebJar), "Bootstrap 5.3.3 Servlet WebJar must exist in WEB-INF/lib");
+        try (ZipFile zf = new ZipFile(bootstrapWebJar.toFile())) {
+            assertTrue(zf.getEntry("META-INF/resources/assets/vendor/bootstrap/bootstrap.min.css") != null);
+            assertTrue(zf.getEntry("META-INF/resources/assets/vendor/bootstrap/bootstrap.bundle.min.js") != null);
+        }
+        assertFalse(Files.exists(Paths.get("web", "assets", "vendor")),
+                "Unpacked vendor CSS must not sit in web/assets so NetBeans 17 CSS parser stays clean");
         assertTrue(Files.isRegularFile(Paths.get("web", "assets", "css", "tokens.css")));
         assertTrue(Files.isRegularFile(Paths.get("web", "assets", "images", "book-placeholder.svg")));
         assertTrue(Files.isRegularFile(Paths.get("web", "WEB-INF", "views", "error", "403.jsp")));
