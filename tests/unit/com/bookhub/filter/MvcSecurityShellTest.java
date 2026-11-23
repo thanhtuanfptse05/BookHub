@@ -79,6 +79,18 @@ class MvcSecurityShellTest {
         assertEquals("UTF-8", reqEnc.get());
         assertEquals("UTF-8", respEnc.get());
         assertTrue(chained.get());
+
+        // Static assets must not force response charset so Tomcat DefaultServlet streams raw UTF-8 bytes
+        AtomicReference<String> staticRespEnc = new AtomicReference<>();
+        HttpServletRequest assetReq = mockRequest(
+                "GET", "/BookHub/assets/images/book-placeholder.svg", null, null, null, new AtomicReference<>());
+        HttpServletResponse assetResp = mockResponse(staticRespEnc, new AtomicInteger(), new AtomicReference<>());
+        filter.doFilter(assetReq, assetResp, (r, s) -> {});
+        assertNull(staticRespEnc.get(), "Static assets must stream untouched without Cp1252 transcoding");
+
+        String placeholderSvg = Files.readString(
+                Paths.get("web", "assets", "images", "book-placeholder.svg"), StandardCharsets.UTF_8);
+        assertTrue(placeholderSvg.startsWith("<?xml version=\"1.0\" encoding=\"UTF-8\"?>"));
     }
 
     // @spec mvc-security-shell/AC-03

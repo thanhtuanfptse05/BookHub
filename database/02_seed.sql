@@ -85,139 +85,139 @@ INSERT INTO dbo.Books (
     (@cat_tech, '978-0132350884', N'Clean Code: Mã sạch và Con đường trở thành Lập trình viên giỏi', N'Robert C. Martin', N'NXB Dân Trí', 2022,
      189000.00, 14, N'Cẩm nang viết mã nguồn rõ ràng, dễ bảo trì và tái cấu trúc hiệu quả cho kỹ sư phần mềm.',
      N'Cuốn sách trình bày nguyên tắc đặt tên, thiết kế hàm nhỏ gọn, xử lý ngoại lệ, kiểm thử đơn vị và nhận diện code smell kèm nhiều ví dụ Java thực tế.',
-     '/assets/images/book-placeholder.svg', 1, 1, '2026-11-22 10:00:00', '2026-11-22 10:00:00'),
+     '/assets/images/books/bk-01.jpg', 1, 1, '2026-11-22 10:00:00', '2026-11-22 10:00:00'),
 
     (@cat_tech, '978-1449373320', N'Designing Data-Intensive Applications', N'Martin Kleppmann', N'O''Reilly Media', 2021,
      320000.00, 8, N'Kiến trúc hệ thống dữ liệu tin cậy, mở rộng tốt và dễ bảo trì.',
      N'Phân tích sâu mô hình lưu trữ, chỉ mục, sao chép dữ liệu, phân mảnh, transaction và xử lý luồng trong các hệ thống phân tán hiện đại.',
-     '/assets/images/book-placeholder.svg', 1, 1, '2026-11-21 10:00:00', '2026-11-21 10:00:00'),
+     '/assets/images/books/bk-02.jpg', 1, 1, '2026-11-21 10:00:00', '2026-11-21 10:00:00'),
 
     (@cat_tech, '978-0134685991', N'Effective Java (Ấn bản 3)', N'Joshua Bloch', N'Addison-Wesley', 2020,
      245000.00, 1, N'90 quy tắc thực chiến giúp viết mã Java an toàn, rõ ràng và tối ưu hiệu năng.',
      N'Tổng hợp các mẫu thiết kế, generics, lambda, concurrency và serialization dành cho lập trình viên Java 17 trở lên. (Tồn kho 1 cuốn để kiểm thử đặt hàng đồng thời.)',
-     '/assets/images/book-placeholder.svg', 0, 1, '2026-11-20 10:00:00', '2026-11-20 10:00:00'),
+     '/assets/images/books/bk-03.jpg', 0, 1, '2026-11-20 10:00:00', '2026-11-20 10:00:00'),
 
     (@cat_tech, '978-1492078005', N'Head First Design Patterns', N'Eric Freeman & Elisabeth Robson', N'O''Reilly Media', 2021,
      215000.00, 0, N'Học mẫu thiết kế hướng đối tượng trực quan bằng ví dụ sinh động và Java.',
      N'Giải thích Strategy, Observer, Decorator, Factory, Singleton, Command và MVC qua tình huống thực tế dễ nhớ. (Hiện tạm hết hàng để kiểm thử SCR-03b.)',
-     '/assets/images/book-placeholder.svg', 0, 1, '2026-11-19 10:00:00', '2026-11-19 10:00:00'),
+     '/assets/images/books/bk-04.jpg', 0, 1, '2026-11-19 10:00:00', '2026-11-19 10:00:00'),
 
     /* Kinh tế (4 active) */
     (@cat_econ, '978-0857197689', N'Tâm lý học về tiền', N'Morgan Housel', N'NXB Dân Trí', 2023,
      125000.00, 22, N'19 câu chuyện ngắn giải thích cách con người suy nghĩ và ra quyết định tài chính.',
      N'Quản lý tài chính cá nhân không chỉ phụ thuộc vào kiến thức toán học mà phần lớn đến từ hành vi, kiên nhẫn và cách nhìn nhận rủi ro dài hạn.',
-     '/assets/images/book-placeholder.svg', 1, 1, '2026-11-18 10:00:00', '2026-11-18 10:00:00'),
+     '/assets/images/books/bk-05.jpg', 1, 1, '2026-11-18 10:00:00', '2026-11-18 10:00:00'),
 
     (@cat_econ, '978-0060555665', N'Nhà đầu tư thông minh', N'Benjamin Graham', N'NXB Thế Giới', 2022,
      210000.00, 11, N'Tác phẩm nền tảng về đầu tư giá trị và biên độ an toàn.',
      N'Hướng dẫn nhà đầu tư phân biệt đầu tư với đầu cơ, quản trị cảm xúc trước biến động thị trường và xây dựng danh mục bền vững.',
-     '/assets/images/book-placeholder.svg', 0, 1, '2026-11-17 10:00:00', '2026-11-17 10:00:00'),
+     '/assets/images/books/bk-06.jpg', 0, 1, '2026-11-17 10:00:00', '2026-11-17 10:00:00'),
 
     (@cat_econ, '978-0307887894', N'Khởi nghiệp tinh gọn', N'Eric Ries', N'NXB Tổng Hợp TP.HCM', 2021,
      148000.00, 16, N'Phương pháp xây dựng MVP, đo lường nhanh và học hỏi có kiểm chứng.',
      N'Cung cấp vòng lặp Xây dựng – Đo lường – Học hỏi giúp đội ngũ sản phẩm giảm lãng phí và điều chỉnh hướng đi kịp thời.',
-     '/assets/images/book-placeholder.svg', 1, 1, '2026-11-16 10:00:00', '2026-11-16 10:00:00'),
+     '/assets/images/books/bk-07.jpg', 1, 1, '2026-11-16 10:00:00', '2026-11-16 10:00:00'),
 
     (@cat_econ, NULL, N'Kinh tế học hài hước', N'Steven D. Levitt & Stephen J. Dubner', N'NXB Lao Động', 2020,
      115000.00, 19, N'Góc nhìn kinh tế học bất ngờ đằng sau các hiện tượng đời thường.',
      N'Sử dụng dữ liệu thực nghiệm để phân tích động lực ẩn giấu trong giáo dục, kinh doanh và đời sống xã hội. (ISBN NULL để kiểm thử filtered index.)',
-     '/assets/images/book-placeholder.svg', 0, 1, '2026-11-15 10:00:00', '2026-11-15 10:00:00'),
+     '/assets/images/books/bk-08.jpg', 0, 1, '2026-11-15 10:00:00', '2026-11-15 10:00:00'),
 
     /* Văn học (4 active) */
     (@cat_lit, '978-6043651591', N'Nhà giả kim', N'Paulo Coelho', N'NXB Hội Nhà Văn', 2023,
      79000.00, 35, N'Hành trình theo đuổi vận mệnh và lắng nghe trái tim của chàng chăn cừu Santiago.',
      N'Tác phẩm văn học giàu chất triết lý nhẹ nhàng, truyền cảm hứng về lòng can đảm bước ra khỏi vùng an toàn để thực hiện ước mơ.',
-     '/assets/images/book-placeholder.svg', 1, 1, '2026-11-14 10:00:00', '2026-11-14 10:00:00'),
+     '/assets/images/books/bk-09.jpg', 1, 1, '2026-11-14 10:00:00', '2026-11-14 10:00:00'),
 
     (@cat_lit, '978-6041142756', N'Cho tôi xin một vé đi tuổi thơ', N'Nguyễn Nhật Ánh', N'NXB Trẻ', 2022,
      85000.00, 28, N'Những trang văn trong trẻo gợi nhớ kỷ niệm hồn nhiên của tuổi nhỏ.',
      N'Qua lời kể hóm hỉnh của cậu bé Mùi, cuốn sách đưa người đọc trở lại thế giới bạn bè, gia đình và những suy nghĩ ngộ nghĩnh thuở thơ ấu.',
-     '/assets/images/book-placeholder.svg', 1, 1, '2026-11-13 10:00:00', '2026-11-13 10:00:00'),
+     '/assets/images/books/bk-10.jpg', 1, 1, '2026-11-13 10:00:00', '2026-11-13 10:00:00'),
 
     (@cat_lit, '978-6043440126', N'Rừng Na Uy', N'Haruki Murakami', N'NXB Hội Nhà Văn', 2021,
      135000.00, 12, N'Bản tình ca trầm lắng về tuổi trẻ, mất mát và sự trưởng thành tại Tokyo.',
      N'Câu chuyện hồi tưởng đầy cảm xúc của nhân vật Watanabe với nhịp kể tinh tế và âm hưởng cổ điển đặc trưng của Murakami.',
-     '/assets/images/book-placeholder.svg', 0, 1, '2026-11-12 10:00:00', '2026-11-12 10:00:00'),
+     '/assets/images/books/bk-11.jpg', 0, 1, '2026-11-12 10:00:00', '2026-11-12 10:00:00'),
 
     (@cat_lit, NULL, N'Số đỏ', N'Vũ Trọng Phụng', N'NXB Văn Học', 2020,
      62000.00, 20, N'Kiệt tác tiểu thuyết trào phúng bậc nhất của văn học Việt Nam hiện đại.',
      N'Chân dung xã hội thành thị đầu thế kỷ XX qua nhân vật Xuân Tóc Đỏ với ngòi bút châm biếm sắc sảo. (ISBN NULL #2 để kiểm thử filtered index.)',
-     '/assets/images/book-placeholder.svg', 0, 1, '2026-11-11 10:00:00', '2026-11-11 10:00:00'),
+     '/assets/images/books/bk-12.jpg', 0, 1, '2026-11-11 10:00:00', '2026-11-11 10:00:00'),
 
     /* Kỹ năng (4 active) */
     (@cat_skill, '978-6043354829', N'Đắc Nhân Tâm', N'Dale Carnegie', N'NXB Tổng Hợp TP.HCM', 2023,
      86000.00, 40, N'Nghệ thuật ứng xử, lắng nghe và tạo thiện cảm bền vững trong giao tiếp.',
      N'Tổng hợp những nguyên tắc ứng xử kinh điển giúp cải thiện mối quan hệ gia đình, học tập và công việc.',
-     '/assets/images/book-placeholder.svg', 1, 1, '2026-11-10 10:00:00', '2026-11-10 10:00:00'),
+     '/assets/images/books/bk-13.jpg', 1, 1, '2026-11-10 10:00:00', '2026-11-10 10:00:00'),
 
     (@cat_skill, '978-0735211292', N'Thói quen nguyên tử (Atomic Habits)', N'James Clear', N'NXB Thế Giới', 2023,
      165000.00, 25, N'Thay đổi nhỏ 1% mỗi ngày tạo nên kết quả vượt trội lâu dài.',
      N'Trình bày khung 4 quy luật xây dựng thói quen tốt và loại bỏ thói quen xấu dựa trên tâm lý học hành vi. (Giá mới 165.000 ₫; đơn cũ giữ snapshot 150.000 ₫.)',
-     '/assets/images/book-placeholder.svg', 1, 1, '2026-11-09 10:00:00', '2026-11-15 09:00:00'),
+     '/assets/images/books/bk-14.jpg', 1, 1, '2026-11-09 10:00:00', '2026-11-15 09:00:00'),
 
     (@cat_skill, '978-1455586691', N'Deep Work: Làm ra làm, chơi ra chơi', N'Cal Newport', N'NXB Thế Giới', 2022,
      139000.00, 18, N'Rèn luyện khả năng tập trung sâu trong thế giới đầy xao nhãng.',
      N'Đưa ra chiến lược sắp xếp lịch làm việc, quản lý công cụ số và tạo ra giá trị chuyên môn cao trong thời gian ngắn hơn.',
-     '/assets/images/book-placeholder.svg', 0, 1, '2026-11-08 10:00:00', '2026-11-08 10:00:00'),
+     '/assets/images/books/bk-15.jpg', 0, 1, '2026-11-08 10:00:00', '2026-11-08 10:00:00'),
 
     (@cat_skill, '978-1982137274', N'7 Thói quen hiệu quả', N'Stephen R. Covey', N'NXB Tổng Hợp TP.HCM', 2021,
      175000.00, 15, N'Bảy nguyên tắc phát triển bản thân và lãnh đạo dựa trên giá trị cốt lõi.',
      N'Từ chủ động, bắt đầu bằng mục tiêu cuối cùng đến tư duy cùng thắng và rèn mới bản thân mỗi ngày.',
-     '/assets/images/book-placeholder.svg', 0, 1, '2026-11-07 10:00:00', '2026-11-07 10:00:00'),
+     '/assets/images/books/bk-16.jpg', 0, 1, '2026-11-07 10:00:00', '2026-11-07 10:00:00'),
 
     /* Ngoại ngữ (4 active) */
     (@cat_lang, '978-1108457651', N'English Grammar in Use (5th Edition)', N'Raymond Murphy', N'Cambridge University Press', 2022,
      195000.00, 21, N'Giáo trình tự học ngữ pháp tiếng Anh trình độ trung cấp kèm bài tập thực hành.',
      N'Mỗi bài gồm trang lý thuyết súc tích bên trái và bài tập vận dụng bên phải, phù hợp sinh viên đại học và người đi làm.',
-     '/assets/images/book-placeholder.svg', 0, 1, '2026-11-06 10:00:00', '2026-11-06 10:00:00'),
+     '/assets/images/books/bk-17.jpg', 0, 1, '2026-11-06 10:00:00', '2026-11-06 10:00:00'),
 
     (@cat_lang, '978-6043728910', N'Hackers IELTS Reading', N'David Cho', N'NXB Thế Giới', 2023,
      168000.00, 13, N'Chiến thuật đọc hiểu theo từng dạng câu hỏi IELTS Academic.',
      N'Cung cấp lộ trình luyện từ cơ bản đến nâng cao kèm phân tích chi tiết bẫy thường gặp và bảng từ vựng học thuật.',
-     '/assets/images/book-placeholder.svg', 0, 1, '2026-11-05 10:00:00', '2026-11-05 10:00:00'),
+     '/assets/images/books/bk-18.jpg', 0, 1, '2026-11-05 10:00:00', '2026-11-05 10:00:00'),
 
     (@cat_lang, '978-4883196036', N'Minna no Nihongo Sơ cấp 1', N'3A Corporation', N'NXB Trẻ', 2021,
      98000.00, 24, N'Bộ giáo trình tiếng Nhật sơ cấp tiêu chuẩn N5 với hội thoại và bài tập mẫu.',
      N'Xây dựng nền tảng từ vựng, mẫu câu cơ bản và kỹ năng giao tiếp tiếng Nhật hằng ngày.',
-     '/assets/images/book-placeholder.svg', 0, 1, '2026-11-04 10:00:00', '2026-11-04 10:00:00'),
+     '/assets/images/books/bk-19.jpg', 0, 1, '2026-11-04 10:00:00', '2026-11-04 10:00:00'),
 
     (@cat_lang, '978-6043182040', N'Luyện phát âm tiếng Anh chuẩn Mỹ', N'Ann Cook', N'NXB Hồng Đức', 2020,
      112000.00, 17, N'Hướng dẫn khẩu hình, trọng âm, nối âm và ngữ điệu tự nhiên.',
      N'Giúp người học khắc phục lỗi phát âm phổ biến của người Việt và nâng cao kỹ năng nghe nói rõ rệt.',
-     '/assets/images/book-placeholder.svg', 0, 1, '2026-11-03 10:00:00', '2026-11-03 10:00:00'),
+     '/assets/images/books/bk-20.jpg', 0, 1, '2026-11-03 10:00:00', '2026-11-03 10:00:00'),
 
     /* Thiếu nhi (4 active) */
     (@cat_kids, '978-6042231091', N'Dế Mèn phiêu lưu ký', N'Tô Hoài', N'NXB Kim Đồng', 2022,
      55000.00, 30, N'Chuyến phiêu lưu kỳ thú qua thế giới loài vật của chú Dế Mèn.',
      N'Tác phẩm kinh điển giàu bài học về tình bạn, lòng nhân ái và tinh thần khám phá thế giới rộng lớn.',
-     '/assets/images/book-placeholder.svg', 0, 1, '2026-11-02 10:00:00', '2026-11-02 10:00:00'),
+     '/assets/images/books/bk-21.jpg', 0, 1, '2026-11-02 10:00:00', '2026-11-02 10:00:00'),
 
     (@cat_kids, '978-6043409154', N'Hoàng tử bé', N'Antoine de Saint-Exupéry', N'NXB Hội Nhà Văn', 2023,
      68000.00, 26, N'Câu chuyện diệu kỳ về tình bạn giữa phi công và cậu bé đến từ tiểu hành tinh B-612.',
      N'Tác phẩm minh họa tinh tế dành cho thiếu nhi và cả người lớn từng là trẻ con.',
-     '/assets/images/book-placeholder.svg', 0, 1, '2026-11-01 10:00:00', '2026-11-01 10:00:00'),
+     '/assets/images/books/bk-22.jpg', 0, 1, '2026-11-01 10:00:00', '2026-11-01 10:00:00'),
 
     (@cat_kids, '978-6042219808', N'Kính vạn hoa — Tập 1', N'Nguyễn Nhật Ánh', N'NXB Kim Đồng', 2021,
      95000.00, 18, N'Những câu chuyện học trò vui nhộn của bộ ba Quý Ròm, Tiểu Long và nhỏ Hạnh.',
      N'Tập mở đầu bộ truyện thiếu nhi kinh điển tái hiện sinh động đời sống học sinh Việt Nam.',
-     '/assets/images/book-placeholder.svg', 0, 1, '2026-10-30 10:00:00', '2026-10-30 10:00:00'),
+     '/assets/images/books/bk-23.jpg', 0, 1, '2026-10-30 10:00:00', '2026-10-30 10:00:00'),
 
     (@cat_kids, '978-6043521108', N'Chuyện con mèo dạy hải âu bay', N'Luis Sepúlveda', N'NXB Hội Nhà Văn', 2022,
      45000.00, 22, N'Lời hứa cảm động của chú mèo mập Zorba dành cho cô hải âu nhỏ Lucky.',
      N'Câu chuyện ấm áp về trách nhiệm, tình yêu thương vượt qua sự khác biệt và bảo vệ thiên nhiên.',
-     '/assets/images/book-placeholder.svg', 0, 1, '2026-10-28 10:00:00', '2026-10-28 10:00:00'),
+     '/assets/images/books/bk-24.jpg', 0, 1, '2026-10-28 10:00:00', '2026-10-28 10:00:00'),
 
     /* Sách ngừng bán (is_active = 0, đã có đơn DELIVERED lịch sử, giá 15.000 ₫ để test TC-REP-03 / TC-ADM-04 / TC-CAT-06) */
     (@cat_tech, '978-0000000025', N'Lập trình Servlet 2.5 (Ấn bản cũ đã ngừng bán)', N'Tác giả Lưu trữ', N'NXB Kỹ Thuật', 2015,
      15000.00, 5, N'Tài liệu cũ đã ngừng kinh doanh (dùng kiểm thử soft-deactivate và lọc public).',
      N'Bản ghi dùng kiểm thử BR-CAT-001, BR-CAT-005 (is_featured=1 nhưng is_active=0 vẫn ẩn), TC-ADM-04 và TC-REP-03.',
-     '/assets/images/book-placeholder.svg', 1, 0, '2026-10-05 10:00:00', '2026-11-13 10:00:00'),
+     '/assets/images/books/bk-25.jpg', 1, 0, '2026-10-05 10:00:00', '2026-11-13 10:00:00'),
 
     /* Sách active nằm trong danh mục inactive (test BR-CAT-001 lọc cả Categories.is_active = 1) */
     (@cat_archived, '978-0000000026', N'Tuyển tập tài liệu tham khảo cũ', N'Ban Biên Tập', N'NXB Lưu Trữ', 2018,
      70000.00, 9, N'Sách thuộc danh mục đã ngừng hoạt động (phải ẩn trên storefront public).',
      N'Dùng kiểm thử quy tắc sách chỉ hiển thị public khi cả Books.is_active = 1 và Categories.is_active = 1.',
-     '/assets/images/book-placeholder.svg', 0, 1, '2026-10-06 10:00:00', '2026-10-20 09:00:00');
+     '/assets/images/books/bk-26.jpg', 0, 1, '2026-10-06 10:00:00', '2026-10-20 09:00:00');
 
 DECLARE @bk1  BIGINT = (SELECT book_id FROM dbo.Books WHERE isbn = '978-0132350884');
 DECLARE @bk2  BIGINT = (SELECT book_id FROM dbo.Books WHERE isbn = '978-1449373320');
