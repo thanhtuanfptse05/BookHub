@@ -102,7 +102,7 @@
               </td>
             </tr>
           </c:forEach>
-          <c:if test="${pageResult.empty}">
+          <c:if test="${empty pageResult.items}">
             <tr><td colspan="6" class="text-center py-4 bh-muted">Không có sách nào khớp bộ lọc hiện tại.</td></tr>
           </c:if>
         </tbody>

@@ -66,7 +66,7 @@
         </c:if>
       </article>
     </c:forEach>
-    <c:if test="${pageResult.empty}">
+    <c:if test="${empty pageResult.items}">
       <section class="bh-empty-state"><p class="bh-muted mb-0">Chưa có câu hỏi nào ở mục này.</p></section>
     </c:if>
   </div>

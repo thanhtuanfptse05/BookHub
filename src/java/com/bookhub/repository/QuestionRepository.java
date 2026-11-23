@@ -53,7 +53,7 @@ public class QuestionRepository extends BaseRepository<Question, Long> {
         }
         int totalPages = (int) Math.ceil((double) total / pageSize);
         int safePage = Math.min(Math.max(1, page), totalPages);
-        String where = status == null ? "" : " WHERE q.status = :st ";
+        String where = status == null ? " " : " WHERE q.status = :st ";
         TypedQuery<AdminQuestionRowDTO> query = em.createQuery(
                 "SELECT new com.bookhub.dto.AdminQuestionRowDTO("
                         + "q.questionId, b.bookId, b.title, u.fullName, u.email, "

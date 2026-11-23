@@ -29,7 +29,7 @@
       </div>
 
       <c:choose>
-        <c:when test="${pageResult.empty}">
+        <c:when test="${empty pageResult.items}">
           <section class="bh-empty-state">
             <h2 class="h4 mb-2">Bạn chưa có đơn hàng nào</h2>
             <p class="bh-muted mb-4">Khám phá các đầu sách yêu thích và đặt đơn COD nhanh chóng.</p>

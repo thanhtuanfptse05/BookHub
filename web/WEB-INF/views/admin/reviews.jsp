@@ -74,7 +74,7 @@
               </td>
             </tr>
           </c:forEach>
-          <c:if test="${pageResult.empty}">
+          <c:if test="${empty pageResult.items}">
             <tr><td colspan="4" class="text-center py-4 bh-muted">Chưa có đánh giá nào ở mục này.</td></tr>
           </c:if>
         </tbody>

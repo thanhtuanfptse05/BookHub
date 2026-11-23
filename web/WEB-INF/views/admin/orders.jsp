@@ -151,7 +151,7 @@
               </td>
             </tr>
           </c:forEach>
-          <c:if test="${pageResult.empty}">
+          <c:if test="${empty pageResult.items}">
             <tr><td colspan="7" class="text-center py-4 bh-muted">Không có đơn hàng nào khớp bộ lọc.</td></tr>
           </c:if>
         </tbody>

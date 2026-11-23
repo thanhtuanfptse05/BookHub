@@ -96,7 +96,7 @@
           </div>
 
           <c:choose>
-            <c:when test="${pageResult.empty}">
+            <c:when test="${empty pageResult.items}">
               <section class="bh-empty-state">
                 <h2 class="h4 mb-2">Không tìm thấy sách phù hợp</h2>
                 <p class="bh-muted mb-4">Thử điều chỉnh từ khóa, thể loại hoặc khoảng giá để xem thêm đầu sách tại BookHub.</p>

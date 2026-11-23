@@ -2,13 +2,15 @@
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title><c:out value="${not empty pageTitle ? pageTitle : 'BookHub — Hiệu sách trực tuyến'}" /></title>
+<c:set var="resolvedTitle" value="${not empty pageTitle ? pageTitle : 'BookHub — Hiệu sách trực tuyến'}" />
+<c:set var="resolvedOgType" value="${not empty ogType ? ogType : 'website'}" />
+<title><c:out value="${resolvedTitle}" /></title>
 <c:if test="${not empty metaDescription}">
   <meta name="description" content="<c:out value='${metaDescription}' />">
   <meta property="og:description" content="<c:out value='${metaDescription}' />">
 </c:if>
-<meta property="og:title" content="<c:out value='${not empty pageTitle ? pageTitle : "BookHub — Hiệu sách trực tuyến"}' />">
-<meta property="og:type" content="<c:out value='${not empty ogType ? ogType : "website"}' />">
+<meta property="og:title" content="<c:out value='${resolvedTitle}' />">
+<meta property="og:type" content="<c:out value='${resolvedOgType}' />">
 <c:if test="${not empty canonicalUrl}">
   <link rel="canonical" href="<c:out value='${canonicalUrl}' />">
   <meta property="og:url" content="<c:out value='${canonicalUrl}' />">

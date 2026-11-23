@@ -11,7 +11,7 @@
     <div class="bh-container">
       <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
         <h1 class="h2 mb-0">Giỏ hàng của bạn</h1>
-        <c:if test="${not cart.empty}">
+        <c:if test="${not empty cart.items}">
           <form action="${pageContext.request.contextPath}/cart" method="post" class="m-0">
             <input type="hidden" name="_csrf" value="<c:out value='${csrfToken}' />">
             <input type="hidden" name="action" value="clear">
@@ -39,7 +39,7 @@
       </c:if>
 
       <c:choose>
-        <c:when test="${cart.empty}">
+        <c:when test="${empty cart.items}">
           <section class="bh-empty-state">
             <h2 class="h4 mb-2">Giỏ hàng của bạn đang trống</h2>
             <p class="bh-muted mb-4">Hãy khám phá hàng trăm đầu sách chọn lọc và thêm vào giỏ để đặt mua COD.</p>

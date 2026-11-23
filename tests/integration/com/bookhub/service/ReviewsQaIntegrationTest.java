@@ -147,6 +147,10 @@ class ReviewsQaIntegrationTest {
             assertTrue(catalogService.getBookDetail(tempBookId, null).getAnsweredQuestions().isEmpty());
             assertEquals(QuestionStatus.HIDDEN, JpaUtil.executeReadOnly(em -> em.find(Question.class, qId).getStatus()));
 
+            // Regression check: admin list with status == null (ALL tab) executes cleanly
+            assertTrue(reviewService.listAdminReviews(null, 1).getTotalItems() >= 1);
+            assertTrue(questionService.listAdminQuestions(null, 1).getTotalItems() >= 1);
+
             // AC-08: verify all 3 views render user review/Q&A text strictly via <c:out> (no raw unescaped EL)
             for (String viewPath : new String[]{
                     "web/WEB-INF/views/site/book-detail.jsp",

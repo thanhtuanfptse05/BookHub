@@ -43,7 +43,7 @@ public class ReviewRepository extends BaseRepository<Review, Long> {
         }
         int totalPages = (int) Math.ceil((double) total / pageSize);
         int safePage = Math.min(Math.max(1, page), totalPages);
-        String where = status == null ? "" : " WHERE r.status = :st ";
+        String where = status == null ? " " : " WHERE r.status = :st ";
         TypedQuery<AdminReviewRowDTO> q = em.createQuery(
                 "SELECT new com.bookhub.dto.AdminReviewRowDTO("
                         + "r.reviewId, b.bookId, b.title, u.fullName, u.email, "
