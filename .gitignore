@@ -9,6 +9,8 @@ target/
 .env
 .env.*
 !.env.example
+bookhub-local.properties
+*.local.properties
 *.log
 .DS_Store
 Thumbs.db
