@@ -56,7 +56,11 @@ public final class AppConfig {
     }
 
     public static AppConfig load() {
-        return load(System.getProperties(), System.getenv());
+        return load(System.getProperties(), System.getenv(), null);
+    }
+
+    public static AppConfig loadForWebApp(Path webAppRoot) {
+        return load(System.getProperties(), System.getenv(), webAppRoot);
     }
 
     public static AppConfig load(Path explicitFile) {
@@ -69,6 +73,10 @@ public final class AppConfig {
     }
 
     static AppConfig load(Properties sysProps, Map<String, String> env) {
+        return load(sysProps, env, null);
+    }
+
+    static AppConfig load(Properties sysProps, Map<String, String> env, Path webAppRoot) {
         String explicitPath = firstNonBlank(
                 sysProps.getProperty(AppConstants.CONFIG_PATH_SYS_PROP), env.get(AppConstants.CONFIG_PATH_ENV));
         if (explicitPath != null) {
@@ -78,7 +86,7 @@ public final class AppConfig {
             }
             return fromProperties(readFile(path), env, path.toAbsolutePath().toString());
         }
-        Path discovered = discoverDefaultFile(sysProps);
+        Path discovered = discoverDefaultFile(sysProps, webAppRoot);
         if (discovered != null) {
             return fromProperties(readFile(discovered), env, discovered.toAbsolutePath().toString());
         }
@@ -149,8 +157,15 @@ public final class AppConfig {
                 + ", baseUrl='" + baseUrl + "', source='" + sourceDescription + "'}";
     }
 
-    private static Path discoverDefaultFile(Properties sysProps) {
+    private static Path discoverDefaultFile(Properties sysProps, Path webAppRoot) {
         List<Path> candidates = new ArrayList<>();
+        if (webAppRoot != null) {
+            Path current = webAppRoot.toAbsolutePath().normalize();
+            for (int depth = 0; depth < 3 && current != null; depth++) {
+                candidates.add(current.resolve(AppConstants.DEFAULT_CONFIG_FILE));
+                current = current.getParent();
+            }
+        }
         candidates.add(Paths.get(AppConstants.DEFAULT_CONFIG_FILE));
         String catalinaBase = sysProps.getProperty("catalina.base");
         if (!isBlank(catalinaBase)) {

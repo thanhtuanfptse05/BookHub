@@ -109,6 +109,24 @@ class AppConfigTest {
         assertEquals(new BigDecimal("25000.00"), cfg.getShippingFee());
     }
 
+    // @spec foundation-jpa/AC-03
+    @Test
+    void loadForWebAppDiscoversConfigAtProjectRootFromBuildWeb(@TempDir Path tempProjectRoot) throws IOException {
+        Path buildWebDir = Files.createDirectories(tempProjectRoot.resolve("build").resolve("web"));
+        Path configFile = tempProjectRoot.resolve(AppConstants.DEFAULT_CONFIG_FILE);
+        Files.writeString(
+                configFile,
+                "db.url=jdbc:sqlserver://netbeans-host:1433;databaseName=BookHubDB\n"
+                        + "db.username=nb_dev\n"
+                        + "db.password=NbSecret_123\n",
+                StandardCharsets.UTF_8);
+
+        AppConfig cfg = AppConfig.load(new Properties(), Collections.emptyMap(), buildWebDir);
+        assertEquals("jdbc:sqlserver://netbeans-host:1433;databaseName=BookHubDB", cfg.getDbUrl());
+        assertEquals("nb_dev", cfg.getDbUsername());
+        assertEquals(configFile.toAbsolutePath().toString(), cfg.getSourceDescription());
+    }
+
     @Test
     void entityEqualsHashCodeAndSafeToStringFollowInvariants() {
         User u1 = new User();
