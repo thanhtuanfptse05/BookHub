@@ -72,7 +72,7 @@ Browser → Filter (UTF-8, Auth, Admin, CSRF) → Servlet Controller (parse & va
 
 | Ngày | Sự cố / Lỗi | Nguyên nhân gốc | Quy tắc rút ra |
 |---|---|---|---|
-| 2026-11-23 | _(Chưa có sự cố — dự án đang khởi tạo MVP)_ | — | Giữ kỷ luật: chỉ dùng `jakarta.*`, cấm scriptlet JSP, cấm commit `bookhub-local.properties` |
+| 2026-11-23 | `sqlcmd` báo lỗi `Msg 1934: QUOTED_IDENTIFIER` khi INSERT vào bảng có filtered index (`UX_Books_isbn_not_null`) | `sqlcmd` mặc định `QUOTED_IDENTIFIER OFF` khác với SSMS | Mọi file `.sql` SQL Server phải đặt `SET ANSI_NULLS ON; SET QUOTED_IDENTIFIER ON;` ở đầu và lưu UTF-8 BOM (`database/*.sql`) |
 
 ## 6. Vùng nguy hiểm (Known Hazards)
 - **Trộn `javax.*` và `jakarta.*`:** Gây lỗi compile/deploy trên Tomcat 10.1.x. Luôn kiểm tra import và JAR trước build.
